@@ -102,11 +102,27 @@ Every framework reference file includes (per framework):
 1. **3-way AI research** — Gemini, Codex, and Claude independently researched all 42 frameworks in parallel (21 research tasks, 497K chars of raw material)
 2. **Synthesis** — 4 agents merged the best from each AI per category. Took the sharpest examples, cut textbook filler, resolved disagreements.
 3. **3 rounds of adversarial review** — Codex (scored 7/10), Gemini (scored 9.4/10), and self-review identified gaps in portability, completeness, and actionability. All addressed.
-4. **A/B eval** — 7-way comparison of different reference configurations. Skill-only scored 7.0/10; full bundle scored comparable but with stronger evidence grounding.
+4. **A/B eval** — 7-way comparison of different reference configurations to find the highest-impact bundle.
+5. **v2 eval redesign** — 9-criteria rubric with programmatic checkers, pairwise comparison with position swap, and Gemini+Codex adversarial review of the eval plan itself. Key finding: baseline beating the skill on some prompts revealed a skill bug (hard gate too aggressive — the skill stopped at clarifying questions on vague prompts instead of stating assumptions and proceeding), not a measurement problem. But the rubric redesign was needed to properly measure process discipline, which the v1 absolute scoring missed.
 
-## Eval framework
+## Eval results (v2)
 
-This skill was built alongside [gcamilo/skill-eval](https://github.com/gcamilo/skill-eval) — an open-source A/B testing framework for AI agent skills. It supports absolute scoring (JSON schema-enforced), pairwise tournaments, automated regression, and human calibration.
+Evaluated with [gcamilo/skill-eval](https://github.com/gcamilo/skill-eval) — an open-source A/B testing framework for AI agent skills.
+
+**3-tier rubric, 9 criteria** across Process Discipline (problem framing, MECE structure, evidence labeling), Output Quality (specificity, so-what per finding, visual structure), and Decision Quality (options with trade-offs, falsifiability, stated assumptions).
+
+| Tier | What it measures | Skill delta |
+|------|-----------------|-------------|
+| T1 — Process Discipline | Structure, framing, evidence | **+1.6** |
+| T2 — Output Quality | Specificity, insights, formatting | **+0.6** |
+| T3 — Decision Quality | Options, falsifiability, assumptions | **+0.4** |
+| **Overall** | | **+0.9** |
+
+**Key findings:**
+
+- **Easy prompts show the largest gap** — T1 delta of +4.8 on straightforward prompts. The skill enforces structured process that Opus naturally skips when the question seems simple.
+- **Pairwise results** — skill wins on hard and ambiguous prompts; baseline wins on well-specified prompts where the framework overhead adds less value.
+- **Hard gate fix was critical** — the original skill stopped at clarifying questions on vague prompts. The fixed version states assumptions and proceeds, which is what a real consultant does.
 
 ## Customization
 
