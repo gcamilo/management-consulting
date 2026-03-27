@@ -83,19 +83,21 @@ Every framework reference file includes (per framework):
 
 ### 42 frameworks across 7 categories
 
-**Strategy (11):** Five Forces, Value Chain, 7S, VRIO, 3 Horizons, Ansoff, Growth-Share Matrix, Nine-Box, Blue Ocean, Wardley Mapping, Scenario Planning
+> **[Visual Reference Guide](https://gcamilo.github.io/management-consulting/)** — interactive cards with diagrams, examples, step-by-step mechanics, and key questions for each framework.
 
-**Problem Solving (6):** MECE, Issue Trees, Hypothesis Trees, 7-Step Problem Solving, Pyramid Principle, SCQA
+**[Strategy (11)](https://gcamilo.github.io/management-consulting/#strategy):** Five Forces, Value Chain, 7S, VRIO, 3 Horizons, Ansoff, Growth-Share Matrix, Nine-Box, Blue Ocean, Wardley Mapping, Scenario Planning
 
-**Decision Making (5):** RAPID, Decision Matrix, Pre-Mortem, Second-Order Thinking, Inversion
+**[Problem Solving (6)](https://gcamilo.github.io/management-consulting/#problem-solving):** MECE, Issue Trees, Hypothesis Trees, 7-Step Problem Solving, Pyramid Principle, SCQA
 
-**Financial (5):** Profit Tree, Revenue Tree, TAM/SAM/SOM, Unit Economics, Waterfall/Bridge
+**[Decision Making (5)](https://gcamilo.github.io/management-consulting/#decision-making):** RAPID, Decision Matrix, Pre-Mortem, Second-Order Thinking, Inversion
 
-**Operations (6):** ADKAR, Kotter's 8-Step, Lewin's Change Model, Influence Model, Customer Journey, NPS
+**[Financial (5)](https://gcamilo.github.io/management-consulting/#financial):** Profit Tree, Revenue Tree, TAM/SAM/SOM, Unit Economics, Waterfall/Bridge
 
-**Innovation (4):** Jobs to Be Done, Business Model Canvas, Value Proposition Canvas, Advantage Matrix
+**[Operations (6)](https://gcamilo.github.io/management-consulting/#operations):** ADKAR, Kotter's 8-Step, Lewin's Change Model, Influence Model, Customer Journey, NPS
 
-**Pricing (5):** Value-Based, Cost-Plus, Competitive, Dynamic, Freemium
+**[Innovation (4)](https://gcamilo.github.io/management-consulting/#innovation):** Jobs to Be Done, Business Model Canvas, Value Proposition Canvas, Advantage Matrix
+
+**[Pricing (5)](https://gcamilo.github.io/management-consulting/#pricing):** Value-Based, Cost-Plus, Competitive, Dynamic, Freemium
 
 ## How it was built
 

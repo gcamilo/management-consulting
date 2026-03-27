@@ -1,0 +1,2674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Management Consulting Frameworks — A Visual Reference</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #1a2744;
+  --navy-mid: #2a3a5c;
+  --navy-light: #3a4e72;
+  --gold: #7c6f58;
+  --gold-dim: #998872;
+  --gold-glow: rgba(140,105,20,0.08);
+  --cream: #1a2744;
+  --card-bg: #ffffff;
+  --text: #333333;
+  --text-muted: #777777;
+  --accent-green: #3d7a4a;
+  --accent-red: #9e4a4a;
+  --accent-gray: #888888;
+  --border: #e0e0e0;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: #f5f5f0;
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Subtle grid texture */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0,0,0,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.02) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.page { position: relative; z-index: 1; }
+
+/* ── Header ── */
+header {
+  padding: 80px 40px 60px;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+  background: var(--navy);
+}
+header::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 3px;
+  background: var(--gold);
+}
+h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.4rem, 5vw, 3.6rem);
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+}
+.subtitle {
+  font-size: 1rem;
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-weight: 600;
+}
+
+/* ── Section titles ── */
+.section-title {
+  padding: 60px 40px 30px;
+  text-align: center;
+}
+.section-title h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+  font-weight: 600;
+  color: var(--gold);
+  position: relative;
+  display: inline-block;
+}
+.section-title h2::before,
+.section-title h2::after {
+  content: '—';
+  margin: 0 16px;
+  color: var(--gold-dim);
+  font-weight: 400;
+}
+.section-title p {
+  margin-top: 8px;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+/* ── Card grid ── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 520px), 1fr));
+  gap: 28px;
+  padding: 0 40px 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+.card:hover {
+  border-color: var(--gold-dim);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08), 0 0 0 1px rgba(140,105,20,0.15);
+}
+
+.card-header {
+  padding: 24px 28px 16px;
+  border-bottom: 1px solid var(--border);
+}
+.card-header h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 4px;
+}
+.card-header .tagline {
+  font-size: 0.88rem;
+  color: var(--gold);
+  font-weight: 500;
+}
+
+.card-visual {
+  padding: 24px 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+  background: #f3f1ec;
+  border-top: 1px solid #e2dfda;
+  border-bottom: 1px solid #e2dfda;
+}
+.card-visual svg {
+  width: 100%;
+  max-width: 460px;
+  height: auto;
+}
+
+.card-body {
+  padding: 20px 28px 24px;
+}
+.meta-row {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+.meta-tag {
+  font-size: 0.78rem;
+  padding: 4px 10px;
+  border-radius: 3px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.meta-tag.use {
+  background: rgba(92,138,77,0.2);
+  color: #8bc37a;
+  border: 1px solid rgba(92,138,77,0.3);
+}
+.meta-tag.avoid {
+  background: rgba(160,64,64,0.2);
+  color: #d48080;
+  border: 1px solid rgba(160,64,64,0.3);
+}
+.meta-label { font-size: 0.7rem; color: var(--text-muted); display: block; margin-bottom: 2px; }
+.example {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-style: italic;
+  border-left: 2px solid var(--gold-dim);
+  padding-left: 14px;
+  margin-top: 12px;
+}
+.how-it-works {
+  margin-top: 16px;
+  padding: 14px 16px;
+  background: #f9f8f5;
+  border: 1px solid #e8e6e0;
+  border-radius: 4px;
+  font-size: 0.84rem;
+  line-height: 1.65;
+  color: var(--text);
+}
+.how-it-works strong {
+  color: var(--gold);
+  font-weight: 600;
+}
+.how-it-works .questions {
+  margin-top: 8px;
+  padding-left: 16px;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+}
+.how-it-works .questions li {
+  margin-bottom: 3px;
+}
+
+/* ── Nav index ── */
+.nav-index {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid #ddd;
+  padding: 12px 40px;
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.nav-index a {
+  font-size: 0.75rem;
+  color: #555;
+  text-decoration: none;
+  padding: 5px 12px;
+  border-radius: 3px;
+  border: 1px solid transparent;
+  transition: all 0.2s;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+.nav-index a:hover {
+  color: var(--navy);
+  border-color: #ccc;
+  background: rgba(26,39,68,0.05);
+}
+.nav-index .sep {
+  color: #ccc;
+  font-size: 0.7rem;
+  padding: 0 2px;
+}
+
+/* ── SVG styles ── */
+.node-box { rx: 4; }
+.label { font-family: 'DM Sans', sans-serif; }
+/* All node fills dark enough for white/light text — no more light-on-light issues */
+.conn { stroke: #a0a0a0; stroke-width: 1.5; fill: none; }
+.node-navy { fill: #2e4257; stroke: #4a5a6a; stroke-width: 1; }
+.node-green { fill: #3a6a42; stroke: #4a7a50; stroke-width: 1; }
+.node-red { fill: #8a4040; stroke: #9e5454; stroke-width: 1; }
+.node-gray { fill: #6a6862; stroke: #7a7870; stroke-width: 1; }
+.node-gold { fill: #6a6048; stroke: #7a7060; stroke-width: 1; }
+.text-white { fill: #f0ede8; }
+.text-white { fill: #3a3530; }
+.text-gold { fill: #e0d5b8; }
+.text-gold-dark { fill: #6a5f48; }
+.text-muted { fill: #b0aaa0; }
+.text-green { fill: #a0d8a8; }
+.text-red { fill: #e8a0a0; }
+.text-sm { font-size: 9px; }
+.text-xs { font-size: 7.5px; }
+
+/* ── Footer ── */
+footer {
+  text-align: center;
+  padding: 50px 40px;
+  border-top: 1px solid #ddd;
+  color: #999;
+  font-size: 0.82rem;
+}
+footer a { color: var(--navy); text-decoration: none; }
+footer a:hover { color: var(--gold); }
+
+@media (max-width: 600px) {
+  header, .section-title, .grid { padding-left: 20px; padding-right: 20px; }
+  .card-header, .card-visual, .card-body { padding-left: 18px; padding-right: 18px; }
+  .grid { gap: 18px; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<nav class="nav-index">
+  <a href="#problem-solving">Problem Solving</a>
+  <a href="#strategy">Strategy</a>
+  <a href="#financial">Financial</a>
+  <a href="#decision-making">Decision Making</a>
+  <a href="#operations">Operations</a>
+  <a href="#innovation">Innovation</a>
+  <a href="#pricing">Pricing</a>
+</nav>
+
+<header>
+  <div class="subtitle">gcamilo/management-consulting</div>
+  <h1>Management Consulting Frameworks</h1>
+  <p style="color:#998872; font-size:0.95rem; margin-top:12px; max-width:700px; margin-left:auto; margin-right:auto;">Visual reference for the <a href="https://github.com/gcamilo/management-consulting" style="color:#e0d5b8; text-decoration:underline;">management-consulting</a> skill — 42 practitioner-grade frameworks across 7 categories. Install the skill to get structured problem solving, evidence-labeled analysis, and visual deliverables in Claude Code, Codex, Gemini CLI, or any agent that reads SKILL.md files.</p>
+  <p style="margin-top:14px;">
+    <a href="https://github.com/gcamilo/management-consulting" style="display:inline-block; padding:8px 20px; background:#998872; color:#fff; border-radius:4px; text-decoration:none; font-size:0.85rem; font-weight:600;">View on GitHub</a>
+    <a href="https://github.com/gcamilo/management-consulting#install" style="display:inline-block; padding:8px 20px; background:transparent; color:#998872; border:1px solid #998872; border-radius:4px; text-decoration:none; font-size:0.85rem; font-weight:600; margin-left:8px;">Install</a>
+  </p>
+</header>
+
+<!-- ══════════════════════════════════════ -->
+<!-- SECTION 1: STRUCTURING PROBLEMS       -->
+<!-- ══════════════════════════════════════ -->
+
+<div class="section-title" id="problem-solving">
+  <h2>Problem Solving</h2>
+  <p>Decompose complexity into actionable, testable components — 6 frameworks</p>
+</div>
+
+<div class="grid">
+
+<!-- Card 1: Issue Tree -->
+<div class="card" id="issue-tree">
+  <div class="card-header">
+    <h3>Issue Tree</h3>
+    <div class="tagline">Break a question into MECE sub-questions until you find the answer</div>
+  </div>
+  <div class="card-visual">
+    <svg viewBox="0 0 440 200" font-family="DM Sans, sans-serif">
+      <rect x="120" y="5" width="200" height="32" rx="4" class="node-navy"/>
+      <text x="220" y="25" text-anchor="middle" class="label text-gold" font-size="10" font-weight="600">Why is profit declining?</text>
+      <line x1="220" y1="37" x2="220" y2="55" class="conn"/>
+      <line x1="120" y1="55" x2="320" y2="55" class="conn"/>
+      <line x1="120" y1="55" x2="120" y2="70" class="conn"/>
+      <line x1="320" y1="55" x2="320" y2="70" class="conn"/>
+      <!-- Revenue -->
+      <rect x="40" y="70" width="160" height="28" rx="4" class="node-gold"/>
+      <text x="120" y="88" text-anchor="middle" class="label text-white" font-size="9" font-weight="600">Revenue (Price x Volume)</text>
+      <line x1="80" y1="98" x2="80" y2="115" class="conn"/>
+      <line x1="160" y1="98" x2="160" y2="115" class="conn"/>
+      <rect x="30" y="115" width="100" height="24" rx="3" class="node-green"/>
+      <text x="80" y="131" text-anchor="middle" class="label text-green text-sm">Price: stable</text>
+      <rect x="140" y="115" width="100" height="24" rx="3" class="node-red"/>
+      <text x="190" y="131" text-anchor="middle" class="label text-red text-sm">Volume: -18%</text>
+      <!-- Cost -->
+      <rect x="240" y="70" width="160" height="28" rx="4" class="node-gold"/>
+      <text x="320" y="88" text-anchor="middle" class="label text-white" font-size="9" font-weight="600">Cost (Fixed + Variable)</text>
+      <line x1="280" y1="98" x2="280" y2="115" class="conn"/>
+      <line x1="360" y1="98" x2="360" y2="115" class="conn"/>
+      <rect x="230" y="115" width="100" height="24" rx="3" class="node-green"/>
+      <text x="280" y="131" text-anchor="middle" class="label text-green text-sm">Fixed: flat</text>
+      <rect x="330" y="115" width="100" height="24" rx="3" class="node-red"/>
+      <text x="380" y="131" text-anchor="middle" class="label text-red text-sm">Variable: +22%</text>
+      <!-- Bottom line -->
+      <rect x="80" y="158" width="280" height="28" rx="4" class="node-navy"/>
+      <text x="220" y="176" text-anchor="middle" class="label text-gold" font-size="9" font-weight="600">Answer: volume loss + variable cost inflation</text>
+    </svg>
+  </div>
+  <div class="card-body">
+    <div class="meta-row">
+      <div><span class="meta-label">When to use</span><span class="meta-tag use">Ambiguous problems with multiple possible causes</span></div>
+    </div>
+    <div class="meta-row">
+      <div><span class="meta-label">When NOT to use</span><span class="meta-tag avoid">Simple yes/no decisions — just decide</span></div>
+    </div>
+    <div class="example">"Why did SaaS churn spike from 4% to 7%?" → decompose into voluntary vs involuntary, by segment, by cohort (DuPont-style layering)</div>
+    <div class="how-it-works">
+      <strong>How it works:</strong> Start with the question at the top. Split it into sub-questions where each level is MECE (no overlaps, no gaps). Keep splitting until you reach testable, data-answerable leaves. Then work bottom-up: color each leaf green (supports), red (contradicts), or gray (unknown). The answer emerges from which branches light up.
+      <ul class="questions">
+        <li>What are the 2-3 branches that drive 80% of the answer? (Ignore the rest)</li>
+        <li>At each split: is this genuinely MECE, or am I double-counting?</li>
+        <li>At the leaves: what single data point would answer this?</li>
+        <li>What conclusion can the tree support? "The problem is X, not Y, because branch A is red while branch B is green."</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Card 2: Hypothesis Tree -->
+<div class="card" id="hypothesis-tree">
+  <div class="card-header">
+    <h3>Hypothesis Tree</h3>
+    <div class="tagline">Each branch is a testable claim with a kill test — prove or disprove, don't just explore</div>
+  </div>
+  <div class="card-visual">
+    <svg viewBox="0 0 440 195" font-family="DM Sans, sans-serif">
+      <rect x="130" y="5" width="180" height="30" rx="4" class="node-navy"/>
+      <text x="220" y="24" text-anchor="middle" class="label text-gold" font-size="9.5" font-weight="600">Should we enter the EU market?</text>
+      <line x1="220" y1="35" x2="220" y2="52" class="conn"/>
+      <line x1="80" y1="52" x2="360" y2="52" class="conn"/>
+      <line x1="80" y1="52" x2="80" y2="65" class="conn"/>
+      <line x1="220" y1="52" x2="220" y2="65" class="conn"/>
+      <line x1="360" y1="52" x2="360" y2="65" class="conn"/>
+      <!-- H1 -->
+      <rect x="10" y="65" width="140" height="50" rx="4" class="node-green"/>
+      <text x="80" y="80" text-anchor="middle" class="label text-green text-sm" font-weight="600">H1: Market size justifies</text>
+      <text x="80" y="93" text-anchor="middle" class="label text-muted text-xs">Kill: TAM &lt; $50M</text>
+      <text x="80" y="106" text-anchor="middle" class="label text-green text-xs" font-weight="600">CONFIRMED: TAM $320M</text>
+      <!-- H2 -->
+      <rect x="155" y="65" width="130" height="50" rx="4" class="node-green"/>
+      <text x="220" y="80" text-anchor="middle" class="label text-green text-sm" font-weight="600">H2: We can compete</text>
+      <text x="220" y="93" text-anchor="middle" class="label text-muted text-xs">Kill: &gt;3 incumbents w/ moat</text>
+      <text x="220" y="106" text-anchor="middle" class="label text-red text-xs" font-weight="600">KILLED: 4 entrenched players</text>
+      <!-- H3 -->
+      <rect x="290" y="65" width="140" height="50" rx="4" class="node-gray"/>
+      <text x="360" y="80" text-anchor="middle" class="label text-white text-sm" font-weight="600">H3: Regulatory feasible</text>
+      <text x="360" y="93" text-anchor="middle" class="label text-muted text-xs">Kill: GDPR blocks model</text>
+      <text x="360" y="106" text-anchor="middle" class="label text-muted text-xs" font-weight="600">OPEN: legal review pending</text>
+      <!-- Legend -->
+      <rect x="90" y="135" width="10" height="10" rx="2" class="node-green"/>
+      <text x="106" y="144" class="label text-muted text-xs">Confirmed</text>
+      <rect x="170" y="135" width="10" height="10" rx="2" class="node-red"/>
+      <text x="186" y="144" class="label text-muted text-xs">Killed</text>
+      <rect x="240" y="135" width="10" height="10" rx="2" class="node-gray"/>
+      <text x="256" y="144" class="label text-muted text-xs">Unknown</text>
+      <rect x="80" y="160" width="280" height="25" rx="4" class="node-navy"/>
+      <text x="220" y="176" text-anchor="middle" class="label text-gold text-sm" font-weight="600">Verdict: attractive TAM, but competitive moat is a blocker</text>
+    </svg>
+  </div>
+  <div class="card-body">
+    <div class="meta-row">
+      <div><span class="meta-label">When to use</span><span class="meta-tag use">You have a hypothesis and need to confirm or kill it fast</span></div>
+    </div>
+    <div class="meta-row">
+      <div><span class="meta-label">When NOT to use</span><span class="meta-tag avoid">Exploratory phases where you don't have a hypothesis yet</span></div>
+    </div>
+    <div class="example">"H: No incumbent has a data moat → Kill test: Do they have proprietary datasets? → KILLED: Top 2 players have 10+ years of training data"</div>
+    <div class="how-it-works">
+      <strong>How it works:</strong> Unlike an issue tree (which explores), a hypothesis tree starts with a claim you believe is true and tries to kill it. For each hypothesis, define a single data point that would disprove it — the "kill test." Gather that data first. If the hypothesis survives all kill tests, you have a defensible recommendation. If it gets killed, you've saved weeks of analysis on a dead end.
+      <ul class="questions">
+        <li>What must be true for my recommendation to be correct? (List 3-5 conditions)</li>
+        <li>For each condition: what one number or fact would prove it wrong?</li>
+        <li>Which hypothesis, if killed, most changes the conclusion? (Test that first)</li>
+        <li>Am I anchoring on confirming evidence and ignoring disconfirming data?</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Card 3: Profit / Revenue Tree -->
+<div class="card" id="profit-tree">
+  <div class="card-header">
+    <h3>Profit / Revenue Tree</h3>
+    <div class="tagline">Decompose financial performance into its mathematical components</div>
+  </div>
+  <div class="card-visual">
+    <svg viewBox="0 0 440 180" font-family="DM Sans, sans-serif">
+      <!-- Waterfall bars -->
+      <rect x="30" y="20" width="55" height="120" rx="3" fill="rgba(92,138,77,0.35)" stroke="#5c8a4d"/>
+      <text x="57" y="15" text-anchor="middle" class="label text-green text-sm" font-weight="600">Revenue</text>
+      <text x="57" y="85" text-anchor="middle" class="label text-green" font-size="14" font-weight="700">$500M</text>
+      <rect x="100" y="55" width="55" height="85" rx="3" fill="rgba(160,64,64,0.35)" stroke="#a04040"/>
+      <text x="127" y="50" text-anchor="middle" class="label text-red text-sm" font-weight="600">COGS</text>
+      <text x="127" y="100" text-anchor="middle" class="label text-red" font-size="12" font-weight="700">($280M)</text>
+      <rect x="170" y="20" width="55" height="55" rx="3" fill="rgba(197,165,90,0.25)" stroke="var(--gold-dim)"/>
+      <text x="197" y="15" text-anchor="middle" class="label text-gold text-sm" font-weight="600">Gross Profit</text>
+      <text x="197" y="52" text-anchor="middle" class="label text-gold" font-size="14" font-weight="700">$220M</text>
+      <rect x="240" y="35" width="55" height="40" rx="3" fill="rgba(160,64,64,0.35)" stroke="#a04040"/>
+      <text x="267" y="30" text-anchor="middle" class="label text-red text-sm" font-weight="600">SG&amp;A</text>
+      <text x="267" y="60" text-anchor="middle" class="label text-red" font-size="11" font-weight="700">($130M)</text>
+      <rect x="310" y="35" width="55" height="40" rx="3" fill="rgba(160,64,64,0.35)" stroke="#a04040"/>
+      <text x="337" y="30" text-anchor="middle" class="label text-red text-sm" font-weight="600">D&amp;A</text>
+      <text x="337" y="60" text-anchor="middle" class="label text-red" font-size="11" font-weight="700">($25M)</text>
+      <rect x="380" y="20" width="55" height="50" rx="3" fill="rgba(92,138,77,0.35)" stroke="#5c8a4d"/>
+      <text x="407" y="15" text-anchor="middle" class="label text-green text-sm" font-weight="600">EBIT</text>
+      <text x="407" y="50" text-anchor="middle" class="label text-green" font-size="14" font-weight="700">$65M</text>
+      <!-- Connecting dashes -->
+      <line x1="85" y1="20" x2="100" y2="20" stroke="#4a5568" stroke-width="1" stroke-dasharray="3,3"/>
+      <line x1="155" y1="55" x2="170" y2="55" stroke="#4a5568" stroke-width="1" stroke-dasharray="3,3"/>
+      <!-- Bottom label -->
+      <text x="220" y="168" text-anchor="middle" class="label text-muted text-sm">Illustrative P&amp;L Waterfall — USD Millions</text>
+    </svg>
+  </div>
+  <div class="card-body">
+    <div class="meta-row">
+      <div><span class="meta-label">When to use</span><span class="meta-tag use">The question is about quantified revenue, cost, or profit drivers</span></div>
+    </div>
+    <div class="meta-row">
+      <div><span class="meta-label">When NOT to use</span><span class="meta-tag avoid">Qualitative questions — culture, strategy, org design</span></div>
+    </div>
+    <div class="example">"Where did the +12% EBIT growth come from?" → Volume drove revenue +8%, but raw material inflation (+15%) ate into gross margin — SG&amp;A discipline saved the bottom line</div>
+    <div class="how-it-works">
+      <strong>How it works:</strong> Take a financial outcome (revenue growth, margin compression, profit decline) and decompose it mathematically. Revenue = Price x Volume. Cost = Fixed + Variable. Profit = Revenue - Cost. Build a waterfall chart showing each component's contribution. The visual immediately reveals which lever moved and by how much — cutting through narrative to the math.
+      <ul class="questions">
+        <li>Which component contributed the most to the change? (The tallest bar in the waterfall)</li>
+        <li>Is the driver sustainable or one-time? (Price increases stick; one-time cost cuts don't)</li>
+        <li>What happens if you stress the biggest driver by 20%? Does the story hold?</li>
+        <li>Are there offsetting effects that the headline number masks? (Revenue up but margins down)</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Card 4: MECE -->
+<div class="card" id="mece">
+  <div class="card-header">
+    <h3>MECE Principle</h3>
+    <div class="tagline">Mutually Exclusive, Collectively Exhaustive — the quality check for every decomposition</div>
+  </div>
+  <div class="card-visual">
+    <svg viewBox="0 0 440 170" font-family="DM Sans, sans-serif">
+      <!-- MECE (correct) -->
+      <text x="73" y="18" text-anchor="middle" class="label text-green text-sm" font-weight="600">MECE (correct)</text>
+      <rect x="15" y="25" width="50" height="50" rx="4" class="node-green"/>
+      <rect x="73" y="25" width="50" height="50" rx="4" class="node-green"/>
+      <text x="40" y="55" text-anchor="middle" class="label text-green text-xs">Revenue</text>
+      <text x="98" y="55" text-anchor="middle" class="label text-green text-xs">Cost</text>
+      <text x="73" y="92" text-anchor="middle" class="label text-muted text-xs">No overlap, no gaps</text>
+      <!-- Overlapping (bad) -->
+      <text x="220" y="18" text-anchor="middle" class="label text-red text-sm" font-weight="600">Not ME (overlaps)</text>
+      <rect x="170" y="25" width="60" height="50" rx="4" fill="rgba(160,64,64,0.2)" stroke="#a04040"/>
+      <rect x="210" y="25" width="60" height="50" rx="4" fill="rgba(160,64,64,0.2)" stroke="#a04040"/>
+      <rect x="210" y="25" width="20" height="50" rx="0" fill="rgba(160,64,64,0.4)"/>
+      <text x="200" y="55" text-anchor="middle" class="label text-red text-xs">Sales</text>
+      <text x="240" y="55" text-anchor="middle" class="label text-red text-xs">Marketing</text>
+      <text x="220" y="92" text-anchor="middle" class="label text-muted text-xs">Where does pricing go?</text>
+      <!-- Incomplete (bad) -->
+      <text x="370" y="18" text-anchor="middle" class="label text-red text-sm" font-weight="600">Not CE (gaps)</text>
+      <rect x="330" y="25" width="40" height="50" rx="4" fill="rgba(160,64,64,0.2)" stroke="#a04040"/>
+      <rect x="380" y="25" width="40" height="50" rx="4" fill="rgba(160,64,64,0.2)" stroke="#a04040"/>
+      <text x="350" y="55" text-anchor="middle" class="label text-red text-xs">Online</text>
+      <text x="400" y="55" text-anchor="middle" class="label text-red text-xs">Retail</text>
+      <text x="370" y="92" text-anchor="middle" class="label text-muted text-xs">Missing: wholesale, B2B</text>
+      <!-- Bottom rule -->
+      <rect x="30" y="110" width="380" height="44" rx="4" class="node-navy"/>
+      <text x="220" y="128" text-anchor="middle" class="label text-gold text-sm" font-weight="600">Rule: If you can't place every data point in exactly one bucket</text>
+      <text x="220" y="143" text-anchor="middle" class="label text-gold text-sm" font-weight="600">with nothing left over, your structure is broken.</text>
+    </svg>
+  </div>
+  <div class="card-body">
+    <div class="meta-row">
+      <div><span class="meta-label">When to use</span><span class="meta-tag use">As a quality check on EVERY issue tree, hypothesis tree, or decomposition</span></div>
+    </div>
+    <div class="meta-row">
+      <div><span class="meta-label">When NOT to use</span><span class="meta-tag avoid">Don't let MECE perfectionism delay analysis — "good enough" structure beats no structure</span></div>
+    </div>
+    <div class="example">"4 growth options: organic, M&amp;A, partnerships, new markets" — MECE because every growth dollar must flow through exactly one path</div>
+    <div class="how-it-works">
+      <strong>How it works:</strong> MECE is not a framework — it's the quality standard applied to every decomposition. After building any tree, test each level: (1) pick any item in the real world — does it fall into exactly one bucket? If it fits two, your buckets overlap (not ME). (2) Can you think of something that doesn't fit any bucket? If yes, you have a gap (not CE). Fix the structure until both tests pass.
+      <ul class="questions">
+        <li>Can I place every real data point into exactly one branch? (If not: overlaps)</li>
+        <li>Is there anything important that doesn't fit any branch? (If yes: gaps)</li>
+        <li>Am I splitting by a single, clear dimension at each level? (Mixed dimensions = overlap)</li>
+        <li>Would a skeptic accept this structure as complete and non-redundant?</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="card" id="pyramid">
+  <div class="card-header">
+    <h3>Pyramid Principle</h3>
+    <div class="tagline">Answer first, then supporting arguments, then evidence — top-down communication</div>
+  </div>
+  <div class="card-visual">
+    <svg viewBox="0 0 440 200" font-family="DM Sans, sans-serif">
+      <!-- Answer (top) -->
+      <rect x="155" y="8" width="130" height="34" rx="4" class="node-gold"/>
+      <text x="220" y="22" text-anchor="middle" class="label text-white text-sm" font-weight="700">ANSWER</text>
+      <text x="220" y="35" text-anchor="middle" class="label text-muted text-xs">"Enter Southeast Asia"</text>
+      <!-- Connectors to arguments -->
+      <line x1="185" y1="42" x2="100" y2="65" class="conn"/>
+      <line x1="220" y1="42" x2="220" y2="65" class="conn"/>
+      <line x1="255" y1="42" x2="340" y2="65" class="conn"/>
+      <!-- Arguments (middle) -->
+      <rect x="30" y="65" width="140" height="34" rx="4" class="node-navy"/>
+      <text x="100" y="79" text-anchor="middle" class="label text-gold text-sm" font-weight="600">Argument 1</text>
+      <text x="100" y="92" text-anchor="middle" class="label text-muted text-xs">Market is large</text>
+      <rect x="180" y="65" width="80" height="34" rx="4" class="node-navy"/>
+      <text x="220" y="79" text-anchor="middle" class="label text-gold text-sm" font-weight="600">Argument 2</text>
+      <text x="220" y="92" text-anchor="middle" class="label text-muted text-xs">We can win</text>
+      <rect x="270" y="65" width="140" height="34" rx="4" class="node-navy"/>
+      <text x="340" y="79" text-anchor="middle" class="label text-gold text-sm" font-weight="600">Argument 3</text>
+      <text x="340" y="92" text-anchor="middle" class="label text-muted text-xs">Returns exceed hurdle</text>
+      <!-- Connectors to evidence -->
+      <line x1="60" y1="99" x2="40" y2="120" class="conn"/>
+      <line x1="100" y1="99" x2="100" y2="120" class="conn"/>
+      <line x1="140" y1="99" x2="160" y2="120" class="conn"/>
+      <line x1="300" y1="99" x2="280" y2="120" class="conn"/>
+      <line x1="340" y1="99" x2="340" y2="120" class="conn"/>
+      <line x1="380" y1="99" x2="400" y2="120" class="conn"/>
+      <!-- Evidence (bottom row 1) -->
+      <rect x="10" y="120" width="60" height="26" rx="3" class="node-green"/>
+      <text x="40" y="137" text-anchor="middle" class="label text-green text-xs">680M people</text>
+      <rect x="78" y="120" width="60" height="26" rx="3" class="node-green"/>
+      <text x="108" y="137" text-anchor="middle" class="label text-green text-xs">7% CAGR</text>
+      <rect x="146" y="120" width="60" height="26" rx="3" class="node-green"/>
+      <text x="176" y="137" text-anchor="middle" class="label text-green text-xs">Low penetr.</text>
+      <!-- Evidence (bottom row 2 — under Argument 3) -->
+      <rect x="250" y="120" width="60" height="26" rx="3" class="node-green"/>
+      <text x="280" y="137" text-anchor="middle" class="label text-green text-xs">IRR 18%</text>
+      <rect x="318" y="120" width="60" height="26" rx="3" class="node-green"/>
+      <text x="348" y="137" text-anchor="middle" class="label text-green text-xs">NPV +$42M</text>
+      <rect x="386" y="120" width="48" height="26" rx="3" class="node-green"/>
+      <text x="410" y="137" text-anchor="middle" class="label text-green text-xs">Payback 3y</text>
+      <!-- Bottom label -->
+      <rect x="80" y="162" width="280" height="26" rx="4" class="node-navy"/>
+      <text x="220" y="179" text-anchor="middle" class="label text-gold text-sm" font-weight="600">Lead with "so what" — details support, not precede</text>
+    </svg>
+  </div>
+  <div class="card-body">
+    <div class="meta-row">
+      <div><span class="meta-label">When to use</span><span class="meta-tag use">Any executive communication — memos, decks, verbal updates</span></div>
+    </div>
+    <div class="meta-row">
+      <div><span class="meta-label">When NOT to use</span><span class="meta-tag avoid">Exploratory brainstorming where you genuinely don't have an answer yet</span></div>
+    </div>
+    <div class="example">"We recommend expanding into Southeast Asia: the market is large (680M people, 7% CAGR), we have a right to win (existing distributor network), and returns exceed our hurdle (18% IRR, 3-year payback)."</div>
+    <div class="how-it-works"><strong>How it works:</strong> Start with the answer (recommendation or conclusion), then group supporting arguments into 2-4 MECE buckets, then back each argument with specific evidence. The audience gets your conclusion in 10 seconds; they go deeper only if they want to challenge it.<ul class="questions"><li>What is my one-sentence answer to the question being asked?</li><li>What are the 2-4 independent reasons this answer is correct?</li><li>What specific data or evidence supports each reason?</li><li>If the audience reads only the first slide, do they get the full message?</li></ul></div>
+  </div>
+</div>
+
+<div class="card" id="scqa">
+  <div class="card-header">
+    <h3>SCQA</h3>
+    <div class="tagline">Situation, Complication, Question, Answer — narrative framing that compels action</div>
+  </div>
+  <div class="card-visual">
+    <svg viewBox="0 0 440 200" font-family="DM Sans, sans-serif">
+      <!-- S block -->
+      <rect x="10" y="40" width="95" height="70" rx="4" class="node-green"/>
+      <text x="57" y="60" text-anchor="middle" class="label text-green text-sm" font-weight="700">S</text>
+      <text x="57" y="75" text-anchor="middle" class="label text-white text-xs">Situation</text>
+      <text x="57" y="90" text-anchor="middle" class="label text-muted text-xs">"We lead the</text>
+      <text x="57" y="100" text-anchor="middle" class="label text-muted text-xs">market at 28%"</text>
+      <!-- Arrow S to C -->
+      <line x1="105" y1="75" x2="118" y2="75" class="conn"/>
+      <polygon points="116,70 116,80 122,75" fill="#4a5568"/>
+      <!-- C block -->
+      <rect x="122" y="40" width="95" height="70" rx="4" class="node-red"/>
+      <text x="169" y="60" text-anchor="middle" class="label text-red text-sm" font-weight="700">C</text>
+      <text x="169" y="75" text-anchor="middle" class="label text-white text-xs">Complication</text>
+      <text x="169" y="90" text-anchor="middle" class="label text-muted text-xs">"But share fell</text>
+      <text x="169" y="100" text-anchor="middle" class="label text-muted text-xs">3pp in 12 months"</text>
+      <!-- Arrow C to Q -->
+      <line x1="217" y1="75" x2="230" y2="75" class="conn"/>
+      <polygon points="228,70 228,80 234,75" fill="#4a5568"/>
+      <!-- Q block -->
+      <rect x="234" y="40" width="95" height="70" rx="4" class="node-gold"/>
+      <text x="281" y="60" text-anchor="middle" class="label text-white text-sm" font-weight="700">Q</text>
+      <text x="281" y="75" text-anchor="middle" class="label text-white text-xs">Question</text>
+      <text x="281" y="90" text-anchor="middle" class="label text-muted text-xs">"How do we</text>
+      <text x="281" y="100" text-anchor="middle" class="label text-muted text-xs">reverse the trend?"</text>
+      <!-- Arrow Q to A -->
+      <line x1="329" y1="75" x2="342" y2="75" class="conn"/>
+      <polygon points="340,70 340,80 346,75" fill="#4a5568"/>
+      <!-- A block -->
+      <rect x="346" y="40" width="86" height="70" rx="4" class="node-navy"/>
+      <text x="389" y="60" text-anchor="middle" class="label text-gold text-sm" font-weight="700">A</text>
+      <text x="389" y="75" text-anchor="middle" class="label text-white text-xs">Answer</text>
+      <text x="389" y="90" text-anchor="middle" class="label text-muted text-xs">"Launch loyalty</text>
+      <text x="389" y="100" text-anchor="middle" class="label text-muted text-xs">program in Q3"</text>
+      <!-- Narrative arc line -->
+      <path d="M57,130 Q57,140 169,145 Q281,150 389,135" fill="none" stroke="var(--gold-dim)" stroke-width="1.5" stroke-dasharray="4,3"/>
+      <text x="220" y="170" text-anchor="middle" class="label text-muted text-xs">Narrative tension builds → resolution</text>
+      <!-- Top label -->
+      <text x="220" y="22" text-anchor="middle" class="label text-gold text-sm" font-weight="600">The story structure behind every great board memo</text>
+    </svg>
+  </div>
+  <div class="card-body">
+    <div class="meta-row">
+      <div><span class="meta-label">When to use</span><span class="meta-tag use">Board presentations, investment memos, any persuasion requiring narrative</span></div>
+    </div>
+    <div class="meta-row">
+      <div><span class="meta-label">When NOT to use</span><span class="meta-tag avoid">Routine status updates — SCQA adds drama where none is needed</span></div>
+    </div>
+    <div class="example">"(S) We are the market leader at 28% share. (C) But we lost 3 percentage points in the last 12 months to a new entrant. (Q) How do we stop the erosion and recapture lost ground? (A) Launch a loyalty program targeting our most at-risk segment by Q3."</div>
+    <div class="how-it-works"><strong>How it works:</strong> SCQA creates a narrative arc. The Situation establishes common ground (what everyone agrees on). The Complication introduces tension (what changed or threatens). The Question crystallizes the decision at hand. The Answer delivers your recommendation. The power is in the C — without a real complication, there is no reason to act.<ul class="questions"><li>What is the stable, agreed-upon reality? (Situation)</li><li>What changed, or what threatens that stability? (Complication)</li><li>What is the single question the audience needs answered? (Question)</li><li>What is our recommended course of action? (Answer)</li></ul></div>
+  </div>
+</div>
+</div><!-- /grid -->
+
+<!-- ══════════════════════════════════════ -->
+<!-- SECTION 2: STRATEGY FRAMEWORKS         -->
+<!-- ══════════════════════════════════════ -->
+
+<div class="section-title" id="strategy">
+  <h2>Strategy</h2>
+  <p>Analyze industries, position within them, and choose where to compete — 11 frameworks</p>
+</div>
+
+<div class="grid">
+
+<!-- Card 5: Five Forces -->
+<div class="card" id="five-forces">
+  <div class="card-header">
+    <h3>Five Forces</h3>
+    <div class="tagline">Is this industry structurally attractive? Five pressures determine long-run profitability</div>
+  </div>
+  <div class="card-visual">
+    <svg viewBox="0 0 440 220" font-family="DM Sans, sans-serif">
+      <!-- Center -->
+      <rect x="155" y="80" width="130" height="50" rx="6" class="node-navy"/>
+      <text x="220" y="102" text-anchor="middle" class="label text-white" font-size="10" font-weight="700">Industry Rivalry</text>
+      <text x="220" y="118" text-anchor="middle" class="label text-gold" font-size="8" font-weight="600">HIGH — Uber vs Lyft</text>
+      <!-- Top: New entrants -->
+      <rect x="165" y="5" width="110" height="42" rx="4" class="node-green"/>
+      <text x="220" y="22" text-anchor="middle" class="label text-green text-sm" font-weight="600">New Entrants</text>
+      <text x="220" y="37" text-anchor="middle" class="label text-muted text-xs">LOW — network effects</text>
+      <line x1="220" y1="47" x2="220" y2="80" class="conn" marker-end="none"/>
+      <polygon points="215,78 225,78 220,83" fill="#4a5568"/>
+      <!-- Bottom: Substitutes -->
+      <rect x="165" y="165" width="110" height="42" rx="4" class="node-red"/>
+      <text x="220" y="182" text-anchor="middle" class="label text-red text-sm" font-weight="600">Substitutes</text>
+      <text x="220" y="197" text-anchor="middle" class="label text-muted text-xs">HIGH — transit, bikes, EVs</text>
+      <line x1="220" y1="130" x2="220" y2="165" class="conn"/>
+      <polygon points="215,163 225,163 220,168" fill="#4a5568"/>
+      <!-- Left: Suppliers -->
+      <rect x="5" y="82" width="110" height="42" rx="4" class="node-red"/>
+      <text x="60" y="99" text-anchor="middle" class="label text-red text-sm" font-weight="600">Suppliers</text>
+      <text x="60" y="114" text-anchor="middle" class="label text-muted text-xs">HIGH — drivers can switch</text>
+      <line x1="115" y1="103" x2="155" y2="103" class="conn"/>
+      <polygon points="153,98 153,108 158,103" fill="#4a5568"/>
+      <!-- Right: Buyers -->
+      <rect x="325" y="82" width="110" height="42" rx="4" class="node-red"/>
+      <text x="380" y="99" text-anchor="middle" class="label text-red text-sm" font-weight="600">Buyers</text>
+      <text x="380" y="114" text-anchor="middle" class="label text-muted text-xs">HIGH — low switching cost</text>
+      <line x1="285" y1="103" x2="325" y2="103" class="conn"/>
+      <polygon points="323,98 323,108 328,103" fill="#4a5568"/>
+    </svg>
+  </div>
+  <div class="card-body">
+    <div class="meta-row">
+      <div><span class="meta-label">When to use</span><span class="meta-tag use">Evaluating whether to enter an industry — is the structure favorable?</span></div>
+    </div>
+    <div class="meta-row">
+      <div><span class="meta-label">When NOT to use</span><span class="meta-tag avoid">For company-specific strategy — Five Forces is about the industry, not the firm</span></div>
+    </div>
+    <div class="example">US ride-sharing: strong network effects deter new entrants, but HIGH buyer power (riders switch apps freely) and HIGH supplier power (drivers multi-home on both platforms)</div>
+    <div class="how-it-works">
+      <strong>How it works:</strong> Rate each of the 5 forces as High, Medium, or Low. High forces squeeze industry profits; low forces let profits flow to incumbents. The combination tells you whether the industry is structurally attractive. A key insight: an industry can be growing fast but still unattractive if the forces are hostile (e.g., ride-sharing has massive TAM but brutal competitive dynamics).
+      <ul class="questions">
+        <li>Which force is strongest? That's where profit leaks out of the industry.</li>
+        <li>Are any forces changing? (New regulation, technology shift, consolidation)</li>
+        <li>Can you position yourself to neutralize the strongest force? (That's strategy)</li>
+        <li>Would you invest in this industry knowing these dynamics? Why or why not?</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Card 6: Value Chain -->
+<div class="card" id="value-chain">
+  <div class="card-header">
+    <h3>Value Chain</h3>
+    <div class="tagline">Where in the process does value get created — and where does it leak?</div>
+  </div>
+  <div class="card-visual">
+    <svg viewBox="0 0 440 180" font-family="DM Sans, sans-serif">
+      <!-- Primary activities arrow -->
+      <text x="220" y="15" text-anchor="middle" class="label text-gold text-sm" font-weight="600">Primary Activities</text>
+      <!-- Chevrons -->
+      <polygon points="20,30 95,30 110,60 95,90 20,90" fill="rgba(197,165,90,0.15)" stroke="var(--gold-dim)" stroke-width="1"/>
+      <text x="60" y="58" text-anchor="middle" class="label text-gold text-xs" font-weight="600">Inbound</text>
+      <text x="60" y="70" text-anchor="middle" class="label text-muted text-xs">Raw materials</text>
+      <polygon points="115,30 190,30 205,60 190,90 115,90" fill="rgba(197,165,90,0.2)" stroke="var(--gold-dim)" stroke-width="1"/>
+      <text x="155" y="58" text-anchor="middle" class="label text-gold text-xs" font-weight="600">Operations</text>
+      <text x="155" y="70" text-anchor="middle" class="label text-muted text-xs">Manufacturing</text>
+      <polygon points="210,30 285,30 300,60 285,90 210,90" fill="rgba(197,165,90,0.25)" stroke="var(--gold-dim)" stroke-width="1"/>
+      <text x="250" y="58" text-anchor="middle" class="label text-gold text-xs" font-weight="600">Outbound</text>
+      <text x="250" y="70" text-anchor="middle" class="label text-muted text-xs">Distribution</text>
+      <polygon points="305,30 380,30 395,60 380,90 305,90" fill="rgba(92,138,77,0.25)" stroke="#5c8a4d" stroke-width="1"/>
+      <text x="345" y="58" text-anchor="middle" class="label text-green text-xs" font-weight="600">Mktg &amp; Sales</text>
+      <text x="345" y="70" text-anchor="middle" class="label text-muted text-xs">Brand, channels</text>
+      <!-- Margin -->
+      <polygon points="400,30 435,30 435,90 400,90" fill="rgba(92,138,77,0.35)" stroke="#5c8a4d" stroke-width="1"/>
+      <text x="417" y="55" text-anchor="middle" class="label text-green text-xs" font-weight="700">M</text>
+      <text x="417" y="67" text-anchor="middle" class="label text-green text-xs" font-weight="700">A</text>
+      <text x="417" y="79" text-anchor="middle" class="label text-green text-xs" font-weight="700">R</text>
+      <!-- Support activities -->
+      <text x="220" y="112" text-anchor="middle" class="label text-muted text-sm" font-weight="600">Support Activities</text>
+      <rect x="20" y="120" width="100" height="22" rx="3" class="node-gray"/>
+      <text x="70" y="135" text-anchor="middle" class="label text-muted text-xs">Firm Infrastructure</text>
+      <rect x="128" y="120" width="100" height="22" rx="3" class="node-gray"/>
+      <text x="178" y="135" text-anchor="middle" class="label text-muted text-xs">Human Resources</text>
+      <rect x="236" y="120" width="100" height="22" rx="3" class="node-gray"/>
+      <text x="286" y="135" text-anchor="middle" class="label text-muted text-xs">Technology Dev.</text>
+      <rect x="344" y="120" width="90" height="22" rx="3" class="node-gray"/>
+      <text x="389" y="135" text-anchor="middle" class="label text-muted text-xs">Procurement</text>
+      <!-- Key insight -->
+      <rect x="100" y="152" width="240" height="22" rx="4" class="node-navy"/>
+      <text x="220" y="167" text-anchor="middle" class="label text-gold text-xs" font-weight="600">Key: identify where margin is created vs where it leaks</text>
+    </svg>
+  </div>
+  <div class="card-body">
+    <div class="meta-row">
+      <div><span class="meta-label">When to use</span><span class="meta-tag use">Finding where a company should play in the industry — and where to partner</span></div>
+    </div>
+    <div class="meta-row">
+      <div><span class="meta-label">When NOT to use</span><span class="meta-tag avoid">Market sizing or industry attractiveness — that's Five Forces / TAM</span></div>
+    </div>
+    <div class="example">Apple captures most value in design + marketing + retail, while outsourcing manufacturing to Foxconn. The value chain shows where to own vs partner.</div>
+    <div class="how-it-works">
+      <strong>How it works:</strong> Map every activity from raw inputs to the customer's hands. For each activity, ask: does this create differentiation or cost advantage? Activities that do are "strategic" — own them. Activities that don't are "commoditized" — outsource or partner. The chain also reveals where margins accumulate: typically in activities closest to the customer (brand, distribution) or with the highest barriers (proprietary technology).
+      <ul class="questions">
+        <li>Which activities create the most value for the end customer?</li>
+        <li>Where do margins concentrate in this industry? (Upstream, midstream, or downstream?)</li>
+        <li>Which activities does the company own vs outsource? Is that the right split?</li>
+        <li>Where are the bottlenecks? (Whoever controls the bottleneck captures the margin)</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Card 7: Ansoff Matrix -->
+<div class="card" id="ansoff">
+  <div class="card-header">
+    <h3>Ansoff Matrix</h3>
+    <div class="tagline">Four growth strategies: what to sell and to whom</div>
+  </div>
+  <div class="card-visual">
+    <svg viewBox="0 0 440 210" font-family="DM Sans, sans-serif">
+      <!-- Axes -->
+      <text x="220" y="16" text-anchor="middle" class="label text-gold text-sm" font-weight="600">PRODUCTS / SERVICES</text>
+      <text x="127" y="32" text-anchor="middle" class="label text-muted text-xs">Existing</text>
+      <text x="317" y="32" text-anchor="middle" class="label text-muted text-xs">New</text>
+      <text x="25" y="95" text-anchor="middle" class="label text-gold text-sm" font-weight="600" transform="rotate(-90,25,95)">MARKETS</text>
+      <text x="42" y="82" text-anchor="middle" class="label text-muted text-xs">Existing</text>
+      <text x="42" y="157" text-anchor="middle" class="label text-muted text-xs">New</text>
+      <!-- Grid -->
+      <rect x="55" y="40" width="170" height="68" rx="5" class="node-green"/>
+      <text x="140" y="62" text-anchor="middle" class="label text-green" font-size="11" font-weight="700">Penetrate</text>
+      <text x="140" y="78" text-anchor="middle" class="label text-muted text-xs">Uber: more riders in</text>
+      <text x="140" y="92" text-anchor="middle" class="label text-muted text-xs">existing US cities</text>
+      <rect x="232" y="40" width="170" height="68" rx="5" class="node-gold"/>
+      <text x="317" y="62" text-anchor="middle" class="label text-white" font-size="11" font-weight="700">Develop Product</text>
+      <text x="317" y="78" text-anchor="middle" class="label text-muted text-xs">Uber Eats: new service</text>
+      <text x="317" y="92" text-anchor="middle" class="label text-muted text-xs">to same user base</text>
+      <rect x="55" y="115" width="170" height="68" rx="5" class="node-gold"/>
+      <text x="140" y="137" text-anchor="middle" class="label text-white" font-size="11" font-weight="700">Develop Market</text>
+      <text x="140" y="153" text-anchor="middle" class="label text-muted text-xs">Uber expanding rides</text>
+      <text x="140" y="167" text-anchor="middle" class="label text-muted text-xs">to India, Latin America</text>
+      <rect x="232" y="115" width="170" height="68" rx="5" class="node-red"/>
+      <text x="317" y="137" text-anchor="middle" class="label text-red" font-size="11" font-weight="700">Diversify</text>
+      <text x="317" y="153" text-anchor="middle" class="label text-muted text-xs">Uber Freight: new service</text>
+      <text x="317" y="167" text-anchor="middle" class="label text-muted text-xs">+ new customers (highest risk)</text>
+      <!-- Arrow -->
+      <text x="220" y="202" text-anchor="middle" class="label text-muted text-xs">Risk increases →</text>
+    </svg>
+  </div>
+  <div class="card-body">
+    <div class="meta-row">
+      <div><span class="meta-label">When to use</span><span class="meta-tag use">Choosing between growth strategies — where to allocate the next dollar</span></div>
+    </div>
+    <div class="meta-row">
+      <div><span class="meta-label">When NOT to use</span><span class="meta-tag avoid">You've already decided on diversification — then use sector screening</span></div>
+    </div>
+    <div class="example">Uber Eats = "Develop Product" (new offering to existing riders). Uber Freight = "Diversify" (new service + new B2B customers). Very different risk profiles.</div>
+    <div class="how-it-works">
+      <strong>How it works:</strong> Plot your growth options on the 2x2. Risk increases as you move from top-left (penetrate — known product, known market) to bottom-right (diversify — new product, new market). The matrix forces an honest conversation: is this growth initiative really "adjacent" or is it a disguised diversification? Most failed growth strategies are diversifications that the team convinced themselves were market developments.
+      <ul class="questions">
+        <li>Which quadrant is this initiative really in? (Be honest — adjacency bias is real)</li>
+        <li>Do we have the capabilities for this quadrant? (Diversification requires entirely new skills)</li>
+        <li>What's the failure rate in this quadrant? (Penetration ~20%, Diversification ~60-70%)</li>
+        <li>Are we spreading capital across too many quadrants instead of dominating one?</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Card 8: Three Horizons -->
+<div class="card" id="three-horizons">
+  <div class="card-header">
+    <h3>Three Horizons</h3>
+    <div class="tagline">Manage the present while building the future — three time frames, simultaneously</div>
+  </div>
+  <div class="card-visual">
+    <svg viewBox="0 0 440 190" font-family="DM Sans, sans-serif">
+      <!-- Axes -->
+      <line x1="50" y1="160" x2="420" y2="160" stroke="#908a82" stroke-width="1"/>
+      <line x1="50" y1="160" x2="50" y2="10" stroke="#908a82" stroke-width="1"/>
+      <text x="235" y="180" text-anchor="middle" class="label text-muted text-xs">Time →</text>
+      <text x="38" y="85" text-anchor="middle" class="label text-muted text-xs" transform="rotate(-90,38,85)">Value</text>
+      <!-- H1: Classic S-curve — rises early, peaks mid-chart, then declines -->
+      <path d="M60,155 C80,150 100,100 140,50 C180,25 230,20 270,30 C320,45 370,70 410,100" fill="none" stroke="#4a7a50" stroke-width="3"/>
+      <path d="M60,155 C80,150 100,100 140,50 C180,25 230,20 270,30 C320,45 370,70 410,100 L410,160 L60,160 Z" fill="#4a7a50" opacity="0.10"/>
+      <text x="180" y="18" class="label text-green" font-size="10" font-weight="700">H1: Core (Search/Ads)</text>
+      <!-- H2: S-curve shifted right — starts flat, rises in the middle, peaks later -->
+      <path d="M140,155 C170,152 200,140 240,100 C280,60 320,35 370,25 C390,22 410,25 420,30" fill="none" stroke="#8a7a60" stroke-width="3"/>
+      <path d="M140,155 C170,152 200,140 240,100 C280,60 320,35 370,25 C390,22 410,25 420,30 L420,160 L140,160 Z" fill="#8a7a60" opacity="0.08"/>
+      <text x="345" y="18" class="label text-gold" font-size="10" font-weight="700">H2: Emerging (Cloud)</text>
+      <!-- H3: S-curve shifted further right — just beginning to rise -->
+      <path d="M250,155 C280,152 310,145 340,130 C370,110 395,80 420,55" fill="none" stroke="#908a82" stroke-width="2.5" stroke-dasharray="6,4"/>
+      <path d="M250,155 C280,152 310,145 340,130 C370,110 395,80 420,55 L420,160 L250,160 Z" fill="#908a82" opacity="0.05"/>
+      <text x="390" y="48" class="label text-muted" font-size="9" font-weight="600">H3: Future</text>
+      <text x="390" y="60" class="label text-muted" font-size="9">(Waymo)</text>
+      <!-- Time markers -->
+      <text x="80" y="175" class="label text-muted text-xs">Now</text>
+      <text x="220" y="175" class="label text-muted text-xs">2-5 years</text>
+      <text x="380" y="175" class="label text-muted text-xs">5+ years</text>
+      <!-- Key insight annotation -->
+      <line x1="270" y1="30" x2="270" y2="155" stroke="#908a82" stroke-width="0.5" stroke-dasharray="3,4"/>
+      <text x="275" y="145" class="label text-muted" font-size="7">H1 declining as H2 takes over</text>
+    </svg>
+  </div>
+  <div class="card-body">
+    <div class="meta-row">
+      <div><span class="meta-label">When to use</span><span class="meta-tag use">Portfolio strategy — what to optimize now vs invest for later</span></div>
+    </div>
+    <div class="meta-row">
+      <div><span class="meta-label">When NOT to use</span><span class="meta-tag avoid">Single-product decisions — Three Horizons is about the portfolio, not one bet</span></div>
+    </div>
+    <div class="example">Google: H1 = maximize Search/Ads (the cash cow), H2 = scale Cloud (the growth engine), H3 = explore Waymo/DeepMind (the long-term options)</div>
+    <div class="how-it-works">
+      <strong>How it works:</strong> Classify every initiative into one of three time horizons. H1 (now) generates the cash that funds H2 and H3. H2 (2-5 years) is the emerging business being scaled — it's proven but not yet at full potential. H3 (5+ years) is the exploration portfolio — small bets with uncertain payoff. The insight: all three must run simultaneously. Companies that only invest in H1 become cash cows that eventually decline. Companies that only chase H3 burn cash without a base.
+      <ul class="questions">
+        <li>Is H1 healthy enough to fund H2 and H3? (If not, fix H1 first)</li>
+        <li>Do we have at least one credible H2? (This is where future growth comes from)</li>
+        <li>Are H3 bets sized appropriately? (Small enough to lose, large enough to matter if they win)</li>
+        <li>Are we confusing H3 exploration with H2 scaling? (Different management approaches needed)</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Card 9: Blue Ocean / Strategy Canvas -->
+<div class="card" id="blue-ocean">
+  <div class="card-header">
+    <h3>Blue Ocean / Strategy Canvas</h3>
+    <div class="tagline">Don't compete — create uncontested market space by redefining competing factors</div>
+  </div>
+  <div class="card-visual">
+    <svg viewBox="0 0 440 190" font-family="DM Sans, sans-serif">
+      <!-- Axes -->
+      <line x1="40" y1="155" x2="420" y2="155" stroke="#4a5568" stroke-width="1"/>
+      <line x1="40" y1="155" x2="40" y2="20" stroke="#4a5568" stroke-width="1"/>
+      <text x="230" y="180" text-anchor="middle" class="label text-muted text-xs">Competing Factors</text>
+      <!-- Factor labels -->
+      <text x="80" y="170" text-anchor="middle" class="label text-muted" font-size="7">Price</text>
+      <text x="140" y="170" text-anchor="middle" class="label text-muted" font-size="7">Star Acts</text>
+      <text x="200" y="170" text-anchor="middle" class="label text-muted" font-size="7">Animals</text>
+      <text x="260" y="170" text-anchor="middle" class="label text-muted" font-size="7">Artistry</text>
+      <text x="320" y="170" text-anchor="middle" class="label text-muted" font-size="7">Theme</text>
+      <text x="380" y="170" text-anchor="middle" class="label text-muted" font-size="7">Comfort</text>
+      <!-- Grid lines -->
+      <line x1="80" y1="155" x2="80" y2="25" stroke="#2a3a52" stroke-width="0.5" stroke-dasharray="2,4"/>
+      <line x1="140" y1="155" x2="140" y2="25" stroke="#2a3a52" stroke-width="0.5" stroke-dasharray="2,4"/>
+      <line x1="200" y1="155" x2="200" y2="25" stroke="#2a3a52" stroke-width="0.5" stroke-dasharray="2,4"/>
+      <line x1="260" y1="155" x2="260" y2="25" stroke="#2a3a52" stroke-width="0.5" stroke-dasharray="2,4"/>
+      <line x1="320" y1="155" x2="320" y2="25" stroke="#2a3a52" stroke-width="0.5" stroke-dasharray="2,4"/>
+      <line x1="380" y1="155" x2="380" y2="25" stroke="#2a3a52" stroke-width="0.5" stroke-dasharray="2,4"/>
+      <!-- Traditional Circus line (competitor) -->
+      <polyline points="80,100 140,45 200,40 260,130 320,130 380,130" fill="none" stroke="#a04040" stroke-width="2"/>
+      <circle cx="80" cy="100" r="3" fill="#a04040"/>
+      <circle cx="140" cy="45" r="3" fill="#a04040"/>
+      <circle cx="200" cy="40" r="3" fill="#a04040"/>
+      <circle cx="260" cy="130" r="3" fill="#a04040"/>
+      <circle cx="320" cy="130" r="3" fill="#a04040"/>
+      <circle cx="380" cy="130" r="3" fill="#a04040"/>
+      <text x="420" y="103" class="label text-red text-xs" font-weight="600">Ringling</text>
+      <!-- Cirque du Soleil line (blue ocean) -->
+      <polyline points="80,50 140,120 200,140 260,35 320,35 380,40" fill="none" stroke="var(--gold)" stroke-width="2.5"/>
+      <circle cx="80" cy="50" r="3.5" fill="var(--gold)"/>
+      <circle cx="140" cy="120" r="3.5" fill="var(--gold)"/>
+      <circle cx="200" cy="140" r="3.5" fill="var(--gold)"/>
+      <circle cx="260" cy="35" r="3.5" fill="var(--gold)"/>
+      <circle cx="320" cy="35" r="3.5" fill="var(--gold)"/>
+      <circle cx="380" cy="40" r="3.5" fill="var(--gold)"/>
+      <text x="420" y="53" class="label text-gold text-xs" font-weight="600">Cirque</text>
+      <!-- High/Low labels -->
+      <text x="32" y="35" text-anchor="end" class="label text-muted text-xs">High</text>
+      <text x="32" y="150" text-anchor="end" class="label text-muted text-xs">Low</text>
+    </svg>
+  </div>
+  <div class="card-body">
+    <div class="meta-row">
+      <div><span class="meta-label">When to use</span><span class="meta-tag use">"Create new market space" is a plausible option — redefining, not just competing</span></div>
+    </div>
+    <div class="meta-row">
+      <div><span class="meta-label">When NOT to use</span><span class="meta-tag avoid">Incremental improvements in an existing market — that's competitive analysis, not Blue Ocean</span></div>
+    </div>
+    <div class="example">Cirque du Soleil vs Ringling Bros: Ringling invested in star performers and animal acts. Cirque eliminated both, raised the bar on artistry, theme, and comfort — a different value curve, not a worse one.</div>
+    <div class="how-it-works">
+      <strong>How it works:</strong> List 6-8 factors that the industry competes on (the horizontal axis). Rate each competitor and yourself on each factor (High/Low). Plot the lines. Your strategy canvas should look different from competitors' — not just higher on every factor (that's expensive and unsustainable), but a different shape. The Four Actions framework asks: what can you Eliminate, Reduce, Raise, or Create relative to the industry standard?
+      <ul class="questions">
+        <li>What factors does the industry take for granted that buyers don't actually value? (Eliminate)</li>
+        <li>What factors are over-delivered relative to what buyers need? (Reduce)</li>
+        <li>What factors should be raised well above the industry standard? (Raise)</li>
+        <li>What factors has the industry never offered that would create new demand? (Create)</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Card 10: VRIO -->
+<div class="card" id="vrio">
+  <div class="card-header">
+    <h3>VRIO Framework</h3>
+    <div class="tagline">Is a competitive advantage sustainable? Four sequential tests</div>
+  </div>
+  <div class="card-visual">
+    <svg viewBox="0 0 440 180" font-family="DM Sans, sans-serif">
+      <!-- Flowchart -->
+      <rect x="10" y="30" width="80" height="36" rx="4" class="node-gold"/>
+      <text x="50" y="46" text-anchor="middle" class="label text-white text-sm" font-weight="700">Valuable?</text>
+      <text x="50" y="59" text-anchor="middle" class="label text-muted text-xs">Does it help win?</text>
+      <line x1="90" y1="48" x2="115" y2="48" class="conn"/>
+      <text x="102" y="42" class="label text-green text-xs" font-weight="600">Y</text>
+
+      <rect x="115" y="30" width="70" height="36" rx="4" class="node-gold"/>
+      <text x="150" y="46" text-anchor="middle" class="label text-white text-sm" font-weight="700">Rare?</text>
+      <text x="150" y="59" text-anchor="middle" class="label text-muted text-xs">Few have it?</text>
+      <line x1="185" y1="48" x2="210" y2="48" class="conn"/>
+      <text x="197" y="42" class="label text-green text-xs" font-weight="600">Y</text>
+
+      <rect x="210" y="30" width="85" height="36" rx="4" class="node-gold"/>
+      <text x="252" y="46" text-anchor="middle" class="label text-white text-sm" font-weight="700">Inimitable?</text>
+      <text x="252" y="59" text-anchor="middle" class="label text-muted text-xs">Hard to copy?</text>
+      <line x1="295" y1="48" x2="320" y2="48" class="conn"/>
+      <text x="307" y="42" class="label text-green text-xs" font-weight="600">Y</text>
+
+      <rect x="320" y="30" width="85" height="36" rx="4" class="node-gold"/>
+      <text x="362" y="46" text-anchor="middle" class="label text-white text-sm" font-weight="700">Organized?</text>
+      <text x="362" y="59" text-anchor="middle" class="label text-muted text-xs">Set up to capture?</text>
+
+      <!-- Result -->
+      <line x1="362" y1="66" x2="362" y2="85" class="conn"/>
+      <rect x="295" y="85" width="135" height="28" rx="4" class="node-green"/>
+      <text x="362" y="103" text-anchor="middle" class="label text-green text-sm" font-weight="700">Sustained Advantage</text>
+
+      <!-- No paths -->
+      <line x1="50" y1="66" x2="50" y2="95" stroke="#a04040" stroke-width="1"/>
+      <text x="56" y="78" class="label text-red text-xs">N</text>
+      <rect x="10" y="95" width="80" height="22" rx="3" class="node-red"/>
+      <text x="50" y="110" text-anchor="middle" class="label text-red text-xs">Competitive Disadvantage</text>
+
+      <line x1="150" y1="66" x2="150" y2="95" stroke="#a04040" stroke-width="1"/>
+      <text x="156" y="78" class="label text-red text-xs">N</text>
+      <rect x="115" y="95" width="70" height="22" rx="3" class="node-gray"/>
+      <text x="150" y="110" text-anchor="middle" class="label text-muted text-xs">Parity</text>
+
+      <line x1="252" y1="66" x2="252" y2="95" stroke="#a04040" stroke-width="1"/>
+      <text x="258" y="78" class="label text-red text-xs">N</text>
+      <rect x="215" y="95" width="70" height="22" rx="3" class="node-gold"/>
+      <text x="250" y="110" text-anchor="middle" class="label text-white text-xs">Temporary Adv.</text>
+
+      <!-- Apple Example -->
+      <rect x="30" y="135" width="380" height="35" rx="4" class="node-navy"/>
+      <text x="220" y="150" text-anchor="middle" class="label text-gold text-xs" font-weight="600">Apple's ecosystem: Valuable ✓ Rare ✓ Inimitable ✓ (hardware + software + services)</text>
+      <text x="220" y="163" text-anchor="middle" class="label text-gold text-xs" font-weight="600">Organized ✓ (tight vertical integration) → Sustained competitive advantage</text>
+    </svg>
+  </div>
+  <div class="card-body">
+    <div class="meta-row">
+      <div><span class="meta-label">When to use</span><span class="meta-tag use">Evaluating whether a competitive advantage is durable — not just current</span></div>
+    </div>
+    <div class="meta-row">
+      <div><span class="meta-label">When NOT to use</span><span class="meta-tag avoid">Industry-level questions — VRIO is about the firm's specific resources</span></div>
+    </div>
+    <div class="example">Apple's ecosystem is V (valuable — drives retention + premium pricing), R (rare — no rival has hardware + OS + services), I (inimitable — decades of integration) and O (organized — Apple controls the full stack to capture value)</div>
+    <div class="how-it-works">
+      <strong>How it works:</strong> Take a resource or capability and run it through four sequential tests. Each "Yes" upgrades the advantage; each "No" tells you what you have. The critical insight: most advantages fail at "I" (Inimitable). Competitors can copy most things given time and money. Only advantages rooted in history (path dependence), complexity (many interacting parts), or social embeddedness (culture, relationships) pass the inimitability test.
+      <ul class="questions">
+        <li>Valuable: does this help win customers or reduce costs? (If no: competitive disadvantage)</li>
+        <li>Rare: do fewer than ~3 competitors have it? (If no: parity — necessary but not sufficient)</li>
+        <li>Inimitable: would it take a competitor 5+ years and significant investment to replicate? (If no: temporary advantage)</li>
+        <li>Organized: is the company structured to fully exploit this resource? (If no: latent advantage — the resource exists but value is leaking)</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="card" id="seven-s">
+  <div class="card-header">
+    <h3>7S Framework</h3>
+    <div class="tagline">McKinsey 7S — seven interdependent levers that must align for strategy to execute</div>
+  </div>
+  <div class="card-visual">
+    <svg viewBox="0 0 440 200" font-family="DM Sans, sans-serif">
+      <!-- Center: Shared Values -->
+      <circle cx="220" cy="100" r="32" class="node-gold"/>
+      <text x="220" y="96" text-anchor="middle" class="label text-white text-sm" font-weight="700">Shared</text>
+      <text x="220" y="109" text-anchor="middle" class="label text-white text-sm" font-weight="700">Values</text>
+      <!-- Hard S's (top) -->
+      <!-- Strategy (top center) -->
+      <rect x="185" y="8" width="70" height="30" rx="4" class="node-navy"/>
+      <text x="220" y="27" text-anchor="middle" class="label text-gold text-sm" font-weight="600">Strategy</text>
+      <line x1="220" y1="38" x2="220" y2="68" class="conn"/>
+      <!-- Structure (top left) -->
+      <rect x="50" y="35" width="75" height="30" rx="4" class="node-navy"/>
+      <text x="87" y="54" text-anchor="middle" class="label text-gold text-sm" font-weight="600">Structure</text>
+      <line x1="125" y1="55" x2="192" y2="82" class="conn"/>
+      <!-- Systems (top right) -->
+      <rect x="315" y="35" width="75" height="30" rx="4" class="node-navy"/>
+      <text x="352" y="54" text-anchor="middle" class="label text-gold text-sm" font-weight="600">Systems</text>
+      <line x1="315" y1="55" x2="248" y2="82" class="conn"/>
+      <!-- Soft S's (bottom) -->
+      <!-- Skills (bottom left) -->
+      <rect x="50" y="135" width="75" height="30" rx="4" class="node-green"/>
+      <text x="87" y="154" text-anchor="middle" class="label text-green text-sm" font-weight="600">Skills</text>
+      <line x1="125" y1="145" x2="192" y2="118" class="conn"/>
+      <!-- Staff (bottom center) -->
+      <rect x="185" y="162" width="70" height="30" rx="4" class="node-green"/>
+      <text x="220" y="181" text-anchor="middle" class="label text-green text-sm" font-weight="600">Staff</text>
+      <line x1="220" y1="162" x2="220" y2="132" class="conn"/>
+      <!-- Style (bottom right) -->
+      <rect x="315" y="135" width="75" height="30" rx="4" class="node-green"/>
+      <text x="352" y="154" text-anchor="middle" class="label text-green text-sm" font-weight="600">Style</text>
+      <line x1="315" y1="145" x2="248" y2="118" class="conn"/>
+      <!-- Labels -->
+      <text x="47" y="82" text-anchor="end" class="label text-muted text-xs">Hard</text>
+      <text x="47" y="120" text-anchor="end" class="label text-muted text-xs">Soft</text>
+    </svg>
+  </div>
+  <div class="card-body">
+    <div class="meta-row">
+      <div><span class="meta-label">When to use</span><span class="meta-tag use">Post-merger integration, org redesign, strategy execution gaps</span></div>
+    </div>
+    <div class="meta-row">
+      <div><span class="meta-label">When NOT to use</span><span class="meta-tag avoid">External competitive analysis — 7S is about internal alignment, not the market</span></div>
+    </div>
+    <div class="example">"After acquiring a competitor, the new strategy is clear — but structure still reflects the old org, systems aren't integrated, and staff don't share values. 7S reveals four of seven elements are misaligned."</div>
+    <div class="how-it-works"><strong>How it works:</strong> Assess all seven elements independently, then check alignment between each pair. Hard elements (Strategy, Structure, Systems) are explicit and manageable. Soft elements (Skills, Staff, Style, Shared Values) are harder to change but often determine success. The framework forces you to ask: even if the strategy is right, is the organization configured to execute it?<ul class="questions"><li>Is the strategy clear, and do Structure and Systems support it?</li><li>Do the soft elements (Skills, Staff, Style) match what the strategy demands?</li><li>What are the specific misalignments between pairs of elements?</li><li>Which misalignment is the binding constraint on execution?</li></ul></div>
+  </div>
+</div>
+
+<div class="card" id="growth-share">
+  <div class="card-header">
+    <h3>Growth-Share Matrix</h3>
+    <div class="tagline">BCG matrix — classify business units by market growth and relative share to allocate capital</div>
+  </div>
+  <div class="card-visual">
+    <svg viewBox="0 0 440 200" font-family="DM Sans, sans-serif">
+      <!-- Axes -->
+      <line x1="60" y1="175" x2="420" y2="175" stroke="#4a5568" stroke-width="1"/>
+      <line x1="60" y1="175" x2="60" y2="15" stroke="#4a5568" stroke-width="1"/>
+      <text x="240" y="196" text-anchor="middle" class="label text-muted text-xs">Relative Market Share (high ← → low)</text>
+      <text x="25" y="100" text-anchor="middle" class="label text-muted text-xs" transform="rotate(-90,25,100)">Market Growth Rate</text>
+      <!-- Axis labels -->
+      <text x="52" y="30" text-anchor="end" class="label text-muted text-xs">High</text>
+      <text x="52" y="172" text-anchor="end" class="label text-muted text-xs">Low</text>
+      <text x="100" y="190" text-anchor="middle" class="label text-muted text-xs">High</text>
+      <text x="390" y="190" text-anchor="middle" class="label text-muted text-xs">Low</text>
+      <!-- Quadrant dividers -->
+      <line x1="240" y1="15" x2="240" y2="175" stroke="#2a3a52" stroke-width="1" stroke-dasharray="4,4"/>
+      <line x1="60" y1="95" x2="420" y2="95" stroke="#2a3a52" stroke-width="1" stroke-dasharray="4,4"/>
+      <!-- Stars (top-left) -->
+      <text x="150" y="30" text-anchor="middle" class="label text-gold" font-size="11" font-weight="700">Stars</text>
+      <text x="150" y="43" text-anchor="middle" class="label text-muted text-xs">Invest to grow</text>
+      <circle cx="120" cy="60" r="18" fill="rgba(197,165,90,0.2)" stroke="var(--gold-dim)" stroke-width="1.5"/>
+      <text x="120" y="64" text-anchor="middle" class="label text-gold text-xs" font-weight="600">Cloud</text>
+      <circle cx="170" cy="72" r="12" fill="rgba(197,165,90,0.15)" stroke="var(--gold-dim)" stroke-width="1"/>
+      <text x="170" y="76" text-anchor="middle" class="label text-gold text-xs">SaaS</text>
+      <!-- Question Marks (top-right) -->
+      <text x="330" y="30" text-anchor="middle" class="label text-muted" font-size="11" font-weight="700">Question Marks</text>
+      <text x="330" y="43" text-anchor="middle" class="label text-muted text-xs">Invest or divest?</text>
+      <circle cx="310" cy="68" r="14" fill="rgba(106,112,128,0.2)" stroke="#6a7080" stroke-width="1.5"/>
+      <text x="310" y="72" text-anchor="middle" class="label text-muted text-xs" font-weight="600">AI</text>
+      <circle cx="365" cy="58" r="10" fill="rgba(106,112,128,0.15)" stroke="#6a7080" stroke-width="1"/>
+      <text x="365" y="62" text-anchor="middle" class="label text-muted text-xs">IoT</text>
+      <!-- Cash Cows (bottom-left) -->
+      <text x="150" y="108" text-anchor="middle" class="label text-green" font-size="11" font-weight="700">Cash Cows</text>
+      <text x="150" y="121" text-anchor="middle" class="label text-muted text-xs">Harvest profits</text>
+      <circle cx="130" cy="143" r="22" fill="rgba(92,138,77,0.2)" stroke="#5c8a4d" stroke-width="1.5"/>
+      <text x="130" y="147" text-anchor="middle" class="label text-green text-xs" font-weight="600">ERP</text>
+      <circle cx="185" cy="150" r="13" fill="rgba(92,138,77,0.15)" stroke="#5c8a4d" stroke-width="1"/>
+      <text x="185" y="154" text-anchor="middle" class="label text-green text-xs">Mail</text>
+      <!-- Dogs (bottom-right) -->
+      <text x="330" y="108" text-anchor="middle" class="label text-red" font-size="11" font-weight="700">Dogs</text>
+      <text x="330" y="121" text-anchor="middle" class="label text-muted text-xs">Divest or liquidate</text>
+      <circle cx="320" cy="148" r="11" fill="rgba(160,64,64,0.2)" stroke="#a04040" stroke-width="1.5"/>
+      <text x="320" y="152" text-anchor="middle" class="label text-red text-xs" font-weight="600">Print</text>
+      <circle cx="370" cy="155" r="8" fill="rgba(160,64,64,0.15)" stroke="#a04040" stroke-width="1"/>
+      <text x="370" y="159" text-anchor="middle" class="label text-red text-xs">Fax</text>
+    </svg>
+  </div>
+  <div class="card-body">
+    <div class="meta-row">
+      <div><span class="meta-label">When to use</span><span class="meta-tag use">Capital allocation across a multi-business portfolio</span></div>
+    </div>
+    <div class="meta-row">
+      <div><span class="meta-label">When NOT to use</span><span class="meta-tag avoid">Single-business strategy — the matrix requires multiple units to compare</span></div>
+    </div>
+    <div class="example">"A consumer goods company maps its brands: premium skincare (Star — high growth, high share), legacy soap (Cash Cow — low growth, dominant share), new energy drinks (Question Mark — high growth, low share), and declining home cleaning (Dog)."</div>
+    <div class="how-it-works"><strong>How it works:</strong> Plot each business unit as a circle (sized by revenue) on two axes: market growth rate (vertical) and relative market share (horizontal). Stars need investment to maintain leadership. Cash Cows fund the portfolio. Question Marks require a bet-or-fold decision. Dogs should be divested unless they serve a strategic purpose. Capital should flow from Cows to Stars and selected Question Marks.<ul class="questions"><li>Which units generate cash vs consume it?</li><li>Are we funding Question Marks that will never become Stars?</li><li>Do our Cash Cows have enough life to fund the growth portfolio?</li><li>Which Dogs are we keeping for emotional rather than strategic reasons?</li></ul></div>
+  </div>
+</div>
+
+<div class="card" id="nine-box">
+  <div class="card-header">
+    <h3>Nine-Box Matrix</h3>
+    <div class="tagline">GE/McKinsey — prioritize business units by industry attractiveness and competitive strength</div>
+  </div>
+  <div class="card-visual">
+    <svg viewBox="0 0 440 200" font-family="DM Sans, sans-serif">
+      <!-- Axes -->
+      <text x="25" y="105" text-anchor="middle" class="label text-muted text-xs" transform="rotate(-90,25,105)">Industry Attractiveness</text>
+      <text x="250" y="196" text-anchor="middle" class="label text-muted text-xs">Business Unit Competitive Strength</text>
+      <text x="52" y="32" text-anchor="end" class="label text-muted text-xs">High</text>
+      <text x="52" y="92" text-anchor="end" class="label text-muted text-xs">Med</text>
+      <text x="52" y="152" text-anchor="end" class="label text-muted text-xs">Low</text>
+      <text x="130" y="182" text-anchor="middle" class="label text-muted text-xs">Strong</text>
+      <text x="250" y="182" text-anchor="middle" class="label text-muted text-xs">Medium</text>
+      <text x="370" y="182" text-anchor="middle" class="label text-muted text-xs">Weak</text>
+      <!-- Green cells (Invest/Grow) -->
+      <rect x="60" y="20" width="120" height="60" rx="3" fill="rgba(92,138,77,0.25)" stroke="#5c8a4d" stroke-width="1"/>
+      <text x="120" y="48" text-anchor="middle" class="label text-green text-xs" font-weight="600">INVEST</text>
+      <text x="120" y="62" text-anchor="middle" class="label text-muted text-xs">Priority growth</text>
+      <rect x="180" y="20" width="120" height="60" rx="3" fill="rgba(92,138,77,0.18)" stroke="#5c8a4d" stroke-width="1"/>
+      <text x="240" y="48" text-anchor="middle" class="label text-green text-xs" font-weight="600">INVEST</text>
+      <text x="240" y="62" text-anchor="middle" class="label text-muted text-xs">Selective growth</text>
+      <rect x="60" y="80" width="120" height="60" rx="3" fill="rgba(92,138,77,0.15)" stroke="#5c8a4d" stroke-width="1"/>
+      <text x="120" y="108" text-anchor="middle" class="label text-green text-xs" font-weight="600">INVEST</text>
+      <text x="120" y="122" text-anchor="middle" class="label text-muted text-xs">Build selectively</text>
+      <!-- Yellow cells (Hold/Selective) -->
+      <rect x="300" y="20" width="120" height="60" rx="3" fill="rgba(197,165,90,0.18)" stroke="var(--gold-dim)" stroke-width="1"/>
+      <text x="360" y="48" text-anchor="middle" class="label text-gold text-xs" font-weight="600">SELECTIVE</text>
+      <text x="360" y="62" text-anchor="middle" class="label text-muted text-xs">Protect position</text>
+      <rect x="180" y="80" width="120" height="60" rx="3" fill="rgba(197,165,90,0.15)" stroke="var(--gold-dim)" stroke-width="1"/>
+      <text x="240" y="108" text-anchor="middle" class="label text-gold text-xs" font-weight="600">SELECTIVE</text>
+      <text x="240" y="122" text-anchor="middle" class="label text-muted text-xs">Manage for earnings</text>
+      <rect x="60" y="140" width="120" height="30" rx="3" fill="rgba(197,165,90,0.12)" stroke="var(--gold-dim)" stroke-width="1"/>
+      <text x="120" y="160" text-anchor="middle" class="label text-gold text-xs" font-weight="600">SELECTIVE</text>
+      <!-- Red cells (Harvest/Divest) -->
+      <rect x="300" y="80" width="120" height="60" rx="3" fill="rgba(160,64,64,0.18)" stroke="#a04040" stroke-width="1"/>
+      <text x="360" y="108" text-anchor="middle" class="label text-red text-xs" font-weight="600">HARVEST</text>
+      <text x="360" y="122" text-anchor="middle" class="label text-muted text-xs">Limited invest</text>
+      <rect x="180" y="140" width="120" height="30" rx="3" fill="rgba(160,64,64,0.15)" stroke="#a04040" stroke-width="1"/>
+      <text x="240" y="160" text-anchor="middle" class="label text-red text-xs" font-weight="600">HARVEST</text>
+      <rect x="300" y="140" width="120" height="30" rx="3" fill="rgba(160,64,64,0.25)" stroke="#a04040" stroke-width="1"/>
+      <text x="360" y="160" text-anchor="middle" class="label text-red text-xs" font-weight="600">DIVEST</text>
+      <!-- Example dots — positioned in bottom-right corners of cells to avoid text overlap -->
+      <circle cx="165" cy="70" r="8" fill="rgba(74,122,80,0.6)" stroke="#4a7a50" stroke-width="1.5"/>
+      <text x="165" y="74" text-anchor="middle" class="label text-white" font-size="6" font-weight="700">A</text>
+      <circle cx="285" cy="130" r="6" fill="rgba(138,122,96,0.6)" stroke="#8a7a60" stroke-width="1.5"/>
+      <text x="285" y="134" text-anchor="middle" class="label text-white" font-size="6" font-weight="700">B</text>
+      <circle cx="405" cy="160" r="5" fill="rgba(158,84,84,0.6)" stroke="#9e5454" stroke-width="1.5"/>
+      <text x="405" y="164" text-anchor="middle" class="label text-white" font-size="6" font-weight="700">C</text>
+    </svg>
+  </div>
+  <div class="card-body">
+    <div class="meta-row">
+      <div><span class="meta-label">When to use</span><span class="meta-tag use">Multi-division portfolio prioritization with nuance beyond BCG's 2x2</span></div>
+    </div>
+    <div class="meta-row">
+      <div><span class="meta-label">When NOT to use</span><span class="meta-tag avoid">When you lack data to score attractiveness and strength — garbage in, garbage out</span></div>
+    </div>
+    <div class="example">"A conglomerate scores its 8 divisions: semiconductor unit (high attractiveness, strong position — invest), legacy hardware (low, weak — divest), and services arm (medium, medium — manage for earnings while monitoring)."</div>
+    <div class="how-it-works"><strong>How it works:</strong> Score each business unit on two composite dimensions: industry attractiveness (market size, growth, profitability, competitive intensity) and business unit competitive strength (market share, brand, cost position, capabilities). Plot on the 3x3 grid. Green zone = invest and grow. Yellow zone = selective investment, hold. Red zone = harvest cash or divest. More nuanced than BCG because each axis is a weighted composite, not a single metric.<ul class="questions"><li>What factors define "attractiveness" in our context, and how do we weight them?</li><li>Where does each unit honestly sit — are we inflating scores for favorites?</li><li>Are any units in the yellow zone drifting toward red?</li><li>Do we have the capital to fund all green-zone units simultaneously?</li></ul></div>
+  </div>
+</div>
+
+<div class="card" id="wardley">
+  <div class="card-header">
+    <h3>Wardley Mapping</h3>
+    <div class="tagline">Map your value chain by evolution stage — see where to build, buy, or outsource</div>
+  </div>
+  <div class="card-visual">
+    <svg viewBox="0 0 440 200" font-family="DM Sans, sans-serif">
+      <!-- Axes -->
+      <line x1="50" y1="175" x2="420" y2="175" stroke="#4a5568" stroke-width="1"/>
+      <line x1="50" y1="175" x2="50" y2="15" stroke="#4a5568" stroke-width="1"/>
+      <text x="25" y="100" text-anchor="middle" class="label text-muted text-xs" transform="rotate(-90,25,100)">Visibility to User</text>
+      <text x="235" y="196" text-anchor="middle" class="label text-gold text-xs" font-weight="600">Evolution</text>
+      <!-- Evolution stage labels -->
+      <text x="90" y="190" text-anchor="middle" class="label text-muted text-xs">Genesis</text>
+      <text x="175" y="190" text-anchor="middle" class="label text-muted text-xs">Custom</text>
+      <text x="290" y="190" text-anchor="middle" class="label text-muted text-xs">Product</text>
+      <text x="390" y="190" text-anchor="middle" class="label text-muted text-xs">Commodity</text>
+      <!-- Stage dividers -->
+      <line x1="132" y1="175" x2="132" y2="15" stroke="#2a3a52" stroke-width="0.5" stroke-dasharray="3,4"/>
+      <line x1="232" y1="175" x2="232" y2="15" stroke="#2a3a52" stroke-width="0.5" stroke-dasharray="3,4"/>
+      <line x1="340" y1="175" x2="340" y2="15" stroke="#2a3a52" stroke-width="0.5" stroke-dasharray="3,4"/>
+      <!-- Axis labels -->
+      <text x="52" y="30" text-anchor="start" class="label text-muted text-xs">High</text>
+      <text x="52" y="170" text-anchor="start" class="label text-muted text-xs">Low</text>
+      <!-- User Need (top, visible) -->
+      <circle cx="290" cy="32" r="14" fill="rgba(197,165,90,0.2)" stroke="var(--gold-dim)" stroke-width="1.5"/>
+      <text x="290" y="36" text-anchor="middle" class="label text-gold text-xs" font-weight="600">Web App</text>
+      <!-- Middle layer components -->
+      <circle cx="180" cy="65" r="12" fill="rgba(92,138,77,0.2)" stroke="#5c8a4d" stroke-width="1.5"/>
+      <text x="180" y="69" text-anchor="middle" class="label text-green text-xs" font-weight="600">ML Model</text>
+      <circle cx="310" cy="72" r="11" fill="rgba(197,165,90,0.15)" stroke="var(--gold-dim)" stroke-width="1"/>
+      <text x="310" y="76" text-anchor="middle" class="label text-gold text-xs">API GW</text>
+      <!-- Lower layer -->
+      <circle cx="100" cy="110" r="11" fill="rgba(160,64,64,0.2)" stroke="#a04040" stroke-width="1.5"/>
+      <text x="100" y="114" text-anchor="middle" class="label text-red text-xs" font-weight="600">Novel DB</text>
+      <circle cx="350" cy="105" r="13" fill="rgba(92,138,77,0.15)" stroke="#5c8a4d" stroke-width="1"/>
+      <text x="350" y="109" text-anchor="middle" class="label text-green text-xs">CDN</text>
+      <!-- Infrastructure (bottom, invisible) -->
+      <circle cx="385" cy="148" r="14" fill="rgba(106,112,128,0.2)" stroke="#6a7080" stroke-width="1"/>
+      <text x="385" y="152" text-anchor="middle" class="label text-muted text-xs" font-weight="600">Compute</text>
+      <circle cx="370" cy="128" r="10" fill="rgba(106,112,128,0.15)" stroke="#6a7080" stroke-width="1"/>
+      <text x="370" y="132" text-anchor="middle" class="label text-muted text-xs">Storage</text>
+      <!-- Dependency lines -->
+      <line x1="283" y1="44" x2="192" y2="56" class="conn" stroke-dasharray="3,3"/>
+      <line x1="283" y1="44" x2="303" y2="62" class="conn" stroke-dasharray="3,3"/>
+      <line x1="180" y1="77" x2="100" y2="100" class="conn" stroke-dasharray="3,3"/>
+      <line x1="310" y1="83" x2="350" y2="93" class="conn" stroke-dasharray="3,3"/>
+      <line x1="350" y1="118" x2="385" y2="136" class="conn" stroke-dasharray="3,3"/>
+      <line x1="350" y1="118" x2="370" y2="120" class="conn" stroke-dasharray="3,3"/>
+      <!-- Movement arrow -->
+      <line x1="110" y1="145" x2="180" y2="145" stroke="var(--gold-dim)" stroke-width="1.5" marker-end="none"/>
+      <polygon points="178,140 178,150 185,145" fill="var(--gold-dim)"/>
+      <text x="145" y="160" text-anchor="middle" class="label text-gold text-xs">Inertia →</text>
+    </svg>
+  </div>
+  <div class="card-body">
+    <div class="meta-row">
+      <div><span class="meta-label">When to use</span><span class="meta-tag use">Technology strategy — deciding what to build vs buy vs outsource</span></div>
+    </div>
+    <div class="meta-row">
+      <div><span class="meta-label">When NOT to use</span><span class="meta-tag avoid">Pure financial portfolio decisions — Wardley is about capability evolution, not returns</span></div>
+    </div>
+    <div class="example">"A cloud infrastructure team maps its stack: compute and storage are commodities (use AWS), the API gateway is a product (buy off-the-shelf), but the ML model is custom (build in-house) — and the novel database in genesis phase is the real risk."</div>
+    <div class="how-it-works"><strong>How it works:</strong> Map every component in your value chain on two axes. Y-axis = visibility to the end user (user needs at top, deep infrastructure at bottom). X-axis = evolution stage from Genesis (novel, uncertain) through Custom Built and Product to Commodity (standardized, utility). Draw dependency lines. Components in Genesis need experimentation; Commodity components should be outsourced. The power is in spotting components being treated as custom when they should be commodity — or vice versa.<ul class="questions"><li>What are the user needs at the top of the chain, and what depends on what?</li><li>Which components are we building custom that are already commodity elsewhere?</li><li>Where is evolution creating strategic opportunity (or destroying our advantage)?</li><li>What would a competitor's map look like — are they ahead on any component?</li></ul></div>
+  </div>
+</div>
+
+<div class="card" id="scenario-planning">
+  <div class="card-header">
+    <h3>Scenario Planning</h3>
+    <div class="tagline">Two key uncertainties create four plausible futures — stress-test your strategy against all of them</div>
+  </div>
+  <div class="card-visual">
+    <svg viewBox="0 0 440 200" font-family="DM Sans, sans-serif">
+      <!-- Title -->
+      <text x="220" y="16" text-anchor="middle" class="label text-gold text-sm" font-weight="600">Energy Company: 2030 Planning</text>
+      <!-- Axes -->
+      <line x1="220" y1="28" x2="220" y2="190" stroke="#4a5568" stroke-width="1"/>
+      <line x1="30" y1="105" x2="410" y2="105" stroke="#4a5568" stroke-width="1"/>
+      <!-- Axis labels -->
+      <text x="220" y="198" text-anchor="middle" class="label text-gold text-xs" font-weight="600">Regulation Intensity →</text>
+      <text x="100" y="198" text-anchor="middle" class="label text-muted text-xs">Loose</text>
+      <text x="345" y="198" text-anchor="middle" class="label text-muted text-xs">Strict</text>
+      <text x="15" y="70" text-anchor="middle" class="label text-gold text-xs" font-weight="600" transform="rotate(-90,15,70)">Oil Price</text>
+      <text x="28" y="52" text-anchor="start" class="label text-muted text-xs">High</text>
+      <text x="28" y="170" text-anchor="start" class="label text-muted text-xs">Low</text>
+      <!-- Quadrant 1: Top-Left (High oil, loose regulation) -->
+      <rect x="42" y="32" width="168" height="66" rx="5" class="node-gold"/>
+      <text x="126" y="52" text-anchor="middle" class="label text-white" font-size="10" font-weight="700">Fossil Boom</text>
+      <text x="126" y="66" text-anchor="middle" class="label text-muted text-xs">Drill aggressively;</text>
+      <text x="126" y="78" text-anchor="middle" class="label text-muted text-xs">max extraction value</text>
+      <text x="126" y="92" text-anchor="middle" class="label text-white text-xs" font-weight="600">P = 0.20</text>
+      <!-- Quadrant 2: Top-Right (High oil, strict regulation) -->
+      <rect x="230" y="32" width="168" height="66" rx="5" class="node-green"/>
+      <text x="314" y="52" text-anchor="middle" class="label text-green" font-size="10" font-weight="700">Green Premium</text>
+      <text x="314" y="66" text-anchor="middle" class="label text-muted text-xs">Renewables + carbon</text>
+      <text x="314" y="78" text-anchor="middle" class="label text-muted text-xs">credits are highly valued</text>
+      <text x="314" y="92" text-anchor="middle" class="label text-white text-xs" font-weight="600">P = 0.30</text>
+      <!-- Quadrant 3: Bottom-Left (Low oil, loose regulation) -->
+      <rect x="42" y="112" width="168" height="66" rx="5" class="node-red"/>
+      <text x="126" y="132" text-anchor="middle" class="label text-red" font-size="10" font-weight="700">Race to Bottom</text>
+      <text x="126" y="146" text-anchor="middle" class="label text-muted text-xs">Low margins everywhere;</text>
+      <text x="126" y="158" text-anchor="middle" class="label text-muted text-xs">cost efficiency is survival</text>
+      <text x="126" y="172" text-anchor="middle" class="label text-white text-xs" font-weight="600">P = 0.15</text>
+      <!-- Quadrant 4: Bottom-Right (Low oil, strict regulation) -->
+      <rect x="230" y="112" width="168" height="66" rx="5" class="node-navy"/>
+      <text x="314" y="132" text-anchor="middle" class="label text-gold" font-size="10" font-weight="700">Transition Squeeze</text>
+      <text x="314" y="146" text-anchor="middle" class="label text-muted text-xs">Fossil penalized, but low</text>
+      <text x="314" y="158" text-anchor="middle" class="label text-muted text-xs">energy prices cap returns</text>
+      <text x="314" y="172" text-anchor="middle" class="label text-white text-xs" font-weight="600">P = 0.35</text>
+    </svg>
+  </div>
+  <div class="card-body">
+    <div class="meta-row">
+      <div><span class="meta-label">When to use</span><span class="meta-tag use">Long-term strategy under deep uncertainty — 5-15 year horizons</span></div>
+    </div>
+    <div class="meta-row">
+      <div><span class="meta-label">When NOT to use</span><span class="meta-tag avoid">Short-term operational decisions — too slow and abstract for next-quarter planning</span></div>
+    </div>
+    <div class="example">"An energy company identifies two key uncertainties — oil price trajectory and regulation intensity — creating four worlds: Fossil Boom, Green Premium, Race to Bottom, and Transition Squeeze. The strategy that works in 3 of 4 scenarios wins."</div>
+    <div class="how-it-works"><strong>How it works:</strong> Identify the two most impactful, most uncertain drivers (not trends you can predict). Cross them to create four distinct, plausible futures. Name each scenario vividly. Assign rough probabilities. Then test your strategy: does it survive in all four worlds? The winning strategy is not the one optimized for the most likely scenario — it is the one that is robust across scenarios, or that positions you to pivot quickly as uncertainty resolves.<ul class="questions"><li>What are the two biggest uncertainties we cannot control or predict?</li><li>Is our current strategy a bet on one scenario, or robust across all four?</li><li>What early signals would tell us which scenario is unfolding?</li><li>What low-cost options can we take now that pay off in multiple scenarios?</li></ul></div>
+  </div>
+</div>
+</div><!-- /grid -->
+
+
+<!-- Financial -->
+
+
+<!-- Decision Making -->
+
+
+<!-- Operations -->
+
+
+<!-- Innovation -->
+<div class="section-title" id="innovation">
+  <h2>Innovation</h2>
+  <p>Discover unmet needs, design business models, and create new market space — 4 frameworks</p>
+</div>
+<div class="grid">
+
+</div><!-- /grid -->
+
+
+<div class="section-title" id="financial">
+  <h2>Financial / Sizing</h2>
+  <p>Quantify markets, decompose financials, and build the numbers case — 5 frameworks</p>
+</div>
+<div class="grid">
+
+
+<div class="card" id="revenue-tree">
+  <div class="card-header">
+    <h3>Revenue Tree</h3>
+    <div class="tagline">Decompose revenue by segment, product, channel, and pricing</div>
+  </div>
+  <div class="card-visual">
+    <svg viewBox="0 0 440 200" font-family="DM Sans, sans-serif">
+      <!-- Root -->
+      <rect x="170" y="8" width="100" height="32" rx="6" class="node-navy"/>
+      <text x="220" y="29" text-anchor="middle" class="text-white text-sm" font-weight="600">Revenue</text>
+      <!-- Level 1: Segments -->
+      <rect x="30" y="68" width="100" height="28" rx="5" class="node-green"/>
+      <text x="80" y="86" text-anchor="middle" class="text-white text-xs">Enterprise</text>
+      <rect x="170" y="68" width="100" height="28" rx="5" class="node-green"/>
+      <text x="220" y="86" text-anchor="middle" class="text-white text-xs">Mid-Market</text>
+      <rect x="310" y="68" width="100" height="28" rx="5" class="node-green"/>
+      <text x="360" y="86" text-anchor="middle" class="text-white text-xs">SMB</text>
+      <!-- Connectors L0→L1 -->
+      <line x1="220" y1="40" x2="80" y2="68" class="conn"/>
+      <line x1="220" y1="40" x2="220" y2="68" class="conn"/>
+      <line x1="220" y1="40" x2="360" y2="68" class="conn"/>
+      <!-- Level 2: Products under Enterprise -->
+      <rect x="2" y="122" width="72" height="26" rx="4" class="node-gold"/>
+      <text x="38" y="139" text-anchor="middle" class="text-white text-xs">Platform</text>
+      <rect x="84" y="122" width="72" height="26" rx="4" class="node-gold"/>
+      <text x="120" y="139" text-anchor="middle" class="text-white text-xs">Add-ons</text>
+      <!-- Products under Mid-Market -->
+      <rect x="180" y="122" width="80" height="26" rx="4" class="node-gold"/>
+      <text x="220" y="139" text-anchor="middle" class="text-white text-xs">Subscriptions</text>
+      <!-- Products under SMB -->
+      <rect x="305" y="122" width="60" height="26" rx="4" class="node-gold"/>
+      <text x="335" y="139" text-anchor="middle" class="text-white text-xs">Freemium</text>
+      <rect x="375" y="122" width="50" height="26" rx="4" class="node-gold"/>
+      <text x="400" y="139" text-anchor="middle" class="text-white text-xs">Paid</text>
+      <!-- Connectors L1→L2 -->
+      <line x1="80" y1="96" x2="38" y2="122" class="conn"/>
+      <line x1="80" y1="96" x2="120" y2="122" class="conn"/>
+      <line x1="220" y1="96" x2="220" y2="122" class="conn"/>
+      <line x1="360" y1="96" x2="335" y2="122" class="conn"/>
+      <line x1="360" y1="96" x2="400" y2="122" class="conn"/>
+      <!-- Level 3: Channels under Platform -->
+      <rect x="2" y="172" width="60" height="22" rx="4" class="node-gray"/>
+      <text x="32" y="186" text-anchor="middle" class="text-white text-xs">Direct</text>
+      <rect x="70" y="172" width="60" height="22" rx="4" class="node-gray"/>
+      <text x="100" y="186" text-anchor="middle" class="text-white text-xs">Partner</text>
+      <line x1="38" y1="148" x2="32" y2="172" class="conn"/>
+      <line x1="38" y1="148" x2="100" y2="172" class="conn"/>
+      <!-- Channels under Subscriptions -->
+      <rect x="172" y="172" width="46" height="22" rx="4" class="node-gray"/>
+      <text x="195" y="186" text-anchor="middle" class="text-white text-xs">Online</text>
+      <rect x="226" y="172" width="46" height="22" rx="4" class="node-gray"/>
+      <text x="249" y="186" text-anchor="middle" class="text-white text-xs">Sales</text>
+      <line x1="220" y1="148" x2="195" y2="172" class="conn"/>
+      <line x1="220" y1="148" x2="249" y2="172" class="conn"/>
+    </svg>
+  </div>
+  <div class="card-body">
+    <div class="meta-row">
+      <div><span class="meta-label">When to use</span><span class="meta-tag use">Revenue diagnosis, growth planning, identifying underperforming segments</span></div>
+    </div>
+    <div class="meta-row">
+      <div><span class="meta-label">When NOT to use</span><span class="meta-tag avoid">Early-stage companies with a single product and no segmentation</span></div>
+    </div>
+    <div class="example">A SaaS company sees flat revenue. The tree reveals Enterprise platform sales grew 20% but SMB churn offset it entirely — the problem is retention, not demand.</div>
+    <div class="how-it-works">
+      <strong>How it works:</strong> Break total revenue into mutually exclusive, collectively exhaustive branches — typically Segment → Product → Channel → Pricing. Each node is a lever you can size and act on.
+      <ul class="questions">
+        <li>Which segments contribute the most revenue? Which are growing fastest?</li>
+        <li>Within each segment, which products drive disproportionate value?</li>
+        <li>Are certain channels more profitable than others after acquisition cost?</li>
+        <li>Where does a 10% improvement have the largest absolute impact?</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="card" id="tam-sam-som">
+  <div class="card-header">
+    <h3>TAM / SAM / SOM</h3>
+    <div class="tagline">Size the opportunity: total, serviceable, and obtainable market</div>
+  </div>
+  <div class="card-visual">
+    <svg viewBox="0 0 440 200" font-family="DM Sans, sans-serif">
+      <!-- TAM circle -->
+      <circle cx="220" cy="105" r="90" class="node-navy" opacity="0.35"/>
+      <circle cx="220" cy="105" r="90" fill="none" stroke="#3b82f6" stroke-width="1.5"/>
+      <!-- SAM circle -->
+      <circle cx="220" cy="115" r="58" class="node-green" opacity="0.45"/>
+      <circle cx="220" cy="115" r="58" fill="none" stroke="#22c55e" stroke-width="1.5"/>
+      <!-- SOM circle -->
+      <circle cx="220" cy="125" r="28" class="node-gold" opacity="0.7"/>
+      <circle cx="220" cy="125" r="28" fill="none" stroke="#c5a55a" stroke-width="1.5"/>
+      <!-- Labels -->
+      <text x="220" y="30" text-anchor="middle" class="text-muted text-sm">TAM</text>
+      <text x="220" y="43" text-anchor="middle" class="text-white text-xs">$120B global EV charging</text>
+      <text x="220" y="80" text-anchor="middle" class="text-muted text-sm">SAM</text>
+      <text x="220" y="93" text-anchor="middle" class="text-white text-xs">$18B North America DC fast</text>
+      <text x="220" y="122" text-anchor="middle" class="text-white text-xs" font-weight="600">SOM</text>
+      <text x="220" y="135" text-anchor="middle" class="text-white text-xs">$1.4B</text>
+      <!-- Side annotations -->
+      <text x="370" y="50" text-anchor="start" class="text-muted text-xs">Total Addressable</text>
+      <line x1="310" y1="45" x2="365" y2="45" class="conn" opacity="0.4"/>
+      <text x="370" y="100" text-anchor="start" class="text-muted text-xs">Serviceable</text>
+      <line x1="278" y1="98" x2="365" y2="98" class="conn" opacity="0.4"/>
+      <text x="370" y="135" text-anchor="start" class="text-muted text-xs">Obtainable</text>
+      <line x1="248" y1="130" x2="365" y2="133" class="conn" opacity="0.4"/>
+    </svg>
+  </div>
+  <div class="card-body">
+    <div class="meta-row">
+      <div><span class="meta-label">When to use</span><span class="meta-tag use">Market entry, investor decks, growth ceiling analysis, M&amp;A target screening</span></div>
+    </div>
+    <div class="meta-row">
+      <div><span class="meta-label">When NOT to use</span><span class="meta-tag avoid">Mature businesses with known market share; markets with no meaningful segmentation</span></div>
+    </div>
+    <div class="example">An EV charging startup sizes TAM at $120B (all global EV charging), narrows SAM to $18B (North American DC fast-charging), and estimates SOM at $1.4B based on planned station rollout and utilization rates.</div>
+    <div class="how-it-works">
+      <strong>How it works:</strong> Start with the broadest possible market (TAM), filter by geography, technology, and customer fit (SAM), then estimate realistic capture given resources, competition, and go-to-market (SOM). Each layer requires different data and assumptions.
+      <ul class="questions">
+        <li>What is the total global spend on the problem you solve (TAM)?</li>
+        <li>Which segments can you actually serve with your current product and reach (SAM)?</li>
+        <li>Given competitive dynamics, what share can you realistically capture in 3–5 years (SOM)?</li>
+        <li>Are you sizing top-down (industry reports) or bottom-up (unit × price × customers)? Do they converge?</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="card" id="unit-economics">
+  <div class="card-header">
+    <h3>Unit Economics</h3>
+    <div class="tagline">LTV, CAC, payback period, and contribution margin per customer</div>
+  </div>
+  <div class="card-visual">
+    <svg viewBox="0 0 440 200" font-family="DM Sans, sans-serif">
+      <!-- Axes -->
+      <line x1="60" y1="170" x2="420" y2="170" stroke="#334155" stroke-width="1"/>
+      <line x1="60" y1="170" x2="60" y2="15" stroke="#334155" stroke-width="1"/>
+      <!-- Y-axis label -->
+      <text x="18" y="95" text-anchor="middle" class="text-muted text-xs" transform="rotate(-90,18,95)">Cumulative $</text>
+      <!-- LTV bar -->
+      <rect x="100" y="30" width="80" height="140" rx="4" class="node-green" opacity="0.85"/>
+      <text x="140" y="24" text-anchor="middle" class="text-green text-sm" font-weight="600">LTV</text>
+      <text x="140" y="50" text-anchor="middle" class="text-white text-sm" font-weight="700">$2,400</text>
+      <text x="140" y="65" text-anchor="middle" class="text-white text-xs" opacity="0.7">36-mo lifetime</text>
+      <!-- CAC bar -->
+      <rect x="220" y="100" width="80" height="70" rx="4" class="node-red" opacity="0.85"/>
+      <text x="260" y="94" text-anchor="middle" class="text-red text-sm" font-weight="600">CAC</text>
+      <text x="260" y="120" text-anchor="middle" class="text-white text-sm" font-weight="700">$800</text>
+      <text x="260" y="135" text-anchor="middle" class="text-white text-xs" opacity="0.7">Blended</text>
+      <!-- LTV:CAC ratio -->
+      <rect x="335" y="68" width="70" height="34" rx="6" class="node-gold"/>
+      <text x="370" y="82" text-anchor="middle" class="text-white text-xs">LTV:CAC</text>
+      <text x="370" y="96" text-anchor="middle" class="text-white text-sm" font-weight="700">3.0×</text>
+      <!-- Payback annotation -->
+      <line x1="100" y1="100" x2="300" y2="100" stroke="#c5a55a" stroke-width="1" stroke-dasharray="4,3"/>
+      <text x="310" y="104" class="text-white text-xs">← Payback: 12 mo</text>
+      <!-- Contribution margin -->
+      <rect x="100" y="178" width="200" height="18" rx="3" class="node-navy"/>
+      <text x="200" y="191" text-anchor="middle" class="text-muted text-xs">Contribution margin: 67% ($44/mo per user)</text>
+    </svg>
+  </div>
+  <div class="card-body">
+    <div class="meta-row">
+      <div><span class="meta-label">When to use</span><span class="meta-tag use">Subscription/recurring businesses, growth investment decisions, pricing optimization</span></div>
+    </div>
+    <div class="meta-row">
+      <div><span class="meta-label">When NOT to use</span><span class="meta-tag avoid">One-time transaction businesses; very early stage with &lt;100 customers (data too noisy)</span></div>
+    </div>
+    <div class="example">A subscription fitness app spends $800 to acquire a customer (CAC) who pays $67/month for an average of 36 months (LTV = $2,400). LTV:CAC of 3.0× with 12-month payback — healthy enough to scale marketing spend.</div>
+    <div class="how-it-works">
+      <strong>How it works:</strong> Calculate the full lifetime value of a customer (revenue × gross margin × average lifespan), compare against the fully loaded cost to acquire them (CAC), and derive the payback period. A healthy business typically targets LTV:CAC &gt; 3× and payback &lt; 18 months.
+      <ul class="questions">
+        <li>What is the average revenue per user per month, and what is your gross margin?</li>
+        <li>What is the average customer lifespan (or monthly churn rate)?</li>
+        <li>What is the fully loaded CAC including sales salaries, ad spend, and onboarding?</li>
+        <li>How do unit economics differ by acquisition channel or customer cohort?</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="card" id="waterfall-bridge">
+  <div class="card-header">
+    <h3>Waterfall / Bridge</h3>
+    <div class="tagline">Show incremental contributions that explain the change from A to B</div>
+  </div>
+  <div class="card-visual">
+    <svg viewBox="0 0 440 200" font-family="DM Sans, sans-serif">
+      <!-- Axis -->
+      <line x1="30" y1="170" x2="420" y2="170" stroke="#334155" stroke-width="1"/>
+      <!-- FY24 base bar -->
+      <rect x="40" y="55" width="50" height="115" rx="4" class="node-navy"/>
+      <text x="65" y="49" text-anchor="middle" class="text-muted text-xs">FY24</text>
+      <text x="65" y="72" text-anchor="middle" class="text-white text-xs" font-weight="600">$8.2B</text>
+      <!-- Same-store growth (+) -->
+      <rect x="108" y="35" width="50" height="20" rx="3" class="node-green"/>
+      <text x="133" y="28" text-anchor="middle" class="text-muted text-xs">Same-store</text>
+      <text x="133" y="49" text-anchor="middle" class="text-white text-xs">+$0.5B</text>
+      <line x1="90" y1="55" x2="108" y2="55" stroke="#334155" stroke-width="0.7" stroke-dasharray="3,2"/>
+      <!-- New stores (+) -->
+      <rect x="176" y="15" width="50" height="20" rx="3" class="node-green"/>
+      <text x="201" y="8" text-anchor="middle" class="text-muted text-xs">New stores</text>
+      <text x="201" y="29" text-anchor="middle" class="text-white text-xs">+$0.8B</text>
+      <line x1="158" y1="35" x2="176" y2="35" stroke="#334155" stroke-width="0.7" stroke-dasharray="3,2"/>
+      <!-- E-commerce (+) -->
+      <rect x="244" y="5" width="50" height="10" rx="3" class="node-green"/>
+      <text x="269" y="-2" text-anchor="middle" class="text-muted text-xs">E-comm</text>
+      <text x="269" y="13" text-anchor="middle" class="text-white text-xs">+$0.3B</text>
+      <line x1="226" y1="15" x2="244" y2="15" stroke="#334155" stroke-width="0.7" stroke-dasharray="3,2"/>
+      <!-- Store closures (-) -->
+      <rect x="312" y="5" width="50" height="18" rx="3" class="node-red"/>
+      <text x="337" y="-2" text-anchor="middle" class="text-muted text-xs">Closures</text>
+      <text x="337" y="17" text-anchor="middle" class="text-white text-xs">−$0.4B</text>
+      <line x1="294" y1="5" x2="312" y2="5" stroke="#334155" stroke-width="0.7" stroke-dasharray="3,2"/>
+      <!-- FX headwind (-) -->
+      <rect x="312" y="23" width="50" height="10" rx="3" class="node-red" opacity="0.7"/>
+      <text x="337" y="31" text-anchor="middle" class="text-white text-xs">−$0.2B</text>
+      <text x="400" y="29" text-anchor="start" class="text-muted text-xs">FX</text>
+      <!-- FY25 end bar -->
+      <rect x="380" y="23" width="50" height="147" rx="4" class="node-gold"/>
+      <text x="405" y="17" text-anchor="middle" class="text-white text-xs" font-weight="600">FY25</text>
+      <text x="405" y="43" text-anchor="middle" class="text-white text-xs" font-weight="600">$9.2B</text>
+      <line x1="362" y1="23" x2="380" y2="23" stroke="#334155" stroke-width="0.7" stroke-dasharray="3,2"/>
+      <!-- Net change label -->
+      <text x="220" y="192" text-anchor="middle" class="text-muted text-xs">Net change: +$1.0B (+12% YoY)</text>
+    </svg>
+  </div>
+  <div class="card-body">
+    <div class="meta-row">
+      <div><span class="meta-label">When to use</span><span class="meta-tag use">YoY variance analysis, budget vs actual, explaining a metric change to stakeholders</span></div>
+    </div>
+    <div class="meta-row">
+      <div><span class="meta-label">When NOT to use</span><span class="meta-tag avoid">When the components don't sum to the total; when there are 10+ small drivers (use Pareto instead)</span></div>
+    </div>
+    <div class="example">A national retailer grew revenue from $8.2B to $9.2B. The bridge shows same-store sales (+$0.5B) and new stores (+$0.8B) drove growth, partially offset by closures (−$0.4B) and FX headwinds (−$0.2B).</div>
+    <div class="how-it-works">
+      <strong>How it works:</strong> Start with the base value, add positive increments (green) and subtract negative decrements (red) to arrive at the end value. Every bar must be additive — the components must sum exactly to the total change. Order bars by magnitude or logical grouping.
+      <ul class="questions">
+        <li>What are the 4–6 largest drivers of the change from period A to period B?</li>
+        <li>Which drivers are organic (same-store, pricing) vs. inorganic (acquisitions, new markets)?</li>
+        <li>Are negative drivers temporary (FX, one-time charges) or structural (market decline)?</li>
+        <li>Does the bridge balance? Do all components sum exactly to the net change?</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="card" id="profit-tree-fin">
+  <div class="card-header">
+    <h3>Profit Tree</h3>
+    <div class="tagline">Decompose profit into Revenue (Price × Volume) and Costs (Fixed + Variable)</div>
+  </div>
+  <div class="card-visual">
+    <svg viewBox="0 0 440 200" font-family="DM Sans, sans-serif">
+      <!-- Root: Profit -->
+      <rect x="180" y="5" width="80" height="30" rx="6" class="node-gold"/>
+      <text x="220" y="24" text-anchor="middle" class="text-white text-sm" font-weight="700">Profit</text>
+      <!-- Level 1: Revenue and Cost -->
+      <rect x="60" y="60" width="90" height="28" rx="5" class="node-green"/>
+      <text x="105" y="78" text-anchor="middle" class="text-white text-sm" font-weight="600">Revenue</text>
+      <rect x="290" y="60" width="90" height="28" rx="5" class="node-red"/>
+      <text x="335" y="78" text-anchor="middle" class="text-white text-sm" font-weight="600">Costs</text>
+      <!-- Operator labels -->
+      <text x="220" y="74" text-anchor="middle" class="text-muted text-sm" font-weight="600">−</text>
+      <!-- Connectors Root→L1 -->
+      <line x1="220" y1="35" x2="105" y2="60" class="conn"/>
+      <line x1="220" y1="35" x2="335" y2="60" class="conn"/>
+      <!-- Level 2: Revenue children -->
+      <rect x="12" y="115" width="72" height="26" rx="4" class="node-navy"/>
+      <text x="48" y="132" text-anchor="middle" class="text-white text-xs">Price</text>
+      <rect x="98" y="115" width="72" height="26" rx="4" class="node-navy"/>
+      <text x="134" y="132" text-anchor="middle" class="text-white text-xs">Volume</text>
+      <text x="88" y="128" text-anchor="middle" class="text-muted text-xs">×</text>
+      <line x1="105" y1="88" x2="48" y2="115" class="conn"/>
+      <line x1="105" y1="88" x2="134" y2="115" class="conn"/>
+      <!-- Level 2: Cost children -->
+      <rect x="265" y="115" width="72" height="26" rx="4" class="node-navy"/>
+      <text x="301" y="132" text-anchor="middle" class="text-white text-xs">Fixed</text>
+      <rect x="350" y="115" width="72" height="26" rx="4" class="node-navy"/>
+      <text x="386" y="132" text-anchor="middle" class="text-white text-xs">Variable</text>
+      <text x="340" y="128" text-anchor="middle" class="text-muted text-xs">+</text>
+      <line x1="335" y1="88" x2="301" y2="115" class="conn"/>
+      <line x1="335" y1="88" x2="386" y2="115" class="conn"/>
+      <!-- Level 3: Leaf details -->
+      <rect x="2" y="162" width="44" height="22" rx="3" class="node-gray"/>
+      <text x="24" y="176" text-anchor="middle" class="text-white text-xs">Yield</text>
+      <rect x="52" y="162" width="44" height="22" rx="3" class="node-gray"/>
+      <text x="74" y="176" text-anchor="middle" class="text-white text-xs">Ancillary</text>
+      <line x1="48" y1="141" x2="24" y2="162" class="conn"/>
+      <line x1="48" y1="141" x2="74" y2="162" class="conn"/>
+      <rect x="98" y="162" width="44" height="22" rx="3" class="node-gray"/>
+      <text x="120" y="176" text-anchor="middle" class="text-white text-xs">Pax</text>
+      <rect x="148" y="162" width="44" height="22" rx="3" class="node-gray"/>
+      <text x="170" y="176" text-anchor="middle" class="text-white text-xs">Load %</text>
+      <line x1="134" y1="141" x2="120" y2="162" class="conn"/>
+      <line x1="134" y1="141" x2="170" y2="162" class="conn"/>
+      <rect x="255" y="162" width="50" height="22" rx="3" class="node-gray"/>
+      <text x="280" y="176" text-anchor="middle" class="text-white text-xs">Lease</text>
+      <rect x="311" y="162" width="50" height="22" rx="3" class="node-gray"/>
+      <text x="336" y="176" text-anchor="middle" class="text-white text-xs">Labor</text>
+      <line x1="301" y1="141" x2="280" y2="162" class="conn"/>
+      <line x1="301" y1="141" x2="336" y2="162" class="conn"/>
+      <rect x="368" y="162" width="44" height="22" rx="3" class="node-gray"/>
+      <text x="390" y="176" text-anchor="middle" class="text-white text-xs">Fuel</text>
+      <rect x="418" y="162" width="20" height="22" rx="3" class="node-gray"/>
+      <text x="428" y="176" text-anchor="middle" class="text-white text-xs">…</text>
+      <line x1="386" y1="141" x2="390" y2="162" class="conn"/>
+      <line x1="386" y1="141" x2="428" y2="162" class="conn"/>
+    </svg>
+  </div>
+  <div class="card-body">
+    <div class="meta-row">
+      <div><span class="meta-label">When to use</span><span class="meta-tag use">Profitability diagnosis, cost reduction cases, margin improvement strategy</span></div>
+    </div>
+    <div class="meta-row">
+      <div><span class="meta-label">When NOT to use</span><span class="meta-tag avoid">When the problem is revenue growth (use Revenue Tree); when cost structure is unknown</span></div>
+    </div>
+    <div class="example">An airline's operating profit dropped 15%. The profit tree reveals revenue held steady (higher yields offset lower load factors), but variable costs surged — fuel up 30% YoY was the dominant driver.</div>
+    <div class="how-it-works">
+      <strong>How it works:</strong> Profit = Revenue − Costs. Revenue splits into Price × Volume. Costs split into Fixed + Variable. Each branch decomposes further into operational levers specific to the industry. Isolate which branch changed most to identify the root cause of a profit shift.
+      <ul class="questions">
+        <li>Is the profit change driven more by revenue or by costs?</li>
+        <li>On the revenue side, is it a price problem (yield, ASP) or a volume problem (units, load factor)?</li>
+        <li>On the cost side, are fixed costs (leases, overhead) or variable costs (materials, fuel) the driver?</li>
+        <li>Which single leaf-level lever has the largest impact if improved by 5–10%?</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</div><!-- /grid -->
+
+<div class="section-title" id="decision-making">
+  <h2>Decision Making</h2>
+  <p>Structure decisions, assign ownership, and stress-test choices — 5 frameworks</p>
+</div>
+<div class="grid">
+
+
+<div class="card" id="rapid">
+  <div class="card-header">
+    <h3>RAPID</h3>
+    <div class="tagline">Clarify who does what in every decision</div>
+  </div>
+  <div class="card-visual">
+    <svg viewBox="0 0 440 200" font-family="DM Sans, sans-serif">
+      <rect class="node-navy" x="10" y="60" width="68" height="68" rx="10"/>
+      <text class="text-gold text-sm" x="44" y="88" text-anchor="middle" font-weight="700">R</text>
+      <text class="text-muted text-xs" x="44" y="106" text-anchor="middle">Recommend</text>
+      <line class="conn" x1="78" y1="94" x2="96" y2="94"/>
+      <rect class="node-navy" x="96" y="60" width="68" height="68" rx="10"/>
+      <text class="text-gold text-sm" x="130" y="88" text-anchor="middle" font-weight="700">A</text>
+      <text class="text-muted text-xs" x="130" y="106" text-anchor="middle">Agree</text>
+      <line class="conn" x1="164" y1="94" x2="182" y2="94"/>
+      <rect class="node-navy" x="182" y="60" width="68" height="68" rx="10"/>
+      <text class="text-gold text-sm" x="216" y="88" text-anchor="middle" font-weight="700">P</text>
+      <text class="text-muted text-xs" x="216" y="106" text-anchor="middle">Perform</text>
+      <line class="conn" x1="250" y1="94" x2="268" y2="94"/>
+      <rect class="node-navy" x="268" y="60" width="68" height="68" rx="10"/>
+      <text class="text-gold text-sm" x="302" y="88" text-anchor="middle" font-weight="700">I</text>
+      <text class="text-muted text-xs" x="302" y="106" text-anchor="middle">Input</text>
+      <line class="conn" x1="336" y1="94" x2="354" y2="94"/>
+      <rect class="node-green" x="354" y="60" width="76" height="68" rx="10"/>
+      <text class="text-white text-sm" x="392" y="88" text-anchor="middle" font-weight="700">D</text>
+      <text class="text-white text-xs" x="392" y="106" text-anchor="middle">Decide</text>
+      <text class="text-muted text-xs" x="44" y="150" text-anchor="middle">Proposes</text>
+      <text class="text-muted text-xs" x="44" y="163" text-anchor="middle">the action</text>
+      <text class="text-muted text-xs" x="130" y="150" text-anchor="middle">Must sign</text>
+      <text class="text-muted text-xs" x="130" y="163" text-anchor="middle">off (veto)</text>
+      <text class="text-muted text-xs" x="216" y="150" text-anchor="middle">Executes</text>
+      <text class="text-muted text-xs" x="216" y="163" text-anchor="middle">the decision</text>
+      <text class="text-muted text-xs" x="302" y="150" text-anchor="middle">Consulted</text>
+      <text class="text-muted text-xs" x="302" y="163" text-anchor="middle">for facts</text>
+      <text class="text-muted text-xs" x="392" y="150" text-anchor="middle">Single owner</text>
+      <text class="text-muted text-xs" x="392" y="163" text-anchor="middle">of outcome</text>
+      <text class="label" x="220" y="28">One decision, five clear roles</text>
+    </svg>
+  </div>
+  <div class="card-body">
+    <div class="meta-row">
+      <div><span class="meta-label">When to use</span><span class="meta-tag use">Cross-functional decisions with unclear ownership</span></div>
+    </div>
+    <div class="meta-row">
+      <div><span class="meta-label">When NOT to use</span><span class="meta-tag avoid">Simple decisions one person can make alone</span></div>
+    </div>
+    <div class="example">The leadership team needs to pick a new CRM. Sales recommends, Legal agrees on compliance, IT performs the rollout, Finance provides budget input, and the COO decides.</div>
+    <div class="how-it-works">
+      <strong>How it works:</strong> Assign exactly one role per person per decision. The Decider is a single individual — never a committee. The Recommender drives the process, the Agreer has veto power, Inputters are consulted, and Performers execute.
+      <ul class="questions"><li>Who is the single Decider — and does everyone know it?</li><li>Who has true veto power (Agree) vs. advisory input?</li><li>Is the Recommender empowered to drive the timeline?</li><li>Are Performers looped in early enough to flag feasibility?</li></ul>
+    </div>
+  </div>
+</div>
+
+<div class="card" id="decision-matrix">
+  <div class="card-header">
+    <h3>Decision Matrix</h3>
+    <div class="tagline">Score options against weighted criteria to pick the best fit</div>
+  </div>
+  <div class="card-visual">
+    <svg viewBox="0 0 440 180" font-family="DM Sans, sans-serif">
+      <text x="220" y="16" text-anchor="middle" fill="#6a6560" font-size="10" font-weight="600">Weighted Score Comparison</text>
+      <rect x="40" y="30" width="110" height="55" rx="8" class="node-navy"/>
+      <text x="95" y="50" text-anchor="middle" class="text-white" font-size="10" font-weight="600">Vendor A</text>
+      <text x="95" y="70" text-anchor="middle" class="text-gold" font-size="16" font-weight="700">7.55</text>
+      <rect x="165" y="30" width="110" height="55" rx="8" class="node-navy"/>
+      <text x="220" y="50" text-anchor="middle" class="text-white" font-size="10" font-weight="600">Vendor B</text>
+      <text x="220" y="70" text-anchor="middle" class="text-gold" font-size="16" font-weight="700">6.80</text>
+      <rect x="290" y="25" width="110" height="65" rx="8" class="node-green"/>
+      <text x="345" y="48" text-anchor="middle" class="text-white" font-size="10" font-weight="600">Vendor C ★</text>
+      <text x="345" y="72" text-anchor="middle" class="text-white" font-size="20" font-weight="700">7.95</text>
+      <text x="40" y="110" fill="#6a6560" font-size="9" font-weight="600">Criteria breakdown:</text>
+      <rect x="40" y="118" width="360" height="18" rx="3" class="node-gray"/>
+      <text x="55" y="131" class="text-white" font-size="8">Cost 30%</text>
+      <text x="155" y="131" class="text-white" font-size="8">Features 25%</text>
+      <text x="265" y="131" class="text-white" font-size="8">Support 25%</text>
+      <text x="360" y="131" class="text-white" font-size="8">Integ 20%</text>
+      <text x="220" y="162" text-anchor="middle" fill="#6a6560" font-size="8">Score = raw rating (1-10) x weight. Highest total wins.</text>
+    </svg>
+  </div>
+  <div class="card-body">
+    <div class="meta-row">
+      <div><span class="meta-label">When to use</span><span class="meta-tag use">Comparing 3+ options across multiple criteria</span></div>
+    </div>
+    <div class="meta-row">
+      <div><span class="meta-label">When NOT to use</span><span class="meta-tag avoid">Binary yes/no decisions or when one option clearly dominates</span></div>
+    </div>
+    <div class="example">Evaluating three software vendors. Cost (30%), Features (25%), Support (25%), and Integration (20%) are weighted by priority. Each vendor is scored 1–10 per criterion, then multiplied by weight. Vendor C wins with 7.95.</div>
+    <div class="how-it-works">
+      <strong>How it works:</strong> List your options as columns and your criteria as rows. Assign a percentage weight to each criterion (must total 100%). Score each option 1–10 on every criterion. Multiply score by weight, sum the weighted scores, and compare totals.
+      <ul class="questions"><li>Have stakeholders agreed on the criteria and weights before scoring?</li><li>Are scores based on evidence (demos, references) or gut feel?</li><li>Does the winner still feel right — or did the weights distort the outcome?</li><li>What happens if you change the top weight by ±10% — does the winner flip?</li></ul>
+    </div>
+  </div>
+</div>
+
+<div class="card" id="pre-mortem">
+  <div class="card-header">
+    <h3>Pre-Mortem</h3>
+    <div class="tagline">Assume failure happened — then figure out why</div>
+  </div>
+  <div class="card-visual">
+    <svg viewBox="0 0 440 200" font-family="DM Sans, sans-serif">
+      <text class="label" x="220" y="20" text-anchor="middle">Work backward from failure to find hidden risks</text>
+      <!-- Failure state on the right -->
+      <rect class="node-red" x="330" y="60" width="100" height="50" rx="10"/>
+      <text class="text-white text-sm" x="380" y="82" text-anchor="middle" font-weight="700">Project</text>
+      <text class="text-white text-sm" x="380" y="97" text-anchor="middle" font-weight="700">Failed</text>
+      <!-- Arrow from cause 1 -->
+      <line class="conn" x1="270" y1="45" x2="330" y2="72"/>
+      <rect class="node-gold" x="168" y="28" width="100" height="34" rx="8"/>
+      <text class="text-white text-xs" x="218" y="42" text-anchor="middle">No user research</text>
+      <text class="text-white text-xs" x="218" y="54" text-anchor="middle">before building</text>
+      <!-- Arrow from cause 2 -->
+      <line class="conn" x1="270" y1="85" x2="330" y2="85"/>
+      <rect class="node-gold" x="168" y="68" width="100" height="34" rx="8"/>
+      <text class="text-white text-xs" x="218" y="82" text-anchor="middle">Key engineer</text>
+      <text class="text-white text-xs" x="218" y="94" text-anchor="middle">quit in month 2</text>
+      <!-- Arrow from cause 3 -->
+      <line class="conn" x1="270" y1="125" x2="330" y2="98"/>
+      <rect class="node-gold" x="168" y="108" width="100" height="34" rx="8"/>
+      <text class="text-white text-xs" x="218" y="122" text-anchor="middle">Scope creep from</text>
+      <text class="text-white text-xs" x="218" y="134" text-anchor="middle">exec sponsors</text>
+      <!-- Root cause arrows -->
+      <line class="conn" x1="108" y1="45" x2="168" y2="45"/>
+      <rect class="node-gray" x="10" y="28" width="96" height="34" rx="8"/>
+      <text class="text-white text-xs" x="58" y="42" text-anchor="middle">No discovery</text>
+      <text class="text-white text-xs" x="58" y="54" text-anchor="middle">phase budgeted</text>
+      <line class="conn" x1="108" y1="85" x2="168" y2="85"/>
+      <rect class="node-gray" x="10" y="68" width="96" height="34" rx="8"/>
+      <text class="text-white text-xs" x="58" y="82" text-anchor="middle">No retention</text>
+      <text class="text-white text-xs" x="58" y="94" text-anchor="middle">plan for team</text>
+      <line class="conn" x1="108" y1="125" x2="168" y2="125"/>
+      <rect class="node-gray" x="10" y="108" width="96" height="34" rx="8"/>
+      <text class="text-white text-xs" x="58" y="122" text-anchor="middle">No change</text>
+      <text class="text-white text-xs" x="58" y="134" text-anchor="middle">control process</text>
+      <!-- Direction arrow -->
+      <text class="text-muted text-xs" x="220" y="170" text-anchor="middle">← work backward from failure to root causes</text>
+      <line class="conn" x1="130" y1="180" x2="80" y2="180" marker-end="url(#arrow)"/>
+      <defs><marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+    </svg>
+  </div>
+  <div class="card-body">
+    <div class="meta-row">
+      <div><span class="meta-label">When to use</span><span class="meta-tag use">Before launching any major initiative or project</span></div>
+    </div>
+    <div class="meta-row">
+      <div><span class="meta-label">When NOT to use</span><span class="meta-tag avoid">After the decision is already made and irreversible</span></div>
+    </div>
+    <div class="example">Before a product launch, the team imagines it's 6 months later and the launch flopped. Each person independently writes down the most likely reason. Top causes: no user validation, key talent attrition, and uncontrolled scope expansion — all preventable.</div>
+    <div class="how-it-works">
+      <strong>How it works:</strong> Gather the team and announce: "It's one year from now. This project has failed spectacularly. Write down the single biggest reason why." Collect responses independently (avoids groupthink), cluster themes, then build mitigations for the top 3–5 failure modes.
+      <ul class="questions"><li>What is the single most likely cause of failure — and who owns mitigating it?</li><li>Which risks are we ignoring because they feel uncomfortable to name?</li><li>Are there single points of failure (one person, one vendor, one assumption)?</li><li>What early warning signal would tell us this failure mode is materializing?</li></ul>
+    </div>
+  </div>
+</div>
+
+<div class="card" id="second-order">
+  <div class="card-header">
+    <h3>Second-Order Thinking</h3>
+    <div class="tagline">Think past the obvious — consequences have consequences</div>
+  </div>
+  <div class="card-visual">
+    <svg viewBox="0 0 440 200" font-family="DM Sans, sans-serif">
+      <text class="label" x="220" y="18" text-anchor="middle">Action → 1st Order → 2nd Order → 3rd Order</text>
+      <!-- Action node -->
+      <rect class="node-navy" x="10" y="72" width="76" height="44" rx="10"/>
+      <text class="text-gold text-xs" x="48" y="90" text-anchor="middle" font-weight="700">Action</text>
+      <text class="text-white text-xs" x="48" y="104" text-anchor="middle">Raise prices</text>
+      <!-- 1st order effects -->
+      <line class="conn" x1="86" y1="82" x2="110" y2="56"/>
+      <line class="conn" x1="86" y1="104" x2="110" y2="120"/>
+      <rect class="node-green" x="110" y="36" width="82" height="38" rx="8"/>
+      <text class="text-white text-xs" x="151" y="52" text-anchor="middle" font-weight="600">1st Order</text>
+      <text class="text-white text-xs" x="151" y="65" text-anchor="middle">Revenue ↑</text>
+      <rect class="node-green" x="110" y="102" width="82" height="38" rx="8"/>
+      <text class="text-white text-xs" x="151" y="118" text-anchor="middle" font-weight="600">1st Order</text>
+      <text class="text-white text-xs" x="151" y="131" text-anchor="middle">Some churn</text>
+      <!-- 2nd order effects -->
+      <line class="conn" x1="192" y1="48" x2="216" y2="38"/>
+      <line class="conn" x1="192" y1="62" x2="216" y2="76"/>
+      <line class="conn" x1="192" y1="114" x2="216" y2="114"/>
+      <line class="conn" x1="192" y1="130" x2="216" y2="152"/>
+      <rect class="node-gold" x="216" y="24" width="88" height="30" rx="7"/>
+      <text class="text-white text-xs" x="260" y="38" text-anchor="middle" font-weight="600">2nd Order</text>
+      <text class="text-white text-xs" x="260" y="49" text-anchor="middle">Fund R&amp;D</text>
+      <rect class="node-gold" x="216" y="62" width="88" height="30" rx="7"/>
+      <text class="text-white text-xs" x="260" y="76" text-anchor="middle" font-weight="600">2nd Order</text>
+      <text class="text-white text-xs" x="260" y="87" text-anchor="middle">Margin pressure</text>
+      <rect class="node-gold" x="216" y="100" width="88" height="30" rx="7"/>
+      <text class="text-white text-xs" x="260" y="114" text-anchor="middle" font-weight="600">2nd Order</text>
+      <text class="text-white text-xs" x="260" y="125" text-anchor="middle">Competitors gain</text>
+      <rect class="node-gold" x="216" y="138" width="88" height="30" rx="7"/>
+      <text class="text-white text-xs" x="260" y="152" text-anchor="middle" font-weight="600">2nd Order</text>
+      <text class="text-white text-xs" x="260" y="163" text-anchor="middle">Bad reviews</text>
+      <!-- 3rd order effects -->
+      <line class="conn" x1="304" y1="39" x2="328" y2="39"/>
+      <line class="conn" x1="304" y1="115" x2="328" y2="115"/>
+      <line class="conn" x1="304" y1="153" x2="328" y2="153"/>
+      <rect class="node-red" x="328" y="24" width="102" height="30" rx="7"/>
+      <text class="text-white text-xs" x="379" y="38" text-anchor="middle" font-weight="600">3rd Order</text>
+      <text class="text-white text-xs" x="379" y="49" text-anchor="middle">Better product</text>
+      <rect class="node-red" x="328" y="100" width="102" height="30" rx="7"/>
+      <text class="text-white text-xs" x="379" y="114" text-anchor="middle" font-weight="600">3rd Order</text>
+      <text class="text-white text-xs" x="379" y="125" text-anchor="middle">Price war</text>
+      <rect class="node-red" x="328" y="138" width="102" height="30" rx="7"/>
+      <text class="text-white text-xs" x="379" y="152" text-anchor="middle" font-weight="600">3rd Order</text>
+      <text class="text-white text-xs" x="379" y="163" text-anchor="middle">Brand erosion</text>
+      <text class="text-muted text-xs" x="220" y="192" text-anchor="middle">Most people stop at 1st order — go deeper</text>
+    </svg>
+  </div>
+  <div class="card-body">
+    <div class="meta-row">
+      <div><span class="meta-label">When to use</span><span class="meta-tag use">Strategic decisions with ripple effects across stakeholders</span></div>
+    </div>
+    <div class="meta-row">
+      <div><span class="meta-label">When NOT to use</span><span class="meta-tag avoid">Routine operational decisions with contained impact</span></div>
+    </div>
+    <div class="example">A company raises prices 20%. First-order: revenue jumps, some customers leave. Second-order: churned customers boost competitors, remaining customers demand more value, margin funds R&amp;D. Third-order: better product wins back share — or a price war erodes everyone's margins.</div>
+    <div class="how-it-works">
+      <strong>How it works:</strong> For any proposed action, ask "and then what?" at least three times. Map each consequence to its own consequences. Look for feedback loops (where effects amplify or dampen the original action) and unintended side effects. The goal is not to predict perfectly but to find risks and opportunities invisible at first glance.
+      <ul class="questions"><li>What happens immediately — and who is affected first?</li><li>How will those affected parties react — and what does that trigger?</li><li>Are there feedback loops that amplify or reverse the initial effect?</li><li>Which second-order effect is most likely to surprise us?</li></ul>
+    </div>
+  </div>
+</div>
+
+<div class="card" id="inversion">
+  <div class="card-header">
+    <h3>Inversion</h3>
+    <div class="tagline">Flip the question — avoid failure instead of chasing success</div>
+  </div>
+  <div class="card-visual">
+    <svg viewBox="0 0 440 200" font-family="DM Sans, sans-serif">
+      <text class="label" x="220" y="18" text-anchor="middle">Instead of "how to win" — ask "how to guarantee losing"</text>
+      <!-- Left column: How to succeed (vague) -->
+      <rect class="node-gray" x="20" y="32" width="185" height="24" rx="6"/>
+      <text class="text-muted text-xs" x="112" y="48" text-anchor="middle" font-weight="700">How to succeed (vague)</text>
+      <rect class="node-gray" x="20" y="62" width="185" height="24" rx="5"/>
+      <text class="text-white text-xs" x="112" y="78" text-anchor="middle">"Build a great product"</text>
+      <rect class="node-gray" x="20" y="90" width="185" height="24" rx="5"/>
+      <text class="text-white text-xs" x="112" y="106" text-anchor="middle">"Hire talented people"</text>
+      <rect class="node-gray" x="20" y="118" width="185" height="24" rx="5"/>
+      <text class="text-white text-xs" x="112" y="134" text-anchor="middle">"Understand the market"</text>
+      <rect class="node-gray" x="20" y="146" width="185" height="24" rx="5"/>
+      <text class="text-white text-xs" x="112" y="162" text-anchor="middle">"Execute well"</text>
+      <!-- Divider -->
+      <line x1="220" y1="32" x2="220" y2="175" stroke="#334155" stroke-width="1" stroke-dasharray="4,3"/>
+      <text class="text-white text-xs" x="220" y="190" text-anchor="middle" font-weight="700">Invert → then avoid each item on the right</text>
+      <!-- Right column: How to fail (specific, actionable) -->
+      <rect class="node-navy" x="235" y="32" width="185" height="24" rx="6"/>
+      <text class="text-gold text-xs" x="328" y="48" text-anchor="middle" font-weight="700">How to fail (specific)</text>
+      <rect class="node-red" x="235" y="62" width="185" height="24" rx="5"/>
+      <text class="text-white text-xs" x="328" y="78" text-anchor="middle">Ignore local regulations</text>
+      <rect class="node-red" x="235" y="90" width="185" height="24" rx="5"/>
+      <text class="text-white text-xs" x="328" y="106" text-anchor="middle">Burn cash on untested channels</text>
+      <rect class="node-red" x="235" y="118" width="185" height="24" rx="5"/>
+      <text class="text-white text-xs" x="328" y="134" text-anchor="middle">Price without knowing COGS</text>
+      <rect class="node-red" x="235" y="146" width="185" height="24" rx="5"/>
+      <text class="text-white text-xs" x="328" y="162" text-anchor="middle">Hire no local partners</text>
+    </svg>
+  </div>
+  <div class="card-body">
+    <div class="meta-row">
+      <div><span class="meta-label">When to use</span><span class="meta-tag use">When "best practices" feel generic and you need concrete guardrails</span></div>
+    </div>
+    <div class="meta-row">
+      <div><span class="meta-label">When NOT to use</span><span class="meta-tag avoid">When you already have a clear, specific plan to evaluate</span></div>
+    </div>
+    <div class="example">A team planning to enter a new market flips the question: "How would we guarantee failure?" Answers are immediate and specific — ignore local regulations, burn cash on unproven channels, price without knowing costs, skip local partnerships. Now avoid each one.</div>
+    <div class="how-it-works">
+      <strong>How it works:</strong> Instead of asking "how do we succeed?", ask "how would we guarantee failure?" The failure list is always more specific and actionable than the success list. Once you have the failure modes, invert each one into a concrete safeguard. Popularized by Charlie Munger: "All I want to know is where I'm going to die — so I'll never go there."
+      <ul class="questions"><li>If we wanted to guarantee this fails, what would we do?</li><li>What are the "obvious" mistakes in our domain that everyone knows but still makes?</li><li>Which item on the failure list are we closest to doing right now?</li><li>For each failure mode — do we have a specific, named safeguard in place?</li></ul>
+    </div>
+  </div>
+</div>
+</div><!-- /grid -->
+
+<div class="section-title" id="operations">
+  <h2>Operations / Organization</h2>
+  <p>Lead change, map experiences, and measure loyalty — 6 frameworks</p>
+</div>
+<div class="grid">
+
+
+Here are the 6 Operations/Organization framework cards:
+
+<div class="card" id="adkar">
+  <div class="card-header"><h3>ADKAR</h3><div class="tagline">Five sequential building blocks for individual change adoption</div></div>
+  <div class="card-visual"><svg viewBox="0 0 440 200" font-family="DM Sans, sans-serif">
+    <defs>
+      <marker id="adkar-arrow" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#64748b"/></marker>
+    </defs>
+    <!-- Pipeline blocks -->
+    <rect x="10" y="60" width="72" height="80" rx="6" class="node-navy"/>
+    <text x="46" y="95" text-anchor="middle" class="text-white text-xs" font-weight="600">Awareness</text>
+    <text x="46" y="112" text-anchor="middle" class="text-muted text-xs">Why change?</text>
+    <line x1="82" y1="100" x2="92" y2="100" stroke="#64748b" stroke-width="1.5" marker-end="url(#adkar-arrow)"/>
+
+    <rect x="96" y="60" width="72" height="80" rx="6" class="node-green"/>
+    <text x="132" y="95" text-anchor="middle" class="text-white text-xs" font-weight="600">Desire</text>
+    <text x="132" y="112" text-anchor="middle" class="text-muted text-xs">Want to</text>
+    <line x1="168" y1="100" x2="178" y2="100" stroke="#64748b" stroke-width="1.5" marker-end="url(#adkar-arrow)"/>
+
+    <rect x="182" y="60" width="72" height="80" rx="6" class="node-navy"/>
+    <text x="218" y="95" text-anchor="middle" class="text-white text-xs" font-weight="600">Knowledge</text>
+    <text x="218" y="112" text-anchor="middle" class="text-muted text-xs">How to</text>
+    <line x1="254" y1="100" x2="264" y2="100" stroke="#64748b" stroke-width="1.5" marker-end="url(#adkar-arrow)"/>
+
+    <rect x="268" y="60" width="72" height="80" rx="6" class="node-green"/>
+    <text x="304" y="95" text-anchor="middle" class="text-white text-xs" font-weight="600">Ability</text>
+    <text x="304" y="112" text-anchor="middle" class="text-muted text-xs">Can do</text>
+    <line x1="340" y1="100" x2="350" y2="100" stroke="#64748b" stroke-width="1.5" marker-end="url(#adkar-arrow)"/>
+
+    <rect x="354" y="60" width="76" height="80" rx="6" class="node-gold"/>
+    <text x="392" y="95" text-anchor="middle" class="text-white text-xs" font-weight="600">Reinforce</text>
+    <text x="392" y="112" text-anchor="middle" class="text-white text-xs">Sustain</text>
+
+    <!-- Label -->
+    <text x="220" y="170" text-anchor="middle" class="text-muted text-xs">Each stage must be completed before the next can succeed</text>
+  </svg></div>
+  <div class="card-body">
+    <div class="meta-row"><div><span class="meta-label">When to use</span><span class="meta-tag use">Managing individual adoption through a specific change initiative</span></div></div>
+    <div class="meta-row"><div><span class="meta-label">When NOT to use</span><span class="meta-tag avoid">Broad cultural transformation with no defined change event</span></div></div>
+    <div class="example">A company migrating from spreadsheets to a new CRM builds an ADKAR plan: town halls explain <em>why</em> (Awareness), managers address "what's in it for me" (Desire), training labs teach the new system (Knowledge), sandbox environments let reps practice (Ability), and leaderboards plus manager check-ins sustain usage (Reinforcement). Adoption hits 90% within 8 weeks.</div>
+    <div class="how-it-works"><strong>How it works:</strong> ADKAR treats change as a sequential, individual-level process. Each letter represents a milestone that every affected person must reach. Diagnosing where people are stuck (e.g., they have awareness but no desire) lets you target interventions precisely rather than blanketing the organization with generic communications.<ul class="questions"><li>At which ADKAR stage are most employees currently stuck?</li><li>What specific barriers prevent people from moving to the next stage?</li><li>Who are the right sponsors to drive awareness and desire?</li><li>What reinforcement mechanisms will prevent regression to old behaviors?</li></ul></div>
+  </div>
+</div>
+
+<div class="card" id="kotter">
+  <div class="card-header"><h3>Kotter's 8-Step Change</h3><div class="tagline">Structured sequence for leading large-scale organizational transformation</div></div>
+  <div class="card-visual"><svg viewBox="0 0 440 200" font-family="DM Sans, sans-serif">
+    <!-- 8 ascending stair-steps -->
+    <defs>
+      <linearGradient id="kotter-grad" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="#1e3a5f"/>
+        <stop offset="100%" stop-color="#c5a55a"/>
+      </linearGradient>
+    </defs>
+
+    <!-- Steps as ascending blocks -->
+    <rect x="12" y="160" width="46" height="24" rx="3" class="node-navy"/>
+    <text x="35" y="175" text-anchor="middle" class="text-white" font-size="7" font-weight="600">Urgency</text>
+
+    <rect x="64" y="140" width="46" height="44" rx="3" class="node-navy"/>
+    <text x="87" y="157" text-anchor="middle" class="text-white" font-size="6.5" font-weight="600">Coalition</text>
+
+    <rect x="116" y="120" width="46" height="64" rx="3" class="node-navy"/>
+    <text x="139" y="137" text-anchor="middle" class="text-white" font-size="7" font-weight="600">Vision</text>
+
+    <rect x="168" y="100" width="46" height="84" rx="3" class="node-green"/>
+    <text x="191" y="117" text-anchor="middle" class="text-white" font-size="6" font-weight="600">Communi-</text>
+    <text x="191" y="126" text-anchor="middle" class="text-white" font-size="6" font-weight="600">cate</text>
+
+    <rect x="220" y="80" width="46" height="104" rx="3" class="node-green"/>
+    <text x="243" y="97" text-anchor="middle" class="text-white" font-size="6.5" font-weight="600">Empower</text>
+
+    <rect x="272" y="60" width="46" height="124" rx="3" class="node-green"/>
+    <text x="295" y="77" text-anchor="middle" class="text-white" font-size="6.5" font-weight="600">Quick</text>
+    <text x="295" y="86" text-anchor="middle" class="text-white" font-size="6.5" font-weight="600">Wins</text>
+
+    <rect x="324" y="40" width="46" height="144" rx="3" class="node-gold"/>
+    <text x="347" y="57" text-anchor="middle" class="text-white" font-size="6.5" font-weight="600">Build On</text>
+    <text x="347" y="66" text-anchor="middle" class="text-white" font-size="6.5" font-weight="600">Change</text>
+
+    <rect x="376" y="20" width="52" height="164" rx="3" class="node-gold"/>
+    <text x="402" y="37" text-anchor="middle" class="text-white" font-size="7" font-weight="600">Anchor</text>
+
+    <!-- Step numbers -->
+    <text x="35" y="190" text-anchor="middle" class="text-muted" font-size="7">1</text>
+    <text x="87" y="190" text-anchor="middle" class="text-muted" font-size="7">2</text>
+    <text x="139" y="190" text-anchor="middle" class="text-muted" font-size="7">3</text>
+    <text x="191" y="190" text-anchor="middle" class="text-muted" font-size="7">4</text>
+    <text x="243" y="190" text-anchor="middle" class="text-muted" font-size="7">5</text>
+    <text x="295" y="190" text-anchor="middle" class="text-muted" font-size="7">6</text>
+    <text x="347" y="190" text-anchor="middle" class="text-muted" font-size="7">7</text>
+    <text x="402" y="190" text-anchor="middle" class="text-muted" font-size="7">8</text>
+
+    <!-- Phase labels -->
+    <text x="87" y="12" text-anchor="middle" class="text-muted text-xs">Create Climate</text>
+    <text x="243" y="12" text-anchor="middle" class="text-muted text-xs">Engage &amp; Enable</text>
+    <text x="389" y="12" text-anchor="middle" class="text-muted text-xs">Sustain</text>
+  </svg></div>
+  <div class="card-body">
+    <div class="meta-row"><div><span class="meta-label">When to use</span><span class="meta-tag use">Large-scale transformation requiring broad organizational buy-in</span></div></div>
+    <div class="meta-row"><div><span class="meta-label">When NOT to use</span><span class="meta-tag avoid">Small tactical changes or emergency pivots requiring speed over consensus</span></div></div>
+    <div class="example">A mid-size insurer launches digital transformation: the CEO presents claims-processing data showing 3x competitor speed gaps (urgency), assembles a cross-functional digital council (coalition), defines a "zero-paper claims by 2027" vision, road-shows it across branches (communicate), removes legacy approval bottlenecks (empower), pilots auto-adjudication in one region to show 40% faster cycle times (quick wins), rolls out nationally (build), and ties digital KPIs to promotion criteria (anchor).</div>
+    <div class="how-it-works"><strong>How it works:</strong> Kotter's model sequences transformation into three phases: creating the climate for change (steps 1-3), engaging and enabling the organization (steps 4-6), and sustaining the transformation (steps 7-8). The key insight is that skipping early steps — especially urgency and coalition — is the primary reason transformations fail. Each step builds momentum for the next.<ul class="questions"><li>Is the urgency genuine and data-driven, or manufactured and fragile?</li><li>Does the guiding coalition include enough informal influencers, not just senior titles?</li><li>Can you articulate the vision in under 5 minutes and have it be repeatable?</li><li>What quick wins can you engineer in the first 90 days to build credibility?</li></ul></div>
+  </div>
+</div>
+
+<div class="card" id="lewin">
+  <div class="card-header"><h3>Lewin's Change Model</h3><div class="tagline">Unfreeze the status quo, transition, then refreeze the new state</div></div>
+  <div class="card-visual"><svg viewBox="0 0 440 200" font-family="DM Sans, sans-serif">
+    <!-- Phase 1: Unfreeze (ice cube) -->
+    <rect x="20" y="45" width="120" height="110" rx="8" class="node-navy"/>
+    <rect x="45" y="65" width="30" height="30" rx="4" fill="#93c5fd" opacity="0.9"/>
+    <rect x="50" y="70" width="20" height="20" rx="2" fill="#bfdbfe" opacity="0.6"/>
+    <text x="80" y="82" text-anchor="middle" class="text-white text-xs" font-weight="600">UNFREEZE</text>
+    <text x="80" y="118" text-anchor="middle" class="text-muted" font-size="7">Challenge</text>
+    <text x="80" y="128" text-anchor="middle" class="text-muted" font-size="7">assumptions</text>
+    <text x="80" y="138" text-anchor="middle" class="text-muted" font-size="7">&amp; create</text>
+    <text x="80" y="148" text-anchor="middle" class="text-muted" font-size="7">motivation</text>
+
+    <!-- Arrow 1 -->
+    <path d="M145,100 L160,100" stroke="#64748b" stroke-width="1.5" fill="none" marker-end="url(#lewin-arrow)"/>
+    <defs><marker id="lewin-arrow" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#64748b"/></marker></defs>
+
+    <!-- Phase 2: Change (melting) -->
+    <rect x="164" y="45" width="120" height="110" rx="8" class="node-green"/>
+    <!-- Melting drops -->
+    <ellipse cx="224" cy="78" rx="18" ry="12" fill="#86efac" opacity="0.5"/>
+    <circle cx="218" cy="88" r="3" fill="#86efac" opacity="0.4"/>
+    <circle cx="230" cy="90" r="2" fill="#86efac" opacity="0.3"/>
+    <text x="224" y="82" text-anchor="middle" class="text-white text-xs" font-weight="600">CHANGE</text>
+    <text x="224" y="118" text-anchor="middle" class="text-muted" font-size="7">Transition to</text>
+    <text x="224" y="128" text-anchor="middle" class="text-muted" font-size="7">new behaviors,</text>
+    <text x="224" y="138" text-anchor="middle" class="text-muted" font-size="7">processes &amp;</text>
+    <text x="224" y="148" text-anchor="middle" class="text-muted" font-size="7">mindsets</text>
+
+    <!-- Arrow 2 -->
+    <path d="M289,100 L304,100" stroke="#64748b" stroke-width="1.5" fill="none" marker-end="url(#lewin-arrow)"/>
+
+    <!-- Phase 3: Refreeze (solid cube) -->
+    <rect x="308" y="45" width="120" height="110" rx="8" class="node-gold"/>
+    <rect x="343" y="65" width="30" height="30" rx="4" fill="#fde68a" opacity="0.7"/>
+    <rect x="348" y="70" width="20" height="20" rx="2" fill="#fef3c7" opacity="0.5"/>
+    <text x="368" y="82" text-anchor="middle" class="text-white text-xs" font-weight="600">REFREEZE</text>
+    <text x="368" y="118" text-anchor="middle" class="text-muted" font-size="7">Stabilize &amp;</text>
+    <text x="368" y="128" text-anchor="middle" class="text-muted" font-size="7">embed new</text>
+    <text x="368" y="138" text-anchor="middle" class="text-muted" font-size="7">norms into</text>
+    <text x="368" y="148" text-anchor="middle" class="text-muted" font-size="7">culture</text>
+
+    <!-- Bottom label -->
+    <text x="220" y="178" text-anchor="middle" class="text-muted text-xs">Status quo → Disruption → New equilibrium</text>
+  </svg></div>
+  <div class="card-body">
+    <div class="meta-row"><div><span class="meta-label">When to use</span><span class="meta-tag use">Organizational or cultural changes requiring a clear break from past norms</span></div></div>
+    <div class="meta-row"><div><span class="meta-label">When NOT to use</span><span class="meta-tag avoid">Continuous improvement environments where constant change is the norm</span></div></div>
+    <div class="example">A manufacturing firm shifts from individual performance bonuses to team-based incentives. <strong>Unfreeze:</strong> share data showing how individual bonuses create hoarding behavior and quality defects. <strong>Change:</strong> pilot team metrics on two production lines with coaching support. <strong>Refreeze:</strong> update the compensation policy, train all supervisors on team reviews, and celebrate early wins publicly so the new system becomes "how we do things."</div>
+    <div class="how-it-works"><strong>How it works:</strong> Lewin's model treats organizations as systems in equilibrium held in place by driving forces (push for change) and restraining forces (resistance). Unfreezing weakens restraining forces by creating dissatisfaction with the status quo. The Change phase introduces new behaviors while people are receptive. Refreezing locks in the new state through policies, norms, and reinforcement so the organization doesn't drift back.<ul class="questions"><li>What are the strongest restraining forces holding the current state in place?</li><li>Have we created enough dissatisfaction to unfreeze, or will people snap back?</li><li>What support structures (training, coaching, tools) exist during the transition?</li><li>What formal mechanisms (policies, incentives, rituals) will refreeze the new state?</li></ul></div>
+  </div>
+</div>
+
+<div class="card" id="influence-model">
+  <div class="card-header"><h3>Influence Model</h3><div class="tagline">Four levers that drive mindset and behavior change in organizations</div></div>
+  <div class="card-visual"><svg viewBox="0 0 440 200" font-family="DM Sans, sans-serif">
+    <!-- 2x2 Grid -->
+    <!-- Top-left: Role Modeling -->
+    <rect x="30" y="20" width="180" height="75" rx="6" class="node-navy"/>
+    <text x="120" y="48" text-anchor="middle" class="text-gold text-xs" font-weight="700">ROLE MODELING</text>
+    <text x="120" y="63" text-anchor="middle" class="text-white" font-size="7">"I see leaders &amp; peers</text>
+    <text x="120" y="73" text-anchor="middle" class="text-white" font-size="7">behaving differently"</text>
+
+    <!-- Top-right: Understanding -->
+    <rect x="230" y="20" width="180" height="75" rx="6" class="node-green"/>
+    <text x="320" y="48" text-anchor="middle" class="text-white text-xs" font-weight="700">UNDERSTANDING</text>
+    <text x="320" y="63" text-anchor="middle" class="text-white" font-size="7">"I know what is expected</text>
+    <text x="320" y="73" text-anchor="middle" class="text-white" font-size="7">and it makes sense"</text>
+
+    <!-- Bottom-left: Confidence -->
+    <rect x="30" y="105" width="180" height="75" rx="6" class="node-gold"/>
+    <text x="120" y="133" text-anchor="middle" class="text-white text-xs" font-weight="700">CONFIDENCE</text>
+    <text x="120" y="148" text-anchor="middle" class="text-white" font-size="7">"I have the skills &amp; tools</text>
+    <text x="120" y="158" text-anchor="middle" class="text-white" font-size="7">to behave in the new way"</text>
+
+    <!-- Bottom-right: Reinforcement -->
+    <rect x="230" y="105" width="180" height="75" rx="6" class="node-navy"/>
+    <text x="320" y="133" text-anchor="middle" class="text-gold text-xs" font-weight="700">REINFORCEMENT</text>
+    <text x="320" y="148" text-anchor="middle" class="text-white" font-size="7">"Structures, processes &amp;</text>
+    <text x="320" y="158" text-anchor="middle" class="text-white" font-size="7">incentives support change"</text>
+
+    <!-- Center label -->
+    <circle cx="220" cy="100" r="22" fill="#0f172a" stroke="#64748b" stroke-width="1"/>
+    <text x="220" y="97" text-anchor="middle" class="text-white" font-size="7" font-weight="700">All 4</text>
+    <text x="220" y="107" text-anchor="middle" class="text-white" font-size="7" font-weight="700">needed</text>
+  </svg></div>
+  <div class="card-body">
+    <div class="meta-row"><div><span class="meta-label">When to use</span><span class="meta-tag use">Diagnosing why a change initiative is stalling or planning behavior change interventions</span></div></div>
+    <div class="meta-row"><div><span class="meta-label">When NOT to use</span><span class="meta-tag avoid">Technical or process changes with no significant behavioral component</span></div></div>
+    <div class="example">A retail bank wants to shift from product-pushing to needs-based selling. <strong>Role modeling:</strong> branch managers visibly use discovery questions in client meetings. <strong>Understanding:</strong> workshops show how needs-based selling increases wallet share by 2x. <strong>Confidence:</strong> reps practice in role-play labs and get real-time coaching. <strong>Reinforcement:</strong> commission plans shift from product volume to client satisfaction scores and cross-sell depth. Within two quarters, NPS rises 15 points.</div>
+    <div class="how-it-works"><strong>How it works:</strong> The Influence Model holds that sustainable behavior change requires all four levers working simultaneously. Most change programs over-index on understanding (communications, town halls) while neglecting the other three. The model forces leaders to ask: even if people understand the change, do they see it modeled? Do they feel capable? Do the formal systems reward it? Weakness in any single lever undermines the others.<ul class="questions"><li>Which of the four levers is weakest in our current change approach?</li><li>Are leaders visibly modeling the behaviors they're asking of the organization?</li><li>Do people have the skills and confidence to act differently, or just the knowledge?</li><li>Do formal incentives, processes, and metrics reinforce or contradict the desired behaviors?</li></ul></div>
+  </div>
+</div>
+
+<div class="card" id="customer-journey">
+  <div class="card-header"><h3>Customer Journey Map</h3><div class="tagline">Visualize the end-to-end customer experience across touchpoints and emotions</div></div>
+  <div class="card-visual"><svg viewBox="0 0 440 200" font-family="DM Sans, sans-serif">
+    <!-- Stage columns -->
+    <rect x="10" y="15" width="80" height="24" rx="4" class="node-navy"/>
+    <text x="50" y="31" text-anchor="middle" class="text-white" font-size="7" font-weight="600">Awareness</text>
+
+    <rect x="96" y="15" width="80" height="24" rx="4" class="node-navy"/>
+    <text x="136" y="31" text-anchor="middle" class="text-white" font-size="7" font-weight="600">Consider</text>
+
+    <rect x="182" y="15" width="80" height="24" rx="4" class="node-green"/>
+    <text x="222" y="31" text-anchor="middle" class="text-white" font-size="7" font-weight="600">Purchase</text>
+
+    <rect x="268" y="15" width="80" height="24" rx="4" class="node-navy"/>
+    <text x="308" y="31" text-anchor="middle" class="text-white" font-size="7" font-weight="600">Use</text>
+
+    <rect x="354" y="15" width="76" height="24" rx="4" class="node-gold"/>
+    <text x="392" y="31" text-anchor="middle" class="text-white" font-size="7" font-weight="600">Advocate</text>
+
+    <!-- Emotion labels -->
+    <text x="5" y="62" text-anchor="end" class="text-green" font-size="7">Happy</text>
+    <text x="5" y="100" text-anchor="end" class="text-muted" font-size="7">Neutral</text>
+    <text x="5" y="140" text-anchor="end" class="text-red" font-size="7">Frustrated</text>
+
+    <!-- Grid lines -->
+    <line x1="10" y1="60" x2="430" y2="60" stroke="#334155" stroke-width="0.5" stroke-dasharray="3,3"/>
+    <line x1="10" y1="100" x2="430" y2="100" stroke="#334155" stroke-width="0.5" stroke-dasharray="3,3"/>
+    <line x1="10" y1="140" x2="430" y2="140" stroke="#334155" stroke-width="0.5" stroke-dasharray="3,3"/>
+
+    <!-- Emotion curve: Awareness(happy) → Consider(neutral) → Purchase(frustrated) → Use(happy) → Advocate(very happy) -->
+    <path d="M50,68 C90,68 100,98 136,100 C170,102 190,132 222,130 C260,128 270,72 308,70 C340,68 360,58 392,55" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round"/>
+
+    <!-- Data points -->
+    <circle cx="50" cy="68" r="5" fill="#22c55e"/>
+    <circle cx="136" cy="100" r="5" fill="#94a3b8"/>
+    <circle cx="222" cy="130" r="5" fill="#ef4444"/>
+    <circle cx="308" cy="70" r="5" fill="#22c55e"/>
+    <circle cx="392" cy="55" r="5" fill="#c5a55a"/>
+
+    <!-- Pain point callout -->
+    <rect x="190" y="145" width="64" height="20" rx="3" class="node-red"/>
+    <text x="222" y="158" text-anchor="middle" class="text-white" font-size="6">Pain point</text>
+    <line x1="222" y1="145" x2="222" y2="135" stroke="#ef4444" stroke-width="1" stroke-dasharray="2,2"/>
+
+    <!-- Touchpoint labels -->
+    <text x="50" y="175" text-anchor="middle" class="text-muted" font-size="6">Social ad</text>
+    <text x="136" y="175" text-anchor="middle" class="text-muted" font-size="6">Reviews</text>
+    <text x="222" y="175" text-anchor="middle" class="text-muted" font-size="6">Checkout</text>
+    <text x="308" y="175" text-anchor="middle" class="text-muted" font-size="6">Onboarding</text>
+    <text x="392" y="175" text-anchor="middle" class="text-muted" font-size="6">Referral</text>
+
+    <text x="220" y="192" text-anchor="middle" class="text-muted text-xs">Touchpoints &amp; emotion mapped across the full lifecycle</text>
+  </svg></div>
+  <div class="card-body">
+    <div class="meta-row"><div><span class="meta-label">When to use</span><span class="meta-tag use">Identifying friction points, aligning teams around the customer experience</span></div></div>
+    <div class="meta-row"><div><span class="meta-label">When NOT to use</span><span class="meta-tag avoid">Internal operational problems with no direct customer-facing impact</span></div></div>
+    <div class="example">An e-commerce company maps the journey from first ad impression to post-purchase referral. They discover checkout is the worst moment: 68% cart abandonment driven by surprise shipping costs and forced account creation. By adding transparent pricing earlier (Consider stage) and guest checkout (Purchase stage), they cut abandonment to 41% and increase NPS from 32 to 51 within one quarter.</div>
+    <div class="how-it-works"><strong>How it works:</strong> A customer journey map plots every interaction a customer has with the organization across stages (awareness through advocacy), layering in emotional state, touchpoints, pain points, and moments of truth. The power is in making the invisible visible: teams that build the checkout flow rarely see the ad that set expectations, and marketing rarely sees the support tickets. The map forces end-to-end accountability and reveals where investment in experience will have the highest ROI.<ul class="questions"><li>Where is the biggest drop in customer emotion, and what causes it?</li><li>Which touchpoints are owned by different teams with no shared accountability?</li><li>What are the "moments of truth" where the experience is won or lost?</li><li>How does the actual journey differ from the one we designed?</li></ul></div>
+  </div>
+</div>
+
+<div class="card" id="nps">
+  <div class="card-header"><h3>NPS / Loyalty</h3><div class="tagline">Measure customer loyalty with a single question: "How likely are you to recommend us?"</div></div>
+  <div class="card-visual"><svg viewBox="0 0 440 200" font-family="DM Sans, sans-serif">
+    <!-- Score scale 0-10 -->
+    <text x="220" y="20" text-anchor="middle" class="text-muted text-xs" font-weight="600">0-10 Recommendation Likelihood</text>
+
+    <!-- Horizontal segmented bar -->
+    <!-- Detractors: 0-6 (red) -->
+    <rect x="20" y="35" width="252" height="40" rx="6" class="node-red"/>
+    <text x="146" y="55" text-anchor="middle" class="text-white" font-size="9" font-weight="700">DETRACTORS</text>
+    <text x="146" y="68" text-anchor="middle" class="text-white" font-size="8">Score: 0 – 6</text>
+
+    <!-- Passives: 7-8 (gray) -->
+    <rect x="276" y="35" width="72" height="40" rx="6" class="node-gray"/>
+    <text x="312" y="55" text-anchor="middle" class="text-white" font-size="8" font-weight="700">PASSIVES</text>
+    <text x="312" y="68" text-anchor="middle" class="text-white" font-size="8">7 – 8</text>
+
+    <!-- Promoters: 9-10 (green) -->
+    <rect x="352" y="35" width="72" height="40" rx="6" class="node-green"/>
+    <text x="388" y="55" text-anchor="middle" class="text-white" font-size="8" font-weight="700">PROMOTERS</text>
+    <text x="388" y="68" text-anchor="middle" class="text-white" font-size="8">9 – 10</text>
+
+    <!-- Formula -->
+    <rect x="80" y="95" width="280" height="36" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="220" y="112" text-anchor="middle" class="text-white" font-size="9" font-weight="700">NPS = % Promoters − % Detractors</text>
+    <text x="220" y="124" text-anchor="middle" class="text-muted" font-size="7">Range: −100 to +100</text>
+
+    <!-- Example calculation -->
+    <rect x="45" y="145" width="100" height="40" rx="5" fill="#1e293b" stroke="#22c55e" stroke-width="1"/>
+    <text x="95" y="161" text-anchor="middle" class="text-green" font-size="8" font-weight="600">45% Promoters</text>
+    <text x="95" y="174" text-anchor="middle" class="text-muted" font-size="7">advocates</text>
+
+    <text x="170" y="168" text-anchor="middle" class="text-white" font-size="14" font-weight="700">−</text>
+
+    <rect x="195" y="145" width="100" height="40" rx="5" fill="#1e293b" stroke="#ef4444" stroke-width="1"/>
+    <text x="245" y="161" text-anchor="middle" class="text-red" font-size="8" font-weight="600">20% Detractors</text>
+    <text x="245" y="174" text-anchor="middle" class="text-muted" font-size="7">at risk</text>
+
+    <text x="320" y="168" text-anchor="middle" class="text-white" font-size="14" font-weight="700">=</text>
+
+    <rect x="345" y="145" width="70" height="40" rx="5" class="node-gold"/>
+    <text x="380" y="165" text-anchor="middle" class="text-white" font-size="14" font-weight="700">+25</text>
+    <text x="380" y="178" text-anchor="middle" class="text-white" font-size="7">NPS</text>
+  </svg></div>
+  <div class="card-body">
+    <div class="meta-row"><div><span class="meta-label">When to use</span><span class="meta-tag use">Tracking customer loyalty over time and benchmarking against competitors</span></div></div>
+    <div class="meta-row"><div><span class="meta-label">When NOT to use</span><span class="meta-tag avoid">Diagnosing specific product or service issues (NPS tells you what, not why)</span></div></div>
+    <div class="example">A B2B software company surveys 2,000 accounts quarterly. NPS drops from +38 to +22 after a pricing change. Drilling into verbatims, detractors cluster around "price increase without new features." The company responds with a feature roadmap webinar and grandfathered pricing for long-tenure accounts, recovering to +31 within two quarters. They also discover that accounts with a dedicated CSM have NPS of +55 vs. +12 for self-serve — making the ROI case for expanding the CS team.</div>
+    <div class="how-it-works"><strong>How it works:</strong> NPS asks one question: "On a scale of 0-10, how likely are you to recommend us?" Responses split into Promoters (9-10), Passives (7-8), and Detractors (0-6). The score is simply % Promoters minus % Detractors, ranging from -100 to +100. NPS is powerful as a tracking metric and conversation starter, but it must be paired with follow-up questions ("why did you give that score?") to be actionable. The real value is in the segmentation and trend, not the absolute number.<ul class="questions"><li>What is our NPS by segment (enterprise vs. SMB, tenure, region)?</li><li>What are the top 3 themes in detractor verbatims — and are they fixable?</li><li>How does our NPS trend correlate with retention and expansion revenue?</li><li>Are passives closer to becoming promoters or detractors — what would tip them?</li></ul></div>
+  </div>
+</div>
+</div><!-- /grid -->
+
+<div class="section-title" id="innovation">
+  <h2>Innovation</h2>
+  <p>Discover unmet needs and design business models — 4 frameworks</p>
+</div>
+<div class="grid">
+<div class="card" id="jtbd">
+  <div class="card-header"><h3>Jobs to Be Done</h3><div class="tagline">What "job" does the customer hire this product for?</div></div>
+  <div class="card-visual"><svg viewBox="0 0 440 200" font-family="DM Sans, sans-serif">
+    <!-- Customer figure -->
+    <circle cx="220" cy="70" r="18" class="node-navy"/>
+    <text x="220" y="75" text-anchor="middle" class="text-white text-sm">Customer</text>
+    <!-- Functional job -->
+    <rect x="30" y="140" width="110" height="40" rx="6" class="node-green"/>
+    <text x="85" y="165" text-anchor="middle" class="text-white text-xs">Functional Job</text>
+    <line x1="200" y1="88" x2="100" y2="140" class="conn"/>
+    <!-- Emotional job -->
+    <rect x="165" y="140" width="110" height="40" rx="6" class="node-gold"/>
+    <text x="220" y="165" text-anchor="middle" class="text-white text-xs">Emotional Job</text>
+    <line x1="220" y1="88" x2="220" y2="140" class="conn"/>
+    <!-- Social job -->
+    <rect x="300" y="140" width="110" height="40" rx="6" class="node-navy"/>
+    <text x="355" y="165" text-anchor="middle" class="text-white text-xs">Social Job</text>
+    <line x1="240" y1="88" x2="340" y2="140" class="conn"/>
+    <!-- Arrows -->
+    <polygon points="100,140 96,132 104,132" fill="#94a3b8"/>
+    <polygon points="220,140 216,132 224,132" fill="#94a3b8"/>
+    <polygon points="340,140 336,132 344,132" fill="#94a3b8"/>
+  </svg></div>
+  <div class="card-body">
+    <div class="meta-row"><div><span class="meta-label">When to use</span><span class="meta-tag use">Discovering unmet needs, product innovation, repositioning existing products</span></div></div>
+    <div class="meta-row"><div><span class="meta-label">When NOT to use</span><span class="meta-tag avoid">Commodity markets where the job is obvious and undifferentiated</span></div></div>
+    <div class="example">Christensen's milkshake study: commuters "hired" milkshakes for a boring drive — not hunger. Competing against bananas and bagels, not other shakes. Led to thicker shakes with mix-ins for the morning commute job.</div>
+    <div class="how-it-works"><strong>How it works:</strong> Observe what customers actually do (not what they say), identify the functional, emotional, and social dimensions of the job, then design the offering around the full job.<ul class="questions"><li>What is the customer trying to accomplish in this situation?</li><li>What workarounds are they currently using?</li><li>What are the emotional and social dimensions beyond the functional task?</li><li>Who or what are the real competitors for this job?</li></ul></div>
+  </div>
+</div>
+
+<div class="card" id="bmc">
+  <div class="card-header"><h3>Business Model Canvas</h3><div class="tagline">Map all 9 building blocks of a business on one page</div></div>
+  <div class="card-visual"><svg viewBox="0 0 440 200" font-family="DM Sans, sans-serif">
+    <!-- Row 1: Partners, Activities, Value Prop, Relationships, Segments -->
+    <rect x="10" y="10" width="80" height="120" rx="4" class="node-gray"/>
+    <text x="50" y="38" text-anchor="middle" class="text-white text-xs">Key</text>
+    <text x="50" y="52" text-anchor="middle" class="text-white text-xs">Partners</text>
+    <rect x="95" y="10" width="80" height="58" rx="4" class="node-navy"/>
+    <text x="135" y="38" text-anchor="middle" class="text-white text-xs">Key</text>
+    <text x="135" y="52" text-anchor="middle" class="text-white text-xs">Activities</text>
+    <rect x="95" y="72" width="80" height="58" rx="4" class="node-navy"/>
+    <text x="135" y="100" text-anchor="middle" class="text-white text-xs">Key</text>
+    <text x="135" y="114" text-anchor="middle" class="text-white text-xs">Resources</text>
+    <rect x="180" y="10" width="80" height="120" rx="4" class="node-green"/>
+    <text x="220" y="38" text-anchor="middle" class="text-white text-xs">Value</text>
+    <text x="220" y="52" text-anchor="middle" class="text-white text-xs">Proposition</text>
+    <rect x="265" y="10" width="80" height="58" rx="4" class="node-navy"/>
+    <text x="305" y="38" text-anchor="middle" class="text-white text-xs">Customer</text>
+    <text x="305" y="52" text-anchor="middle" class="text-white text-xs">Relations</text>
+    <rect x="265" y="72" width="80" height="58" rx="4" class="node-navy"/>
+    <text x="305" y="100" text-anchor="middle" class="text-white text-xs">Channels</text>
+    <rect x="350" y="10" width="80" height="120" rx="4" class="node-gold"/>
+    <text x="390" y="38" text-anchor="middle" class="text-white text-xs">Customer</text>
+    <text x="390" y="52" text-anchor="middle" class="text-white text-xs">Segments</text>
+    <!-- Row 2: Cost Structure, Revenue Streams -->
+    <rect x="10" y="135" width="210" height="55" rx="4" class="node-red"/>
+    <text x="115" y="167" text-anchor="middle" class="text-white text-xs">Cost Structure</text>
+    <rect x="225" y="135" width="205" height="55" rx="4" class="node-green"/>
+    <text x="327" y="167" text-anchor="middle" class="text-white text-xs">Revenue Streams</text>
+  </svg></div>
+  <div class="card-body">
+    <div class="meta-row"><div><span class="meta-label">When to use</span><span class="meta-tag use">New venture design, business model pivots, communicating strategy to stakeholders</span></div></div>
+    <div class="meta-row"><div><span class="meta-label">When NOT to use</span><span class="meta-tag avoid">Deep-dive on a single component (use specialized tools instead)</span></div></div>
+    <div class="example">Airbnb: Key Partners = homeowners; Value Prop = affordable unique stays; Customer Segments = budget travelers &amp; hosts seeking income; Revenue = service fees on both sides; Channels = platform &amp; mobile app.</div>
+    <div class="how-it-works"><strong>How it works:</strong> Fill in each of the 9 blocks to create a holistic snapshot of how a business creates, delivers, and captures value. Iterate by testing assumptions in each block.<ul class="questions"><li>What is the core value proposition and who are the target segments?</li><li>What key resources and activities are required to deliver?</li><li>How do the cost structure and revenue streams balance?</li><li>Which block is the weakest — where does the model break first?</li></ul></div>
+  </div>
+</div>
+
+<div class="card" id="value-prop">
+  <div class="card-header"><h3>Value Proposition Canvas</h3><div class="tagline">Fit your product to customer jobs, pains, and gains</div></div>
+  <div class="card-visual"><svg viewBox="0 0 440 200" font-family="DM Sans, sans-serif">
+    <!-- Customer Profile (circle) -->
+    <circle cx="330" cy="100" r="70" fill="none" stroke="#3b82f6" stroke-width="2"/>
+    <text x="330" y="60" text-anchor="middle" class="text-gold text-xs">Jobs</text>
+    <text x="295" y="120" text-anchor="middle" class="text-red text-xs">Pains</text>
+    <text x="365" y="120" text-anchor="middle" class="text-green text-xs">Gains</text>
+    <line x1="330" y1="70" x2="310" y2="100" class="conn"/>
+    <line x1="330" y1="70" x2="350" y2="100" class="conn"/>
+    <text x="330" y="155" text-anchor="middle" class="text-muted text-xs">Customer Profile</text>
+    <!-- Value Map (square) -->
+    <rect x="40" y="30" width="140" height="140" rx="8" fill="none" stroke="#22c55e" stroke-width="2"/>
+    <text x="110" y="65" text-anchor="middle" class="text-gold text-xs">Products</text>
+    <text x="110" y="85" text-anchor="middle" class="text-gold text-xs">&amp; Services</text>
+    <text x="70" y="120" text-anchor="middle" class="text-red text-xs">Pain</text>
+    <text x="70" y="133" text-anchor="middle" class="text-red text-xs">Relievers</text>
+    <text x="148" y="120" text-anchor="middle" class="text-green text-xs">Gain</text>
+    <text x="148" y="133" text-anchor="middle" class="text-green text-xs">Creators</text>
+    <text x="110" y="155" text-anchor="middle" class="text-muted text-xs">Value Map</text>
+    <!-- Connection arrow -->
+    <line x1="185" y1="100" x2="255" y2="100" class="conn"/>
+    <polygon points="255,100 247,96 247,104" fill="#94a3b8"/>
+    <text x="220" y="92" text-anchor="middle" class="text-muted text-xs">FIT</text>
+  </svg></div>
+  <div class="card-body">
+    <div class="meta-row"><div><span class="meta-label">When to use</span><span class="meta-tag use">Product-market fit analysis, feature prioritization, go-to-market messaging</span></div></div>
+    <div class="meta-row"><div><span class="meta-label">When NOT to use</span><span class="meta-tag avoid">When you lack direct customer insight — the canvas requires real data, not assumptions</span></div></div>
+    <div class="example">Slack vs email: Customer pains = email overload, lost threads, slow decisions. Slack's pain relievers = channels, search, integrations. Gain creators = transparency, speed, async flexibility.</div>
+    <div class="how-it-works"><strong>How it works:</strong> Map the customer profile (jobs, pains, gains) on the right, then design the value map (products, pain relievers, gain creators) on the left. Achieve fit when every major pain and gain is addressed.<ul class="questions"><li>Which customer pains are most severe and underserved?</li><li>Which gains would delight customers beyond their expectations?</li><li>Do our pain relievers and gain creators map directly to the top pains and gains?</li><li>Where is the fit weakest — what gaps remain?</li></ul></div>
+  </div>
+</div>
+
+<div class="card" id="advantage-matrix">
+  <div class="card-header"><h3>Advantage Matrix</h3><div class="tagline">Classify industries by the size and number of competitive advantages</div></div>
+  <div class="card-visual"><svg viewBox="0 0 440 200" font-family="DM Sans, sans-serif">
+    <!-- Axes -->
+    <line x1="60" y1="180" x2="420" y2="180" class="conn"/>
+    <line x1="60" y1="180" x2="60" y2="15" class="conn"/>
+    <text x="240" y="198" text-anchor="middle" class="text-muted text-xs">Size of advantage</text>
+    <text x="18" y="100" text-anchor="middle" class="text-muted text-xs" transform="rotate(-90,18,100)">Ways to compete</text>
+    <text x="150" y="195" text-anchor="middle" class="text-muted text-xs">Small</text>
+    <text x="340" y="195" text-anchor="middle" class="text-muted text-xs">Large</text>
+    <!-- Quadrants -->
+    <rect x="62" y="17" width="178" height="80" rx="4" class="node-gold" opacity="0.25"/>
+    <text x="151" y="50" text-anchor="middle" class="text-white text-sm">Fragmented</text>
+    <text x="151" y="68" text-anchor="middle" class="text-muted text-xs">Restaurants, fashion</text>
+    <rect x="242" y="17" width="176" height="80" rx="4" class="node-green" opacity="0.25"/>
+    <text x="330" y="50" text-anchor="middle" class="text-green text-sm">Specialized</text>
+    <text x="330" y="68" text-anchor="middle" class="text-muted text-xs">Pharma, luxury</text>
+    <rect x="62" y="99" width="178" height="80" rx="4" class="node-red" opacity="0.25"/>
+    <text x="151" y="132" text-anchor="middle" class="text-red text-sm">Stalemate</text>
+    <text x="151" y="150" text-anchor="middle" class="text-muted text-xs">Bulk chemicals, paper</text>
+    <rect x="242" y="99" width="176" height="80" rx="4" class="node-navy" opacity="0.25"/>
+    <text x="330" y="132" text-anchor="middle" class="text-white text-sm">Volume</text>
+    <text x="330" y="150" text-anchor="middle" class="text-muted text-xs">Semiconductors, retail</text>
+  </svg></div>
+  <div class="card-body">
+    <div class="meta-row"><div><span class="meta-label">When to use</span><span class="meta-tag use">Industry analysis, market entry strategy, understanding competitive dynamics</span></div></div>
+    <div class="meta-row"><div><span class="meta-label">When NOT to use</span><span class="meta-tag avoid">Firm-level strategy — the matrix classifies industries, not individual companies</span></div></div>
+    <div class="example">Restaurants are fragmented (many ways to differentiate but no single player dominates). Semiconductors are volume (few ways to compete but massive scale advantages for winners like TSMC).</div>
+    <div class="how-it-works"><strong>How it works:</strong> Plot industries on two axes — number of approaches to achieve advantage vs. the potential size of that advantage. Each quadrant implies a different strategy: niche focus, scale, differentiation, or cost discipline.<ul class="questions"><li>How many distinct ways can firms in this industry differentiate?</li><li>How large is the profit gap between leaders and laggards?</li><li>Is the industry trending toward consolidation (volume) or fragmentation?</li><li>What quadrant-specific strategy should we pursue?</li></ul></div>
+  </div>
+</div>
+</div><!-- /grid -->
+
+<div class="section-title" id="pricing">
+  <h2>Pricing</h2>
+  <p>Set prices that capture value and drive growth — 5 frameworks</p>
+</div>
+<div class="grid">
+<div class="card" id="value-based">
+  <div class="card-header"><h3>Value-Based Pricing</h3><div class="tagline">Price to perceived value, not cost</div></div>
+  <div class="card-visual"><svg viewBox="0 0 440 200" font-family="DM Sans, sans-serif">
+    <!-- Bars -->
+    <rect x="60" y="130" width="70" height="50" rx="4" class="node-gray"/>
+    <text x="95" y="160" text-anchor="middle" class="text-white text-xs">Cost</text>
+    <text x="95" y="190" text-anchor="middle" class="text-muted text-xs">$40</text>
+    <rect x="155" y="95" width="70" height="85" rx="4" class="node-red"/>
+    <text x="190" y="142" text-anchor="middle" class="text-white text-xs">Competitor</text>
+    <text x="190" y="190" text-anchor="middle" class="text-muted text-xs">$70</text>
+    <rect x="250" y="65" width="70" height="115" rx="4" class="node-green"/>
+    <text x="285" y="118" text-anchor="middle" class="text-white text-xs">Your</text>
+    <text x="285" y="132" text-anchor="middle" class="text-white text-xs">Price</text>
+    <text x="285" y="190" text-anchor="middle" class="text-muted text-xs">$95</text>
+    <rect x="345" y="30" width="70" height="150" rx="4" class="node-gold"/>
+    <text x="380" y="100" text-anchor="middle" class="text-white text-xs">Perceived</text>
+    <text x="380" y="114" text-anchor="middle" class="text-white text-xs">Value</text>
+    <text x="380" y="190" text-anchor="middle" class="text-muted text-xs">$130</text>
+    <!-- Value capture zone -->
+    <line x1="250" y1="55" x2="320" y2="55" stroke="#22c55e" stroke-width="1" stroke-dasharray="4"/>
+    <line x1="250" y1="30" x2="320" y2="30" stroke="#c5a55a" stroke-width="1" stroke-dasharray="4"/>
+    <text x="340" y="45" text-anchor="start" class="text-muted text-xs">Value gap</text>
+    <!-- Axis -->
+    <line x1="40" y1="180" x2="430" y2="180" class="conn"/>
+  </svg></div>
+  <div class="card-body">
+    <div class="meta-row"><div><span class="meta-label">When to use</span><span class="meta-tag use">Differentiated products, B2B solutions with measurable ROI, premium brands</span></div></div>
+    <div class="meta-row"><div><span class="meta-label">When NOT to use</span><span class="meta-tag avoid">Commodity markets where perceived value is uniform across suppliers</span></div></div>
+    <div class="example">Enterprise software: Salesforce prices based on revenue lift and productivity gains for sales teams — not server costs. A $150/user/month price is justified by thousands in incremental deal value.</div>
+    <div class="how-it-works"><strong>How it works:</strong> Quantify the economic value your product creates for the customer, then capture a share of that value as your price. The gap between cost and value is the pricing power zone.<ul class="questions"><li>What is the measurable economic value the customer receives?</li><li>How does the customer perceive value relative to the next best alternative?</li><li>What share of created value can we credibly capture?</li><li>Can we segment customers by willingness to pay?</li></ul></div>
+  </div>
+</div>
+
+<div class="card" id="cost-plus">
+  <div class="card-header"><h3>Cost-Plus Pricing</h3><div class="tagline">Cost + target margin = price</div></div>
+  <div class="card-visual"><svg viewBox="0 0 440 200" font-family="DM Sans, sans-serif">
+    <!-- Stacked bar -->
+    <rect x="120" y="140" width="200" height="35" rx="4" class="node-gray"/>
+    <text x="220" y="162" text-anchor="middle" class="text-white text-xs">Raw Materials — $30</text>
+    <rect x="120" y="103" width="200" height="35" rx="4" class="node-navy"/>
+    <text x="220" y="125" text-anchor="middle" class="text-white text-xs">Labor &amp; Overhead — $25</text>
+    <rect x="120" y="66" width="200" height="35" rx="4" class="node-red"/>
+    <text x="220" y="88" text-anchor="middle" class="text-white text-xs">Distribution — $10</text>
+    <rect x="120" y="29" width="200" height="35" rx="4" class="node-green"/>
+    <text x="220" y="51" text-anchor="middle" class="text-white text-xs">Margin (20%) — $16</text>
+    <!-- Price label -->
+    <line x1="330" y1="29" x2="370" y2="29" class="conn"/>
+    <line x1="330" y1="175" x2="370" y2="175" class="conn"/>
+    <line x1="370" y1="29" x2="370" y2="175" class="conn"/>
+    <text x="390" y="105" text-anchor="start" class="text-white text-sm">$81</text>
+    <text x="390" y="120" text-anchor="start" class="text-muted text-xs">Price</text>
+    <!-- Equals sign -->
+    <text x="95" y="100" text-anchor="middle" class="text-muted text-sm">Σ Costs</text>
+    <text x="95" y="118" text-anchor="middle" class="text-muted text-sm">+ Margin</text>
+  </svg></div>
+  <div class="card-body">
+    <div class="meta-row"><div><span class="meta-label">When to use</span><span class="meta-tag use">Manufacturing, government contracts, regulated utilities, stable-cost industries</span></div></div>
+    <div class="meta-row"><div><span class="meta-label">When NOT to use</span><span class="meta-tag avoid">Markets where perceived value far exceeds cost (leaving money on the table)</span></div></div>
+    <div class="example">Manufacturing: a furniture maker calculates wood ($30), labor ($25), shipping ($10), adds a 20% margin → sells at $81. Simple, transparent, and defensible in contract negotiations.</div>
+    <div class="how-it-works"><strong>How it works:</strong> Sum all direct and indirect costs of producing a unit, then add a fixed percentage or dollar margin. Straightforward to calculate and explain, but ignores what customers will actually pay.<ul class="questions"><li>Do we have accurate, fully-loaded cost accounting?</li><li>Is our target margin competitive for this industry?</li><li>Are we leaving value on the table by ignoring willingness to pay?</li><li>How do volume changes affect unit costs and the resulting price?</li></ul></div>
+  </div>
+</div>
+
+<div class="card" id="competitive">
+  <div class="card-header"><h3>Competitive Pricing</h3><div class="tagline">Price relative to the competitive set</div></div>
+  <div class="card-visual"><svg viewBox="0 0 440 200" font-family="DM Sans, sans-serif">
+    <!-- Price line -->
+    <line x1="40" y1="100" x2="420" y2="100" class="conn"/>
+    <text x="40" y="90" text-anchor="start" class="text-muted text-xs">Low</text>
+    <text x="420" y="90" text-anchor="end" class="text-muted text-xs">High</text>
+    <text x="230" y="80" text-anchor="middle" class="text-muted text-xs">Market Price Range</text>
+    <!-- Competitor dots -->
+    <circle cx="120" cy="100" r="8" class="node-gray"/>
+    <text x="120" y="125" text-anchor="middle" class="text-muted text-xs">Budget</text>
+    <text x="120" y="137" text-anchor="middle" class="text-muted text-xs">Brand C</text>
+    <circle cx="210" cy="100" r="8" class="node-gray"/>
+    <text x="210" y="125" text-anchor="middle" class="text-muted text-xs">Competitor A</text>
+    <circle cx="270" cy="100" r="8" class="node-gray"/>
+    <text x="270" y="125" text-anchor="middle" class="text-muted text-xs">Competitor B</text>
+    <circle cx="370" cy="100" r="8" class="node-gray"/>
+    <text x="370" y="125" text-anchor="middle" class="text-muted text-xs">Premium</text>
+    <text x="370" y="137" text-anchor="middle" class="text-muted text-xs">Brand D</text>
+    <!-- Your positioning options -->
+    <polygon points="160,60 155,50 165,50" fill="#ef4444"/>
+    <text x="160" y="47" text-anchor="middle" class="text-red text-xs">Discount</text>
+    <polygon points="240,60 235,50 245,50" fill="#22c55e"/>
+    <text x="240" y="47" text-anchor="middle" class="text-green text-xs">Parity</text>
+    <polygon points="320,60 315,50 325,50" fill="#c5a55a"/>
+    <text x="320" y="47" text-anchor="middle" class="text-white text-xs">Premium</text>
+    <!-- Dashed lines from options to line -->
+    <line x1="160" y1="62" x2="160" y2="95" stroke="#ef4444" stroke-width="1" stroke-dasharray="3"/>
+    <line x1="240" y1="62" x2="240" y2="95" stroke="#22c55e" stroke-width="1" stroke-dasharray="3"/>
+    <line x1="320" y1="62" x2="320" y2="95" stroke="#c5a55a" stroke-width="1" stroke-dasharray="3"/>
+    <!-- Label -->
+    <text x="240" y="170" text-anchor="middle" class="text-muted text-xs">▲ Your positioning options</text>
+  </svg></div>
+  <div class="card-body">
+    <div class="meta-row"><div><span class="meta-label">When to use</span><span class="meta-tag use">Mature markets with transparent pricing, commoditized products, market entry</span></div></div>
+    <div class="meta-row"><div><span class="meta-label">When NOT to use</span><span class="meta-tag avoid">Highly differentiated products where competitive price anchors are misleading</span></div></div>
+    <div class="example">Consumer electronics: a new smartphone brand maps competitors' prices ($299–$999), then positions at $449 — undercutting flagships while signaling quality above budget tier.</div>
+    <div class="how-it-works"><strong>How it works:</strong> Map the competitive price landscape, then choose a positioning — discount (volume play), parity (compete on features), or premium (signal superiority). Price communicates brand positioning.<ul class="questions"><li>What is the full range of competitor prices and what does each signal?</li><li>Where are the price gaps that represent positioning opportunities?</li><li>Does our cost structure support the chosen price point sustainably?</li><li>How will competitors react to our pricing move?</li></ul></div>
+  </div>
+</div>
+
+<div class="card" id="dynamic">
+  <div class="card-header"><h3>Dynamic Pricing</h3><div class="tagline">Real-time price adjustment based on supply, demand, and context</div></div>
+  <div class="card-visual"><svg viewBox="0 0 440 200" font-family="DM Sans, sans-serif">
+    <!-- Axes -->
+    <line x1="60" y1="175" x2="400" y2="175" class="conn"/>
+    <line x1="60" y1="175" x2="60" y2="20" class="conn"/>
+    <text x="230" y="195" text-anchor="middle" class="text-muted text-xs">Quantity</text>
+    <text x="25" y="100" text-anchor="middle" class="text-muted text-xs" transform="rotate(-90,25,100)">Price</text>
+    <!-- Supply curve -->
+    <path d="M80,155 Q200,140 380,40" fill="none" stroke="#3b82f6" stroke-width="2"/>
+    <text x="385" y="35" text-anchor="start" class="text-muted text-xs">Supply</text>
+    <!-- Demand curve -->
+    <path d="M80,40 Q200,60 380,155" fill="none" stroke="#c5a55a" stroke-width="2"/>
+    <text x="385" y="160" text-anchor="start" class="text-muted text-xs">Demand</text>
+    <!-- Surge price point -->
+    <circle cx="155" cy="80" r="6" class="node-red"/>
+    <text x="155" y="68" text-anchor="middle" class="text-red text-xs">Surge</text>
+    <line x1="60" y1="80" x2="149" y2="80" stroke="#ef4444" stroke-width="1" stroke-dasharray="3"/>
+    <!-- Normal equilibrium -->
+    <circle cx="225" cy="100" r="6" class="node-green"/>
+    <text x="250" y="98" text-anchor="start" class="text-green text-xs">Equilibrium</text>
+    <!-- Off-peak point -->
+    <circle cx="310" cy="128" r="6" class="node-navy"/>
+    <text x="310" y="148" text-anchor="middle" class="text-white text-xs">Off-peak</text>
+    <line x1="60" y1="128" x2="304" y2="128" stroke="#3b82f6" stroke-width="1" stroke-dasharray="3"/>
+  </svg></div>
+  <div class="card-body">
+    <div class="meta-row"><div><span class="meta-label">When to use</span><span class="meta-tag use">Perishable inventory, variable demand, real-time data availability</span></div></div>
+    <div class="meta-row"><div><span class="meta-label">When NOT to use</span><span class="meta-tag avoid">Trust-sensitive markets where price fluctuations feel unfair (healthcare, essentials)</span></div></div>
+    <div class="example">Ride-sharing: Uber's surge pricing multiplies fares 1.5–3x during peak demand (rain, events, holidays), then drops to base rates in off-peak hours — balancing driver supply with rider demand in real time.</div>
+    <div class="how-it-works"><strong>How it works:</strong> Continuously monitor supply, demand, competitor prices, and contextual signals. Adjust prices algorithmically to maximize revenue or utilization. Requires real-time data infrastructure and customer acceptance.<ul class="questions"><li>Do we have the real-time data infrastructure to support dynamic adjustments?</li><li>How price-sensitive is our customer base — will dynamic pricing erode trust?</li><li>What are the floor and ceiling prices to prevent PR disasters?</li><li>How quickly do supply and demand shift in our market?</li></ul></div>
+  </div>
+</div>
+
+<div class="card" id="freemium">
+  <div class="card-header"><h3>Freemium</h3><div class="tagline">Free base tier drives adoption; premium features drive revenue</div></div>
+  <div class="card-visual"><svg viewBox="0 0 440 200" font-family="DM Sans, sans-serif">
+    <!-- Funnel -->
+    <polygon points="100,25 340,25 310,75 130,75" class="node-navy"/>
+    <text x="220" y="55" text-anchor="middle" class="text-white text-xs">Free Users — 100M</text>
+    <polygon points="130,80 310,80 290,120 150,120" class="node-gold"/>
+    <text x="220" y="105" text-anchor="middle" class="text-white text-xs">Active / Engaged — 40M</text>
+    <polygon points="150,125 290,125 270,160 170,160" class="node-green"/>
+    <text x="220" y="147" text-anchor="middle" class="text-white text-xs">Trial / Freemium+ — 10M</text>
+    <polygon points="170,165 270,165 255,192 185,192" class="node-red"/>
+    <text x="220" y="183" text-anchor="middle" class="text-white text-xs">Paid — 4M (4%)</text>
+    <!-- Conversion rates on right -->
+    <text x="355" y="55" text-anchor="start" class="text-muted text-xs">100%</text>
+    <text x="355" y="105" text-anchor="start" class="text-muted text-xs">40% active</text>
+    <text x="355" y="147" text-anchor="start" class="text-muted text-xs">10% trial</text>
+    <text x="355" y="183" text-anchor="start" class="text-green text-xs">4% convert</text>
+    <!-- Arrows -->
+    <line x1="340" y1="55" x2="352" y2="55" class="conn"/>
+    <line x1="312" y1="105" x2="352" y2="105" class="conn"/>
+    <line x1="292" y1="147" x2="352" y2="147" class="conn"/>
+    <line x1="272" y1="183" x2="352" y2="183" class="conn"/>
+  </svg></div>
+  <div class="card-body">
+    <div class="meta-row"><div><span class="meta-label">When to use</span><span class="meta-tag use">Low marginal cost products, network effects, large addressable markets</span></div></div>
+    <div class="meta-row"><div><span class="meta-label">When NOT to use</span><span class="meta-tag avoid">High marginal cost per user, small markets where 2–5% conversion cannot sustain the business</span></div></div>
+    <div class="example">Spotify: 615M total users, ~240M paying subscribers (~39% conversion). Free tier is ad-supported; Premium removes ads, adds offline play and higher quality. Free users drive word-of-mouth and network effects.</div>
+    <div class="how-it-works"><strong>How it works:</strong> Offer a genuinely useful free tier to maximize adoption. Design premium features that power users need but casual users can live without. The free tier is a marketing channel, not a cost center.<ul class="questions"><li>Is the free tier valuable enough to drive organic adoption and word-of-mouth?</li><li>Is the premium upgrade compelling enough to convert 2–5% of free users?</li><li>Can the business sustain the cost of free users until conversion scales?</li><li>Where is the right feature boundary between free and paid?</li></ul></div>
+  </div>
+</div>
+</div><!-- /grid -->
+<footer>
+  <p><a href="https://github.com/gcamilo/management-consulting">gcamilo/management-consulting</a> · 42 frameworks · 22 files · 5,300+ lines · MIT License</p>
+  <p style="margin-top:6px;">By <a href="https://github.com/gcamilo">Gustavo Camilo</a> · Built with <a href="https://claude.ai/claude-code">Claude Code</a></p>
+  <p style="margin-top:10px; font-size:0.75rem;">Each framework card shows the visual diagram, when to use it, when to avoid it, a concrete example, and step-by-step mechanics with key questions. The full skill includes practitioner workflows, good vs bad output examples, common mistakes, failure conditions, and framework combinations — see the <a href="https://github.com/gcamilo/management-consulting#framework-depth">README</a> for details.</p>
+</footer>
+
+</div>
+</body>
+</html>
