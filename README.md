@@ -120,11 +120,20 @@ Evaluated with [gcamilo/skill-eval](https://github.com/gcamilo/skill-eval) — a
 | T3 — Decision Quality | Options, falsifiability, assumptions | **+0.4** |
 | **Overall** | | **+0.9** |
 
+**Blind A/B comparator (skill-creator eval):**
+
+- Skill wins 3/3 rounds — avg **9.2 vs 6.5** baseline (Opus judge, blinded to source)
+- Biggest gap on ambiguous prompts: **9.0 vs 5.5**
+- Programmatic evidence checkers: **48–99 labels** (skill) vs **0** (baseline)
+
+![Eval Results](assets/eval-results.png)
+
 **Key findings:**
 
 - **Easy prompts show the largest gap** — T1 delta of +4.8 on straightforward prompts. The skill enforces structured process that Opus naturally skips when the question seems simple.
 - **Pairwise results** — skill wins on hard and ambiguous prompts; baseline wins on well-specified prompts where the framework overhead adds less value.
 - **Hard gate fix was critical** — the original skill stopped at clarifying questions on vague prompts. The fixed version states assumptions and proceeds, which is what a real consultant does.
+- **Evidence labeling is the sharpest signal** — the skill consistently produces 48–99 labeled claims per response; baseline produces none. This is the clearest measurable difference in process discipline.
 
 ## Customization
 
