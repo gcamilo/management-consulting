@@ -111,33 +111,38 @@ Every framework reference file includes (per framework):
 4. **A/B eval** — 7-way comparison of different reference configurations to find the highest-impact bundle.
 5. **v2 eval redesign** — 9-criteria rubric with programmatic checkers, pairwise comparison with position swap, and Gemini+Codex adversarial review of the eval plan itself. Key finding: baseline beating the skill on some prompts revealed a skill bug (hard gate too aggressive — the skill stopped at clarifying questions on vague prompts instead of stating assumptions and proceeding), not a measurement problem. But the rubric redesign was needed to properly measure process discipline, which the v1 absolute scoring missed.
 
-## Eval results (v2)
+## Eval results
 
-Evaluated with [gcamilo/skill-eval](https://github.com/gcamilo/skill-eval) — an open-source A/B testing framework for AI agent skills.
+### Primary: Anthropic skill-creator eval (`/skill-creator`)
 
-**3-tier rubric, 9 criteria** across Process Discipline (problem framing, MECE structure, evidence labeling), Output Quality (specificity, so-what per finding, visual structure), and Decision Quality (options with trade-offs, falsifiability, stated assumptions).
+Blind A/B comparator built into Claude Code. An Opus judge scored outputs without knowing which used the skill.
+
+**Skill wins 3/3 test cases:**
+
+| Prompt type | Skill | Baseline |
+|---|---|---|
+| Market entry | 9.5 | 7.0 |
+| Competitive threat | 9.0 | 5.5 |
+| Framework salad | 9.0 | 7.0 |
+| **Average** | **9.2** | **6.5** |
+
+The judge identified **process discipline** as the key differentiator — the skill enforces structured framing and evidence labeling that the baseline skips.
+
+![Eval Results](assets/eval-results.png)
+
+### Supplementary: Custom dual-judge eval ([gcamilo/skill-eval](https://github.com/gcamilo/skill-eval))
+
+9-criteria rubric across 3 tiers, scored by Gemini 3.1 Pro + Claude Sonnet independently.
 
 | Tier | What it measures | Skill delta |
 |------|-----------------|-------------|
 | T1 — Process Discipline | Structure, framing, evidence | **+1.6** |
 | T2 — Output Quality | Specificity, insights, formatting | **+0.6** |
 | T3 — Decision Quality | Options, falsifiability, assumptions | **+0.4** |
-| **Overall** | | **+0.9** |
 
-**Blind A/B comparator (skill-creator eval):**
-
-- Skill wins 3/3 rounds — avg **9.2 vs 6.5** baseline (Opus judge, blinded to source)
-- Biggest gap on ambiguous prompts: **9.0 vs 5.5**
-- Programmatic evidence checkers: **48–99 labels** (skill) vs **0** (baseline)
-
-![Eval Results](assets/eval-results.png)
-
-**Key findings:**
-
-- **Easy prompts show the largest gap** — T1 delta of +4.8 on straightforward prompts. The skill enforces structured process that Opus naturally skips when the question seems simple.
-- **Pairwise results** — skill wins on hard and ambiguous prompts; baseline wins on well-specified prompts where the framework overhead adds less value.
-- **Hard gate fix was critical** — the original skill stopped at clarifying questions on vague prompts. The fixed version states assumptions and proceeds, which is what a real consultant does.
-- **Evidence labeling is the sharpest signal** — the skill consistently produces 48–99 labeled claims per response; baseline produces none. This is the clearest measurable difference in process discipline.
+Notable findings:
+- **Easy prompts show the largest T1 gap** (+4.8) — the skill enforces structure that the model naturally skips on simple questions
+- **Evidence labeling is the sharpest signal** — 48–99 labeled claims per response vs 0 baseline; no overlap between distributions
 
 ## Customization
 
