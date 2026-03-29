@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/logo.png" alt="management-consulting" width="128">
+</p>
+
 # management-consulting — Strategy Skill for AI Coding Agents
 
 Turn your AI agent into a structured thinking partner for strategy, decisions, and analysis. 42 frameworks with practitioner-grade depth — not textbook theory, but step-by-step workflows, real examples, common mistakes, and when each framework breaks down.
