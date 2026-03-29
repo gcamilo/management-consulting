@@ -222,11 +222,14 @@ If any box is unchecked, fix it before responding.
 ## Anti-patterns
 
 - MECE theater: exhaustive trees with no decision path
-- Framework salad: applying 5 frameworks when 1 suffices
+- Framework salad: applying 5 frameworks when 1 suffices. Running 6 frameworks x 3 AIs = 18 analyses does NOT make the answer better if they all share the same blind spot.
 - Boiling the ocean: analyzing everything instead of the 2-3 things that matter
 - Unsupported numbers: citing figures without source, time period, or unit
 - Generic recommendations: "improve customer experience" (how? by whom? by when?)
 - Skipping the "so what": data without implications is incomplete
+- **Winning by default:** When comparing options, the rejected option gets all the scrutiny while the "alternative" wins by not being examined. Apply equal rigor to the recommendation AND the runner-up. If the alternative hasn't survived the same stress test as the frontrunner, it's a default, not a recommendation.
+- **Market description masquerading as investment analysis:** Cataloguing an industry ("there are 5,000 towers, 4 submarine cables, 2 data centers") is research, not analysis. Analysis answers: "what specific asset do I buy, at what price, generating what cash flow, and why does the customer need it?"
+- **Consensus without independence:** Multiple AI models agreeing on a recommendation is not validation if they all received the same (incomplete) context. They may be independently reaching the same undertested conclusion. One skeptic's question is worth more than five agreeing models.
 
 ## Gotchas (things Claude gets wrong without guidance)
 
@@ -236,3 +239,4 @@ If any box is unchecked, fix it before responding.
 - **Confuses frameworks with analysis** -- naming a framework is not analysis. Applying it with specific data is.
 - **Ignores politics and implementation** -- the "right" answer that can't be implemented is the wrong answer. Always ask about organizational constraints.
 - **Treats all evidence equally** -- a CEO quote and a peer-reviewed study are not the same. Weight evidence by quality.
+- **Recommends sectors instead of deals** -- "enter digital infrastructure" is not actionable. "Acquire a 5 MW data center at $8M/MW generating 14% unlevered IRR" is actionable. If you can't name the asset, the price, and the return, you don't have a recommendation. Before endorsing any option, ask: "what specific thing am I buying and why can't the customer solve this themselves?" If one obvious question kills the thesis, the analysis was shallow.
