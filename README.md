@@ -113,11 +113,34 @@ Every framework reference file includes (per framework):
 
 ## Eval results
 
-### Primary: Anthropic skill-creator eval (`/skill-creator`)
+### Latest: Post-polish (Apr 29 2026) — [skill-eval](https://github.com/gcamilo/skill-eval) v2 rubric
 
-Blind A/B comparator built into Claude Code. An Opus judge scored outputs without knowing which used the skill.
+Re-run after the Apr 29 polish (mode-detection cues, `KILL CONDITIONS` section, `[E]` evidence label, context-check rename). Gemini-flash judge, Sonnet generation, `skill_only` approach (no examples bundle).
 
-**Skill wins 3/3 test cases:**
+**Skill wins 3/3 prompts:**
+
+| Prompt | Tier | Skill | Baseline | Δ |
+|---|---|---|---|---|
+| market-entry | standard | **9.7** | 7.5 | +2.2 |
+| ambig-competitive | ambiguous | **6.8** | 5.5 | +1.3 |
+| adv-framework-salad | adversarial | **6.8** | 6.0 | +0.8 |
+| **Average** | — | **7.8** | **6.3** | **+1.5** |
+
+**By tier:**
+
+| Tier | What it measures | Skill | Baseline | Δ |
+|------|-----------------|-------|----------|---|
+| T1 — Process Discipline | Structure, framing, evidence | **6.1** | 3.9 | **+2.2** |
+| T2 — Output Quality | Specificity, insights, formatting | 7.6 | 7.1 | +0.5 |
+| T3 — Decision Quality | Options, falsifiability, assumptions | **9.7** | 8.0 | **+1.7** |
+
+![Eval Results](assets/eval-results.png)
+
+The hard prompts show the polished skill correctly applying **Quick Structure mode** — shorter, focused responses that ask for the data needed before going deeper. On the framework-salad adversarial prompt, Decision Quality scored 10.0 (judge agreed that pushing back on the 4-framework request was the right call), even though Process Discipline scored lower because the response was short. The rubric still rewards heavy structure; the skill now correctly trades structure for responsiveness on vague/adversarial inputs.
+
+### Pre-polish baseline (Apr 24 2026)
+
+#### Anthropic skill-creator blind A/B (`/skill-creator`, Opus judge)
 
 | Prompt type | Skill | Baseline |
 |---|---|---|
@@ -126,19 +149,15 @@ Blind A/B comparator built into Claude Code. An Opus judge scored outputs withou
 | Framework salad | 9.0 | 7.0 |
 | **Average** | **9.2** | **6.5** |
 
-The judge identified **process discipline** as the key differentiator — the skill enforces structured framing and evidence labeling that the baseline skips.
+The judge identified **process discipline** as the key differentiator — the skill enforces structured framing and evidence labeling that the baseline skips. Not yet re-run after the Apr 29 polish.
 
-![Eval Results](assets/eval-results.png)
+#### Custom dual-judge eval (skill-eval v2, Gemini 3.1 Pro + Claude Sonnet)
 
-### Supplementary: Custom dual-judge eval ([gcamilo/skill-eval](https://github.com/gcamilo/skill-eval))
-
-9-criteria rubric across 3 tiers, scored by Gemini 3.1 Pro + Claude Sonnet independently.
-
-| Tier | What it measures | Skill delta |
-|------|-----------------|-------------|
-| T1 — Process Discipline | Structure, framing, evidence | **+1.6** |
-| T2 — Output Quality | Specificity, insights, formatting | **+0.6** |
-| T3 — Decision Quality | Options, falsifiability, assumptions | **+0.4** |
+| Tier | Skill delta |
+|------|-------------|
+| T1 — Process Discipline | +1.6 |
+| T2 — Output Quality | +0.6 |
+| T3 — Decision Quality | +0.4 |
 
 Notable findings:
 - **Easy prompts show the largest T1 gap** (+4.8) — the skill enforces structure that the model naturally skips on simple questions
