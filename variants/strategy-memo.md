@@ -1,8 +1,10 @@
 # Variant: Strategy Memo
 
+**Mode:** Client Deliverable.
+
 ## When to use
 
-The user needs a written deliverable -- a strategy memo, board paper, decision document, or executive brief. The output is a document, not a conversation.
+The user needs a written deliverable -- a strategy memo, board paper, decision document, or executive brief. The output is a document, not a conversation. Because the user has explicitly asked for a deliverable, missing details get *named* as `[A]` assumptions in the memo itself rather than blocking the draft.
 
 ## Structure: Pyramid Principle + SCQA
 

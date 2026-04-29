@@ -50,7 +50,7 @@ Replace `fill`, `stroke`, and `font-family` values accordingly.
 
   <!-- Axes -->
   <line x1="100" y1="80" x2="100" y2="520" stroke="#475569" stroke-width="2"/>
-  <line x1="100" y1="520" x2="540" stroke="#475569" stroke-width="2"/>
+  <line x1="100" y1="520" x2="540" y2="520" stroke="#475569" stroke-width="2"/>
 
   <!-- Axis labels -->
   <text x="320" y="560" text-anchor="middle" font-size="12" fill="#94a3b8">[X-axis label] →</text>

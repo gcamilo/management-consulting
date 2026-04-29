@@ -45,32 +45,32 @@ Just ask naturally. The skill activates on strategy questions, decisions, market
 
 ```
 management-consulting/
-├── SKILL.md (237 lines)                    # Core: modes, workflow, output contract
+├── SKILL.md (258 lines)                    # Core: modes, workflow, output contract
 ├── references/
 │   ├── frameworks-strategy.md (798 lines)  # Five Forces, Value Chain, 7S, VRIO, Blue Ocean...
 │   ├── frameworks-financial.md (781 lines) # Profit Tree, Revenue Tree, TAM/SAM/SOM, Unit Econ
 │   ├── frameworks-decision.md (708 lines)  # RAPID, Decision Matrix, Pre-Mortem, Inversion
+│   ├── frameworks-pricing.md (688 lines)   # Value-Based, Cost-Plus, Competitive, Dynamic, Freemium
 │   ├── frameworks-problem-solving.md (511) # MECE, Issue Tree, Hypothesis Tree, Pyramid
 │   ├── frameworks-operations.md (484)      # ADKAR, Kotter, Lewin, Customer Journey, NPS
-│   ├── frameworks-pricing.md (402 lines)   # Value-Based, Cost-Plus, Competitive, Dynamic, Freemium
 │   ├── frameworks-innovation.md (390)      # JTBD, Business Model Canvas, Advantage Matrix
-│   ├── frameworks-index.md                 # Quick-reference: all 42 frameworks, one-line each
-│   ├── evidence-standards.md               # Claim labeling: Fact / Inference / Assumption
-│   ├── diagram-templates.md                # 12 diagram types (SVG templates)
-│   └── tooling-appendix.md                 # Optional: rendering pipeline, themes
+│   ├── diagram-templates.md (231 lines)    # 12 diagram types (SVG templates)
+│   ├── tooling-appendix.md (69 lines)      # Optional: rendering pipeline, themes
+│   ├── frameworks-index.md (59 lines)      # Quick-reference: all 42 frameworks, one-line each
+│   └── evidence-standards.md (24 lines)    # Claim labeling: Fact / Inference / Assumption / Estimate
 ├── examples/
-│   ├── end-to-end-full-case.md             # SaaS mid-market expansion (complete walkthrough)
-│   ├── end-to-end-quick-structure.md       # Build vs Buy (light mode)
-│   ├── issue-tree-good-vs-bad.md           # Before/after comparison
-│   └── recommendation-good-vs-bad.md       # Before/after comparison
+│   ├── end-to-end-full-case.md (117)       # SaaS mid-market expansion (complete walkthrough)
+│   ├── issue-tree-good-vs-bad.md (78)      # Before/after comparison
+│   ├── recommendation-good-vs-bad.md (45)  # Before/after comparison
+│   └── end-to-end-quick-structure.md (36)  # Build vs Buy (light mode)
 └── variants/
-    ├── market-entry.md                     # Five Forces + TAM + positioning
-    ├── due-diligence.md                    # Commercial DD + red flags
-    ├── org-effectiveness.md                # 7S + ADKAR + stakeholder mapping
-    └── strategy-memo.md                    # Pyramid Principle + SCQA + deck outline
+    ├── strategy-memo.md (102)              # Pyramid Principle + SCQA + deck outline
+    ├── due-diligence.md (81)               # Commercial DD + red flags
+    ├── market-entry.md (80)                # Five Forces + TAM + positioning
+    └── org-effectiveness.md (62)           # 7S + ADKAR + stakeholder mapping
 ```
 
-**22 files. 5,300+ lines. 287K chars.**
+**22 files. ~5,700 lines. ~333K chars.**
 
 ## Framework depth
 

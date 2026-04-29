@@ -32,13 +32,13 @@ python3 -c "import cairosvg; cairosvg.svg2png(url='/tmp/diagram.svg', write_to='
 
 ## Theme Palettes
 
-Pick the theme that matches your audience:
+Templates in `references/diagram-templates.md` ship with the **dark** palette. Swap fills/strokes/font-family to retheme — pick the theme that matches your audience:
 
-**light** (default — docs, exports)
-- bg: #ffffff, card: #f8fafc, text: #0f172a, accent: #2563eb
-
-**dark** (Discord, dark-mode UIs)
+**dark** (default for templates — Discord, dark-mode UIs, terminals)
 - bg: #0f172a, card: #1e293b, text: #f8fafc, accent: #3b82f6
+
+**light** (docs, exports, light-mode UIs)
+- bg: #ffffff, card: #f8fafc, text: #0f172a, accent: #2563eb
 
 **consulting** (client-facing decks)
 - bg: #ffffff, card: #f1f5f9, text: #1e293b, primary: #1e40af

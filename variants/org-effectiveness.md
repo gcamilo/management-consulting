@@ -1,8 +1,12 @@
 # Variant: Organizational Effectiveness & Change Management
 
+**Mode:** Full Case (or Client Deliverable if a roadmap deck is requested).
+
 Use when the problem is about organizational performance, culture, structure, talent, or implementing change.
 
-## Upfront questions
+## Context to establish (assume if missing, flag as `[A]`)
+
+If the user hasn't specified, state assumptions upfront and proceed. Do NOT stall waiting for answers.
 
 1. What specific organizational outcome are you trying to improve? (speed, quality, cost, retention, innovation)
 2. Is this a diagnosis ("why aren't we performing?") or a transformation ("how do we change?")?

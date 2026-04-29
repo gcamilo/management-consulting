@@ -1,16 +1,20 @@
 # Variant: Commercial Due Diligence
 
+**Mode:** Full Case (or Client Deliverable if an IC memo / red-flags pack is requested).
+
 ## When to use
 
 The user is evaluating an acquisition target, investment opportunity, or partnership -- and needs to assess the commercial viability of the business.
 
-## Upfront questions (ask before analysis)
+## Context to establish (assume if missing, flag as `[A]`)
+
+If the user hasn't specified, state assumptions upfront and proceed. Do NOT stall waiting for answers.
 
 1. **What's the target?** Company name, sector, stage, approximate size.
 2. **What's the deal thesis?** Why is this interesting? (Growth, synergy, distressed asset, platform play.)
 3. **What's the timeline?** When does the decision need to be made?
 4. **What data do we have?** CIM, financials, customer list, management access?
-5. **What would kill the deal?** Pre-commit to 2-3 dealbreakers before starting.
+5. **What would kill the deal?** Pre-commit to 2-3 dealbreakers before starting -- if the user hasn't named them, propose plausible ones and let them push back.
 
 ## Commercial DD workflow
 

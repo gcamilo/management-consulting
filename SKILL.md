@@ -28,14 +28,14 @@ Detect the depth needed from the user's request:
 **Quick Structure** (default for exploratory or vague asks)
 - "Help me think through X" / "What are the key considerations?" / vague requests with missing context
 - Output: structured thinking (issue tree or framework), 1-2 paragraphs, no mandatory diagram
-- Skip: hard gate, output contract, quality checklist
+- Skip: context check, output contract, quality checklist
 - Use when: the user is thinking out loud, not making a final decision, OR the request is too vague for Full Case
 - **If in doubt about mode, default to Quick Structure** — it's better to provide useful structure immediately than to gate on missing information
 
 **Full Case** (for analytical questions)
 - "Should we enter this market?" / "Why is retention dropping?"
 - Output: full workflow (clarify → structure → hypothesize → analyze → synthesize)
-- Apply: hard gate, output contract, quality checklist
+- Apply: context check, output contract, quality checklist
 - Use when: there's a specific decision to make with real stakes
 
 **Client Deliverable** (for deck/memo requests)
@@ -43,6 +43,16 @@ Detect the depth needed from the user's request:
 - Output: polished document structure with all formatting, diagrams, evidence coding
 - Apply: everything including themes, diagram pipeline, devil's advocate
 - Use when: the output will be seen by stakeholders
+
+### Mode-detection cues
+
+| If the user says... | Mode |
+|---|---|
+| "help me think through", "what are the considerations", "I'm trying to figure out", or the prompt is vague | **Quick Structure** |
+| "should we [decision]", "why is [metric] doing X", "evaluate [option A] vs [option B]", "is this [worth it / a good idea]" | **Full Case** |
+| "draft a memo", "build a deck", "write up", "put together a [board paper / IC memo / executive brief]" | **Client Deliverable** |
+
+When two modes plausibly fit, escalate one level (Quick → Full, Full → Deliverable) only if the user has named a specific decision *and* a stakeholder audience. Otherwise stay light.
 
 ## Core workflow
 
@@ -56,12 +66,12 @@ Before doing anything, establish:
 - **Constraints**: Time, budget, capabilities, politics
 - **Scope**: What's in, what's out
 
-**HARD GATE (Full Case + Client Deliverable):**
-- [ ] Decision-maker identified
-- [ ] Success metric defined
-- [ ] Scope boundaries set
+**Context check (Full Case + Client Deliverable):**
+- [ ] Decision-maker identified (or assumed)
+- [ ] Success metric defined (or assumed)
+- [ ] Scope boundaries set (or assumed)
 
-If any are missing, state **provisional assumptions [A]** and proceed with the full analysis. Do NOT stop to ask and wait — always deliver analysis in the same response. When context is vague, name the assumptions upfront, then give a complete structured answer. The user should never receive only questions without analysis.
+If any are missing, state **provisional assumptions [A]** and proceed with the full analysis in the same response. Do NOT stop to ask and wait. When context is vague, name the assumptions upfront, then give a complete structured answer. The user should never receive only questions without analysis.
 
 Example (vague prompt: "We need to grow faster"):
 > *Provisional assumptions [A]: B2B SaaS, $10-50M ARR, primarily US, growth has slowed from 40%+ to 20% or below. If wrong, tell me what's different and I'll restructure.*
@@ -95,18 +105,22 @@ Never present assumptions as facts. Never cite numbers without units, time perio
 
 ### 5. Synthesize (Pyramid Principle)
 
-Structure the answer top-down. **You MUST include ALL 5 sections — no exceptions for Full Case and Client Deliverable:**
+Structure the answer top-down. **You MUST include ALL 6 sections — no exceptions for Full Case and Client Deliverable:**
 
 **BOTTOM LINE:** [Answer/recommendation — one sentence]
 
-**SUPPORTING ARGUMENTS:**
-1. [Argument] — [F/I/A] [evidence with source]
-2. [Argument] — [F/I/A] [evidence with source]
-3. [Argument] — [F/I/A] [evidence with source]
+**SUPPORTING ARGUMENTS** (3 max — the load-bearing reasons):
+1. [Argument] — [F/I/A/E] [evidence with source]
+2. [Argument] — [F/I/A/E] [evidence with source]
+3. [Argument] — [F/I/A/E] [evidence with source]
 
 **RISKS** (minimum 2 — do NOT skip this section):
 1. [Risk] — likelihood: [H/M/L], impact: [H/M/L], mitigation: [specific action]
 2. [Risk] — likelihood: [H/M/L], impact: [H/M/L], mitigation: [specific action]
+
+**KILL CONDITIONS** (minimum 2 — what would reverse this recommendation):
+1. [Specific data point or event] — if observed, [recommendation flips to X]
+2. [Specific data point or event] — if observed, [recommendation flips to X]
 
 **NEXT ACTIONS** (minimum 2 — do NOT skip this section):
 1. [Action] — owner: [who], deadline: [when], success metric: [how to verify]
@@ -114,8 +128,9 @@ Structure the answer top-down. **You MUST include ALL 5 sections — no exceptio
 
 **OPEN QUESTIONS:** [What we still don't know and how to find out]
 
-A response that omits RISKS or NEXT ACTIONS is incomplete — go back and add them.
-Quick Structure mode does NOT require this full contract — keep it light.
+A response that omits RISKS, KILL CONDITIONS, or NEXT ACTIONS is incomplete — go back and add them. Quick Structure mode does NOT require this full contract — keep it light.
+
+**Evidence labels:** `[F]` Fact (observed, sourced) · `[I]` Inference (derived from facts) · `[A]` Assumption (judgment, state confidence) · `[E]` Estimate (calculated from assumptions + data, e.g. TAM = users × ARPU). See `references/evidence-standards.md` for full rules.
 
 ### 5b. Challenge your recommendation
 
@@ -164,7 +179,7 @@ Diagram templates for issue trees, 2x2 matrices, Five Forces, profit trees, wate
 - Keep text >= 9px for readability
 - Color-code by meaning (green=supports, red=contradicts, gray=unknown)
 
-If diagram tooling is unavailable in your environment, provide a detailed text description of the intended visual instead.
+**Attempt SVG first.** Inline a self-contained `<svg>` block in your output — most surfaces (Discord, web, IDE previews) render it. Fall back to a structured text description **only if** SVG rendering is unavailable AND no other visual tooling is reachable. A text description is a fallback, not a default.
 
 See `references/tooling-appendix.md` for environment-specific rendering pipelines (SVG linting, theme selection, Discord/Slack delivery).
 
@@ -208,13 +223,14 @@ Don't memorize this — use it as a lookup when structuring.
 
 Before presenting your final output, verify:
 - [ ] MECE check: every level of the issue tree is mutually exclusive and collectively exhaustive
-- [ ] Evidence labeled: every claim tagged [F]act, [I]nference, or [A]ssumption
+- [ ] Evidence labeled: every claim tagged [F]act, [I]nference, [A]ssumption, or [E]stimate
 - [ ] Numbers sourced: every figure has unit, time period, and source
 - [ ] "So what" stated: every finding has an explicit implication
 - [ ] Recommendation is specific: names who, what, by when
 - [ ] Risks identified: at least 2 risks with mitigation paths
+- [ ] Kill conditions identified: at least 2 specific data points that would reverse the recommendation
 - [ ] Next actions are owned: each has an owner and deadline
-- [ ] Diagram generated: at least one visual deliverable
+- [ ] Diagram delivered: SVG inlined, or structured text description if SVG rendering is unavailable
 - [ ] Devil's advocate applied: you've stated the strongest counter-argument
 
 If any box is unchecked, fix it before responding.

@@ -1,16 +1,22 @@
 # Variant: Market Entry Analysis
 
+**Mode:** Full Case (or Client Deliverable if a memo/deck is requested).
+
 ## When to use
 
 The user asks about entering a new market -- new geography, new segment, new product category, or new channel.
 
-## Upfront questions (ask before analysis)
+## Context to establish (assume if missing, flag as `[A]`)
+
+If the user hasn't specified, state assumptions upfront and proceed. Do NOT stall waiting for answers.
 
 1. **Which market?** Geography, segment, or vertical -- be precise.
 2. **Why now?** What triggered this question? (Competitor moved, customer request, board mandate, opportunity spotted.)
 3. **What's the investment appetite?** Rough budget range and timeline to breakeven.
 4. **What's the fallback?** If we don't enter, what happens? (This defines the counterfactual.)
 5. **Who decides?** CEO, board, business unit head -- and what's their decision criteria?
+
+If 3+ are missing, name plausible defaults (e.g., "[A] Assuming $5–10M investment envelope, 24-month payback target, CEO+board approval") and continue.
 
 ## Required frameworks
 
